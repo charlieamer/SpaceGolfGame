@@ -64,12 +64,18 @@ void MeshRenderingSystem::update(entityx::EntityManager & entities, entityx::Eve
 		}
 
 		if (mesh.indicesHandle.idx == bgfx::kInvalidHandle) {
-			mesh.indicesHandle = bgfx::createIndexBuffer(bgfx::makeRef(mesh.indices.data(), sizeof(uint16_t) * mesh.indices.size()));
-			printf("MeshRenderingSystem - Created indices buffer with size of %d - %u\n", mesh.indices.size(), mesh.indicesHandle.idx);
+			if (this->indexBufferCache.find(mesh.indices) == this->indexBufferCache.end()) {
+				this->indexBufferCache[mesh.indices] = bgfx::createIndexBuffer(bgfx::makeRef(mesh.indices.data(), sizeof(uint16_t) * mesh.indices.size()));
+				printf("MeshRenderingSystem - Created indices buffer with size of %d\n", mesh.indices.size());
+			}
+			mesh.indicesHandle = this->indexBufferCache[mesh.indices];
 		}
 		if (mesh.verticesHandle.idx == bgfx::kInvalidHandle) {
-			mesh.verticesHandle = bgfx::createVertexBuffer(bgfx::makeRef(mesh.vertices.data(), sizeof(Pos2fColorVertex) * mesh.vertices.size()), Pos2fColorVertex::ms_decl);
-			printf("MeshRenderingSystem - Created vertex buffer with size of %d - %u\n", mesh.vertices.size(), mesh.verticesHandle.idx);
+			if (this->vertexBufferCache.find(mesh.vertices) == this->vertexBufferCache.end()) {
+				this->vertexBufferCache[mesh.vertices] = bgfx::createVertexBuffer(bgfx::makeRef(mesh.vertices.data(), sizeof(Pos2fColorVertex) * mesh.vertices.size()), Pos2fColorVertex::ms_decl);
+				printf("MeshRenderingSystem - Created vertex buffer with size of %d\n", mesh.vertices.size());
+			}
+			mesh.verticesHandle = this->vertexBufferCache[mesh.vertices];
 		}
 		bgfx::setVertexBuffer(0, mesh.verticesHandle);
 		bgfx::setIndexBuffer(mesh.indicesHandle);

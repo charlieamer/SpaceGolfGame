@@ -12,6 +12,8 @@
 #include "../Components/AABBCacheComponent.h"
 #include "../Components/GravityComponent.h"
 
+#include <math.h>
+
 GameScreen::GameScreen(Application* app) : BaseScreen(app)
 {
 	this->systems.add<MeshRenderingSystem>();
@@ -20,12 +22,14 @@ GameScreen::GameScreen(Application* app) : BaseScreen(app)
 	this->systems.add<VelocitySystem>();
 	this->systems.add<BounceSystem>(&app->screenExtents);
 	this->systems.configure();
-	entityx::Entity circle = CreateCircleEntity(this->entities, Vector2f(0, 0), 0.1);
-	circle.assign_from_copy(generateCircleMesh(30));
-	circle.assign<MeshTransformCacheComponent>();
-	circle.assign<VelocityComponent>(Vector2f(1, 1));
-	circle.assign<AABBCacheComponent>();
-	circle.assign<GravityComponent>();
+	for (int i = 0; i < 1000; i++) {
+		entityx::Entity circle = CreateCircleEntity(this->entities, Vector2f(0, 0), 0.1);
+		circle.assign_from_copy(generateCircleMesh(30));
+		circle.assign<MeshTransformCacheComponent>();
+		circle.assign<VelocityComponent>(Vector2f(float(rand()) / float(RAND_MAX), float(rand()) / float(RAND_MAX)));
+		circle.assign<AABBCacheComponent>();
+		circle.assign<GravityComponent>();
+	}
 }
 
 

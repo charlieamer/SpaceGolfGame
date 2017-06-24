@@ -38,7 +38,6 @@ void AABBCacheSystem::update(entityx::EntityManager & entities, entityx::EventMa
 			}
 			aabb.AABB.min *= MeshRenderingSystem::getScale(entity);
 			aabb.AABB.max *= MeshRenderingSystem::getScale(entity);
-			std::cout << aabb.AABB << std::endl;
 		}
 	});
 }
