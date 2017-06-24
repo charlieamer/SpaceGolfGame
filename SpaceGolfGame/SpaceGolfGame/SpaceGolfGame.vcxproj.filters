@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Screens">
+      <UniqueIdentifier>{f395b369-9424-496f-8db8-ac58f93e4d17}</UniqueIdentifier>
+      <Extensions>
+      </Extensions>
+    </Filter>
+    <Filter Include="Header Files\Screens">
+      <UniqueIdentifier>{7ad88ce3-b681-405d-ab60-ad8a1b65e155}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{33ec6295-cbf4-4d75-bf04-a9c890895cbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Systems">
+      <UniqueIdentifier>{d7137e6d-b15f-4681-90e4-2d7b08ec4248}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Systems">
+      <UniqueIdentifier>{39e8b91a-3221-461c-b569-50de8a1aac27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities">
+      <UniqueIdentifier>{903b1779-35a3-4736-a23d-289148e661a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities">
+      <UniqueIdentifier>{24af8783-d658-4bd2-8769-3912e94ec430}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\3rdparty">
+      <UniqueIdentifier>{71ccfd5a-7cc6-46b6-a42e-9340215cbca3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\3rdparty\Vmath">
+      <UniqueIdentifier>{6d879b70-1931-4584-8263-065624a46e2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\3rdparty">
+      <UniqueIdentifier>{2fdb5afb-cf8e-4e94-a0eb-8323f0e6820d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\3rdparty\Vmath">
+      <UniqueIdentifier>{1a4776f0-8029-4457-9d18-6d2f371f6934}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Rendering">
+      <UniqueIdentifier>{8321b2b3-108f-46d2-b448-cd608e96eaf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rendering">
+      <UniqueIdentifier>{e0b1d745-9175-49a9-a0b1-9e59544c948f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data">
+      <UniqueIdentifier>{19be632f-1b09-46e4-af1e-2cb09da9926c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Shaders">
+      <UniqueIdentifier>{ca3cc11c-d3d5-49ba-8c09-4375485bf4b3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Screens\BaseScreen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Screens\GameScreen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="3rdparty\Vmath\vmath.cpp">
+      <Filter>Source Files\3rdparty\Vmath</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\CircleEntity.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\MeshGenerators.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\MeshRenderingSystem.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Screens\BaseScreen.h">
+      <Filter>Header Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Screens\GameScreen.h">
+      <Filter>Header Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\PositionComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\Vmath\vmath.h">
+      <Filter>Header Files\3rdparty\Vmath</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\CircleEntity.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\CircleRadiusComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\MeshComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\MeshGenerators.h">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\MeshRenderingSystem.h">
+      <Filter>Header Files\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\RenderingData.h">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Data\Shaders\vs_cubes.sc">
+      <Filter>Data\Shaders</Filter>
+    </None>
+    <None Include="..\Data\Shaders\fs_cubes.sc">
+      <Filter>Data\Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>
