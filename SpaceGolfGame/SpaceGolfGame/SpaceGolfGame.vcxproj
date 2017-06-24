@@ -157,9 +157,11 @@
     <ClInclude Include="3rdparty\Vmath\vmath.h" />
     <ClInclude Include="Components\AABBCacheComponent.h" />
     <ClInclude Include="Components\GravityComponent.h" />
+    <ClInclude Include="Components\MassComponent.h" />
     <ClInclude Include="Components\MeshComponent.h" />
     <ClInclude Include="Components\CircleRadiusComponent.h" />
     <ClInclude Include="Components\MeshTransformCacheComponent.h" />
+    <ClInclude Include="Components\PlanetComponent.h" />
     <ClInclude Include="Components\PositionComponent.h" />
     <ClInclude Include="Components\VelocityComponent.h" />
     <ClInclude Include="Entities\CircleEntity.h" />
