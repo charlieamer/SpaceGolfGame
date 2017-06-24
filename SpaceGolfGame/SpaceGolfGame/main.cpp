@@ -65,7 +65,9 @@ bool Application::update() {
 		float width = std::max(ratio, 1.0f);
 		float height = std::max(1.0f/ratio, 1.0f);
 		float ortho[16];
-		bx::mtxOrtho(ortho, -width, width, height, -height, 0, 100, 0, false);
+		bx::mtxOrtho(ortho, width, -width, height, -height, 0, 100, 0, false);
+		this->screenExtents.min = Vector3f(-width, -height, 0);
+		this->screenExtents.max = Vector3f(width, height, 0); // miki miralem mehmedovic 
 		
 		float at[3] = { this->currentScreen->camera.x, this->currentScreen->camera.y, 0.0f };
 		float eye[3] = { this->currentScreen->camera.x, this->currentScreen->camera.y, 1.0f };

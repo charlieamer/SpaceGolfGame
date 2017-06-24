@@ -1,7 +1,7 @@
 #include "MeshGenerators.h"
 #include <bx/fpumath.h>
 
-MeshComponent generateCircle(int vertices)
+MeshComponent generateCircleMesh(int vertices)
 {
 	MeshComponent ret;
 	double angle = 0;
@@ -10,9 +10,9 @@ MeshComponent generateCircle(int vertices)
 	for (int i = 0; i < vertices; i++) {
 		ret.vertices.push_back({
 			(float)cos(angle), // X
-			(float)sin(angle), // Y
+			-(float)sin(angle), // Y
 			0,				   // Z
-			color       // ABGR
+			color			   // ABGR
 		});
 		angle += bx::kPi2 / (float)vertices;
 	}

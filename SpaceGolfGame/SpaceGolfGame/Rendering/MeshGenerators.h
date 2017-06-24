@@ -2,4 +2,4 @@
 #include "../Components/MeshComponent.h"
 #include "../Rendering/RenderingData.h"
 
-MeshComponent generateCircle(int vertices = 10);
+MeshComponent generateCircleMesh(int vertices = 10);

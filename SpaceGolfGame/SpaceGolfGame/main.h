@@ -20,4 +20,5 @@ public:
 	uint32_t m_height;
 	uint32_t m_debug;
 	uint32_t m_reset;
+	Aabb3f screenExtents;
 };

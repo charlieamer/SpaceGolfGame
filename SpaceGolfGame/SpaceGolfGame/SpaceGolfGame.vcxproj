@@ -127,7 +127,11 @@
     <ClCompile Include="Rendering\MeshGenerators.cpp" />
     <ClCompile Include="Screens\BaseScreen.cpp" />
     <ClCompile Include="Screens\GameScreen.cpp" />
+    <ClCompile Include="Systems\AABBCacheSystem.cpp" />
+    <ClCompile Include="Systems\BounceSystem.cpp" />
+    <ClCompile Include="Systems\GravitySystem.cpp" />
     <ClCompile Include="Systems\MeshRenderingSystem.cpp" />
+    <ClCompile Include="Systems\VelocitySystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\bgfx\.build\projects\vs2017\bgfx.vcxproj">
@@ -151,16 +155,24 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="3rdparty\Vmath\vmath.h" />
+    <ClInclude Include="Components\AABBCacheComponent.h" />
+    <ClInclude Include="Components\GravityComponent.h" />
     <ClInclude Include="Components\MeshComponent.h" />
     <ClInclude Include="Components\CircleRadiusComponent.h" />
+    <ClInclude Include="Components\MeshTransformCacheComponent.h" />
     <ClInclude Include="Components\PositionComponent.h" />
+    <ClInclude Include="Components\VelocityComponent.h" />
     <ClInclude Include="Entities\CircleEntity.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Rendering\MeshGenerators.h" />
     <ClInclude Include="Rendering\RenderingData.h" />
     <ClInclude Include="Screens\BaseScreen.h" />
     <ClInclude Include="Screens\GameScreen.h" />
+    <ClInclude Include="Systems\AABBCacheSystem.h" />
+    <ClInclude Include="Systems\BounceSystem.h" />
+    <ClInclude Include="Systems\GravitySystem.h" />
     <ClInclude Include="Systems\MeshRenderingSystem.h" />
+    <ClInclude Include="Systems\VelocitySystem.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Data\Shaders\fs_cubes.sc" />
