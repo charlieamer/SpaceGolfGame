@@ -127,6 +127,7 @@
     <ClCompile Include="Rendering\MeshGenerators.cpp" />
     <ClCompile Include="Screens\BaseScreen.cpp" />
     <ClCompile Include="Screens\GameScreen.cpp" />
+    <ClCompile Include="Screens\GameStates.cpp" />
     <ClCompile Include="Systems\AABBCacheSystem.cpp" />
     <ClCompile Include="Systems\BounceSystem.cpp" />
     <ClCompile Include="Systems\GravitySystem.cpp" />
@@ -165,11 +166,13 @@
     <ClInclude Include="Components\PositionComponent.h" />
     <ClInclude Include="Components\VelocityComponent.h" />
     <ClInclude Include="Entities\CircleEntity.h" />
+    <ClInclude Include="Events\MouseEvents.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Rendering\MeshGenerators.h" />
     <ClInclude Include="Rendering\RenderingData.h" />
     <ClInclude Include="Screens\BaseScreen.h" />
     <ClInclude Include="Screens\GameScreen.h" />
+    <ClInclude Include="Screens\GameStates.h" />
     <ClInclude Include="Systems\AABBCacheSystem.h" />
     <ClInclude Include="Systems\BounceSystem.h" />
     <ClInclude Include="Systems\GravitySystem.h" />

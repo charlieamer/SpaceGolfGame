@@ -21,4 +21,6 @@ public:
 	uint32_t m_debug;
 	uint32_t m_reset;
 	Aabb3f screenExtents;
+
+	entry::MouseState m_mouseState;
 };

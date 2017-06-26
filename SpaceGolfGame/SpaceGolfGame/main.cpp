@@ -55,7 +55,7 @@ int Application::shutdown()
 }
 
 bool Application::update() {
-	if (!entry::processEvents(m_width, m_height, m_debug, m_reset))
+	if (!entry::processEvents(m_width, m_height, m_debug, m_reset, &m_mouseState))
 	{
 		bgfx::setViewRect(0, 0, 0, uint16_t(m_width), uint16_t(m_height));
 		bgfx::touch(0);
@@ -67,7 +67,7 @@ bool Application::update() {
 		float ortho[16];
 		bx::mtxOrtho(ortho, width, -width, height, -height, 0, 100, 0, false);
 		this->screenExtents.min = Vector3f(-width, -height, 0);
-		this->screenExtents.max = Vector3f(width, height, 0); // miki miralem mehmedovic 
+		this->screenExtents.max = Vector3f(width, height, 0);
 		
 		float at[3] = { this->currentScreen->camera.x, this->currentScreen->camera.y, 0.0f };
 		float eye[3] = { this->currentScreen->camera.x, this->currentScreen->camera.y, 1.0f };
@@ -75,6 +75,7 @@ bool Application::update() {
 		bx::mtxLookAt(transform, eye, at);
 		bgfx::setViewTransform(0, transform, ortho);
 
+		this->currentScreen->processMouse(m_mouseState);
 		this->currentScreen->update(0.1);
 
 		bgfx::frame();
