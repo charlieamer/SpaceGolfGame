@@ -1,5 +1,5 @@
 #pragma once
-#include "../Components/MeshComponent.h"
+#include "../Components/StaticMeshComponent.h"
 #include "../Rendering/RenderingData.h"
 
-MeshComponent generateCircleMesh(int vertices = 10);
+StaticMeshComponent generateCircleMesh(int vertices = 10);

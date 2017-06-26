@@ -6,6 +6,8 @@
 #include <vector>
 #include <string>
 #include "../Rendering/RenderingData.h"
+#include "../Components/DynamicMeshComponent.h"
+#include "../Components/StaticMeshComponent.h"
 
 struct VectorComparison {
 	template<typename T>
@@ -41,6 +43,11 @@ public:
 	static Vector3f getScale(entityx::Entity entity);
 
 	void configure(entityx::EventManager &event_manager);
+
+	void setTransform(entityx::Entity & entity, int & nonStatic, int & notCached);
+
+	void prepareBuffers(StaticMeshComponent & mesh);
+	void prepareBuffers(DynamicMeshComponent & mesh);
 
 	// Inherited via System
 	virtual void update(entityx::EntityManager & entities, entityx::EventManager & events, entityx::TimeDelta dt) override;

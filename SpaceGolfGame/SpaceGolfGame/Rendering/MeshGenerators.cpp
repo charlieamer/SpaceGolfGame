@@ -1,9 +1,9 @@
 #include "MeshGenerators.h"
 #include <bx/fpumath.h>
 
-MeshComponent generateCircleMesh(int vertices)
+StaticMeshComponent generateCircleMesh(int vertices)
 {
-	MeshComponent ret;
+	StaticMeshComponent ret;
 	double angle = 0;
 	uint32_t color = 0xff00ff00;
 

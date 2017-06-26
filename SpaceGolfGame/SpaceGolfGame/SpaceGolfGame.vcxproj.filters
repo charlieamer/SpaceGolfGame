@@ -121,9 +121,6 @@
     <ClInclude Include="Components\CircleRadiusComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Components\MeshComponent.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
     <ClInclude Include="Rendering\MeshGenerators.h">
       <Filter>Header Files\Rendering</Filter>
     </ClInclude>
@@ -171,6 +168,15 @@
     </ClInclude>
     <ClInclude Include="Events\MouseEvents.h">
       <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\BaseMeshComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\StaticMeshComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\DynamicMeshComponent.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

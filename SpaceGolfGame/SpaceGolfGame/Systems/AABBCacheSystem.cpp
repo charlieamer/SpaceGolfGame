@@ -2,7 +2,8 @@
 
 #include "../Components/AABBCacheComponent.h"
 #include "../Components/CircleRadiusComponent.h"
-#include "../Components/MeshComponent.h"
+#include "../Components/DynamicMeshComponent.h"
+#include "../Components/StaticMeshComponent.h"
 #include "../Rendering/RenderingData.h"
 #include "../Systems/MeshRenderingSystem.h"
 #include <vmath.h>
@@ -29,15 +30,23 @@ void AABBCacheSystem::update(entityx::EntityManager & entities, entityx::EventMa
 				aabb.AABB.min = Vector3f(-1, -1, 0);
 				aabb.AABB.max = Vector3f(1, 1, 0);
 			}
-			else if (entity.component<MeshComponent>()) {
-				// Calculate AABB based on mesh vertices
-				aabb.AABB = Aabb3f();
-				for (Pos2fColorVertex &vector : entity.component<MeshComponent>().get()->vertices) {
-					aabb.AABB.extend(Aabb3f(vector.m_x, vector.m_y, vector.m_z));
-				}
+			else if (entity.component<DynamicMeshComponent>()) {
+				AABBCacheSystem::calculateAABB(aabb.AABB, entity.component<DynamicMeshComponent>().get());
+			}
+			else if (entity.component<StaticMeshComponent>()) {
+				AABBCacheSystem::calculateAABB(aabb.AABB, entity.component<StaticMeshComponent>().get());
 			}
 			aabb.AABB.min *= MeshRenderingSystem::getScale(entity);
 			aabb.AABB.max *= MeshRenderingSystem::getScale(entity);
 		}
 	});
+}
+
+void AABBCacheSystem::calculateAABB(Aabb3f & result, BaseMeshComponent * mesh)
+{
+	// Calculate AABB based on mesh vertices
+	result = Aabb3f();
+	for (Pos2fColorVertex &vector : mesh->vertices) {
+		result.extend(Aabb3f(vector.m_x, vector.m_y, vector.m_z));
+	}
 }
