@@ -8,9 +8,11 @@ struct MouseMoveEvent {
 };
 
 struct LeftMouseDownEvent {
-
+	LeftMouseDownEvent(const Vector2i mouse) : position(mouse) {}
+	Vector2i position;
 };
 
 struct LeftMouseUpEvent {
-
+	LeftMouseUpEvent(const Vector2i mouse) : position(mouse) {}
+	Vector2i position;
 };

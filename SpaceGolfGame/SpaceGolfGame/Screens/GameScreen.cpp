@@ -15,7 +15,7 @@
 #include "../Components/PlanetComponent.h"
 #include "../Events/MouseEvents.h"
 
-#include "GameStates.h"
+#include "GameStates/IdleGameState.h"
 
 #include <math.h>
 
@@ -34,13 +34,13 @@ GameScreen::GameScreen(Application* app) : BaseScreen(app)
 	ball.assign<AABBCacheComponent>();
 	ball.assign<GravityComponent>();
 	ball.assign<MassComponent>(10);
-
+	
 	entityx::Entity planet = CreateCircleEntity(this->entities, Vector2f(0, 0), 0.1);
 	planet.assign_from_copy(generateCircleMesh(25));
 	planet.assign<MeshTransformCacheComponent>();
 	planet.assign<PlanetComponent>();
 	planet.assign<MassComponent>(100);
-
+	
 	this->setGameState(new IdleGameState(this));
 }
 
@@ -54,14 +54,14 @@ void GameScreen::update(float timeDelta)
 	this->systems.update_all(timeDelta);
 }
 
-void GameScreen::onLeftMouseButtonDown()
+void GameScreen::onLeftMouseButtonDown(const entry::MouseState & state)
 {
-	this->events.emit<LeftMouseDownEvent>();
+	this->events.emit<LeftMouseDownEvent>(Vector2i(state.m_mx, state.m_my));
 }
 
-void GameScreen::onLeftMouseButtonUp()
+void GameScreen::onLeftMouseButtonUp(const entry::MouseState & state)
 {
-	this->events.emit<LeftMouseUpEvent>();
+	this->events.emit<LeftMouseUpEvent>(Vector2i(state.m_mx, state.m_my));
 }
 
 void GameScreen::onMouseMove(Vector2f delta, Vector2f now)

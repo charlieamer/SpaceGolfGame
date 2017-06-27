@@ -1,6 +1,7 @@
 #pragma once
 
 #include <bgfx/bgfx.h>
+#include <vmath.h>
 
 struct Pos2fColorVertex
 {
@@ -8,6 +9,9 @@ struct Pos2fColorVertex
 	float m_y;
 	float m_z;
 	uint32_t m_abgr;
+
+	Pos2fColorVertex(Vector2f position) : m_x(position.x), m_y(position.y), m_z(0), m_abgr(0xffffffff) {}
+	Pos2fColorVertex(Vector2f position, uint32_t color) : m_x(position.x), m_y(position.y), m_z(0), m_abgr(color) {}
 
 	static void init()
 	{

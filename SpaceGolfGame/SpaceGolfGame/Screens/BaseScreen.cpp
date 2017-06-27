@@ -1,5 +1,5 @@
 #include "BaseScreen.h"
-#include "GameStates.h"
+#include "GameStates/BaseGameState.h"
 
 void BaseScreen::setGameState(BaseGameState * newGameState)
 {
@@ -29,10 +29,10 @@ BaseScreen::~BaseScreen()
 void BaseScreen::processMouse(const entry::MouseState & state)
 {
 	if (state.m_buttons[1] && !oldState.m_buttons[1]) {
-		this->onLeftMouseButtonDown();
+		this->onLeftMouseButtonDown(state);
 	}
 	if (!state.m_buttons[1] && oldState.m_buttons[1]) {
-		this->onLeftMouseButtonUp();
+		this->onLeftMouseButtonUp(state);
 	}
 
 	this->oldState = state;

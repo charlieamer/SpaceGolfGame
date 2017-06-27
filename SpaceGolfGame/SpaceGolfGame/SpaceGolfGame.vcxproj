@@ -127,7 +127,11 @@
     <ClCompile Include="Rendering\MeshGenerators.cpp" />
     <ClCompile Include="Screens\BaseScreen.cpp" />
     <ClCompile Include="Screens\GameScreen.cpp" />
-    <ClCompile Include="Screens\GameStates.cpp" />
+    <ClCompile Include="Screens\GameStates\AimingGameState.cpp" />
+    <ClCompile Include="Screens\GameStates\BaseGameState.cpp" />
+    <ClCompile Include="Screens\GameStates\IdleGameState.cpp" />
+    <ClCompile Include="Screens\GameStates\PlayingBaseGameState.cpp" />
+    <ClCompile Include="Screens\GameStates\RunningGameState.cpp" />
     <ClCompile Include="Systems\AABBCacheSystem.cpp" />
     <ClCompile Include="Systems\BounceSystem.cpp" />
     <ClCompile Include="Systems\GravitySystem.cpp" />
@@ -174,7 +178,11 @@
     <ClInclude Include="Rendering\RenderingData.h" />
     <ClInclude Include="Screens\BaseScreen.h" />
     <ClInclude Include="Screens\GameScreen.h" />
-    <ClInclude Include="Screens\GameStates.h" />
+    <ClInclude Include="Screens\GameStates\AimingGameState.h" />
+    <ClInclude Include="Screens\GameStates\BaseGameState.h" />
+    <ClInclude Include="Screens\GameStates\IdleGameState.h" />
+    <ClInclude Include="Screens\GameStates\PlayingBaseGameState.h" />
+    <ClInclude Include="Screens\GameStates\RunningGameState.h" />
     <ClInclude Include="Systems\AABBCacheSystem.h" />
     <ClInclude Include="Systems\BounceSystem.h" />
     <ClInclude Include="Systems\GravitySystem.h" />

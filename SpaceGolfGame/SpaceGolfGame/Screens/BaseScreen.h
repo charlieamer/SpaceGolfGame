@@ -19,8 +19,8 @@ protected:
 
 	void removeGameStateIfExists();
 
-	virtual void onLeftMouseButtonDown() {};
-	virtual void onLeftMouseButtonUp() {};
+	virtual void onLeftMouseButtonDown(const entry::MouseState & state) {};
+	virtual void onLeftMouseButtonUp(const entry::MouseState & state) {};
 	virtual void onMouseMove(Vector2f delta, Vector2f now) {}
 
 public:

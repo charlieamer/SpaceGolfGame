@@ -63,6 +63,12 @@
     <Filter Include="Header Files\Events">
       <UniqueIdentifier>{0b49e088-f871-4323-8402-b72c3f51c1ad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Screens\GameStates">
+      <UniqueIdentifier>{e55d43bb-1d7f-4553-8808-d8ebe344dc62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Screens\States">
+      <UniqueIdentifier>{8016820d-cdfa-4ed9-b50e-e76df6e2b47a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -98,8 +104,20 @@
     <ClCompile Include="Systems\GravitySystem.cpp">
       <Filter>Source Files\Systems</Filter>
     </ClCompile>
-    <ClCompile Include="Screens\GameStates.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Screens\GameStates\BaseGameState.cpp">
+      <Filter>Source Files\Screens\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Screens\GameStates\PlayingBaseGameState.cpp">
+      <Filter>Source Files\Screens\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Screens\GameStates\RunningGameState.cpp">
+      <Filter>Source Files\Screens\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Screens\GameStates\IdleGameState.cpp">
+      <Filter>Source Files\Screens\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Screens\GameStates\AimingGameState.cpp">
+      <Filter>Source Files\Screens\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -163,9 +181,6 @@
     <ClInclude Include="Components\PlanetComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Screens\GameStates.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Events\MouseEvents.h">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
@@ -177,6 +192,21 @@
     </ClInclude>
     <ClInclude Include="Components\DynamicMeshComponent.h">
       <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Screens\GameStates\IdleGameState.h">
+      <Filter>Header Files\Screens\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Screens\GameStates\BaseGameState.h">
+      <Filter>Header Files\Screens\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Screens\GameStates\PlayingBaseGameState.h">
+      <Filter>Header Files\Screens\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Screens\GameStates\RunningGameState.h">
+      <Filter>Header Files\Screens\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Screens\GameStates\AimingGameState.h">
+      <Filter>Header Files\Screens\GameStates</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

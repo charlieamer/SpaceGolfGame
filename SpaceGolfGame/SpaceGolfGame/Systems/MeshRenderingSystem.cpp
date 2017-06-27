@@ -91,12 +91,12 @@ void MeshRenderingSystem::prepareBuffers(DynamicMeshComponent & mesh)
 	}
 	if (!mesh.indicesValid) {
 		mesh.indicesValid = true;
-		bgfx::updateDynamicIndexBuffer(mesh.indicesHandle, 0, bgfx::makeRef(mesh.indices.data(), mesh.indices.size()));
+		bgfx::updateDynamicIndexBuffer(mesh.indicesHandle, 0, bgfx::makeRef(mesh.indices.data(), mesh.indices.size() * sizeof(uint16_t)));
 		printf("MeshRenderingSystem - Updating index buffer\n");
 	}
 	if (!mesh.verticesValid) {
 		mesh.verticesValid = true;
-		bgfx::updateDynamicVertexBuffer(mesh.verticesHandle, 0, bgfx::makeRef(mesh.vertices.data(), mesh.vertices.size()));
+		bgfx::updateDynamicVertexBuffer(mesh.verticesHandle, 0, bgfx::makeRef(mesh.vertices.data(), mesh.vertices.size() * sizeof(Pos2fColorVertex)));
 		printf("MeshRenderingSystem - Updating vertex buffer\n");
 	}
 	bgfx::setVertexBuffer(0, mesh.verticesHandle);
@@ -123,6 +123,6 @@ void MeshRenderingSystem::update(entityx::EntityManager & entities, entityx::Eve
 	});
 	bgfx::dbgTextPrintf(0, 3, 0xf, "Entities: %d", entities.size());
 	bgfx::dbgTextPrintf(0, 4, 0xf, "Drawn entities: %d", drawn);
-	bgfx::dbgTextPrintf(0, 5, 0xf, "Non moving entities: %d", nonStatic);
+	bgfx::dbgTextPrintf(0, 5, 0xf, "Moving entities: %d", nonStatic);
 	bgfx::dbgTextPrintf(0, 6, 0xf, "Not cached entities: %d", notCached);
 }

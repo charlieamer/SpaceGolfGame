@@ -1,6 +1,5 @@
 #pragma once
 #include "BaseScreen.h"
-#include "GameStates.h"
 #include <entityx/entityx.h>
 #include "../main.h"
 
@@ -14,8 +13,8 @@ public:
 	// Inherited via BaseScreen
 	virtual void update(float timeDelta) override;
 	
-	virtual void onLeftMouseButtonDown() override;
-	virtual void onLeftMouseButtonUp() override;
+	virtual void onLeftMouseButtonDown(const entry::MouseState & state) override;
+	virtual void onLeftMouseButtonUp(const entry::MouseState & state) override;
 	virtual void onMouseMove(Vector2f delta, Vector2f now) override;
 
 	entityx::Entity ball;
