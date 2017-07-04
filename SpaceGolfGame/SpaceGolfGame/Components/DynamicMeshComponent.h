@@ -13,4 +13,12 @@ struct DynamicMeshComponent : public BaseMeshComponent {
 		indicesValid = false;
 		verticesValid = false;
 	}
+	~DynamicMeshComponent() {
+		if (indicesHandle.idx != bgfx::kInvalidHandle) {
+			bgfx::destroyDynamicIndexBuffer(indicesHandle);
+		}
+		if (verticesHandle.idx != bgfx::kInvalidHandle) {
+			bgfx::destroyDynamicVertexBuffer(verticesHandle);
+		}
+	}
 };

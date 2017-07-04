@@ -5,6 +5,7 @@
 #include "../Rendering/RenderingData.h"
 #include <bgfx/bgfx.h>
 #include <bgfx_utils.h>
+#include <entityx/Event.h>
 
 MeshRenderingSystem::MeshRenderingSystem()
 {
@@ -83,25 +84,27 @@ void MeshRenderingSystem::prepareBuffers(DynamicMeshComponent & mesh)
 {
 	if (mesh.indicesHandle.idx == bgfx::kInvalidHandle) {
 		mesh.indicesHandle = bgfx::createDynamicIndexBuffer(mesh.indices.size());
-		printf("MeshRenderingSystem - Created dynamic index buffer with size of %d\n", mesh.indices.size());
+		// printf("MeshRenderingSystem - Created dynamic index buffer with size of %d\n", mesh.indices.size());
 	}
 	if (mesh.verticesHandle.idx == bgfx::kInvalidHandle) {
 		mesh.verticesHandle = bgfx::createDynamicVertexBuffer(mesh.vertices.size(), Pos2fColorVertex::ms_decl);
-		printf("MeshRenderingSystem - Created dynamic index buffer with size of %d\n", mesh.indices.size());
+		// printf("MeshRenderingSystem - Created dynamic index buffer with size of %d\n", mesh.indices.size());
 	}
-	if (!mesh.indicesValid) {
+	if (!mesh.indicesValid && mesh.indicesHandle.idx != bgfx::kInvalidHandle) {
 		mesh.indicesValid = true;
 		bgfx::updateDynamicIndexBuffer(mesh.indicesHandle, 0, bgfx::makeRef(mesh.indices.data(), mesh.indices.size() * sizeof(uint16_t)));
-		printf("MeshRenderingSystem - Updating index buffer\n");
+		// printf("MeshRenderingSystem - Updating index buffer\n");
 	}
-	if (!mesh.verticesValid) {
+	if (!mesh.verticesValid && mesh.verticesHandle.idx != bgfx::kInvalidHandle) {
 		mesh.verticesValid = true;
 		bgfx::updateDynamicVertexBuffer(mesh.verticesHandle, 0, bgfx::makeRef(mesh.vertices.data(), mesh.vertices.size() * sizeof(Pos2fColorVertex)));
-		printf("MeshRenderingSystem - Updating vertex buffer\n");
+		// printf("MeshRenderingSystem - Updating vertex buffer\n");
 	}
-	bgfx::setVertexBuffer(0, mesh.verticesHandle);
-	bgfx::setIndexBuffer(mesh.indicesHandle);
-	bgfx::setState(mesh.renderState);
+	if (mesh.verticesHandle.idx != bgfx::kInvalidHandle && mesh.indicesHandle.idx != bgfx::kInvalidHandle) {
+		bgfx::setVertexBuffer(0, mesh.verticesHandle);
+		bgfx::setIndexBuffer(mesh.indicesHandle);
+		bgfx::setState(mesh.renderState);
+	}
 }
 
 void MeshRenderingSystem::update(entityx::EntityManager & entities, entityx::EventManager & events, entityx::TimeDelta dt)

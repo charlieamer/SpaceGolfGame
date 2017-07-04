@@ -9,6 +9,7 @@
 #include "bgfx_utils.h"
 #include "Screens/BaseScreen.h"
 #include "Screens/GameScreen.h"
+#include <chrono>
 
 #include "Rendering/RenderingData.h"
 
@@ -57,9 +58,14 @@ int Application::shutdown()
 bool Application::update() {
 	if (!entry::processEvents(m_width, m_height, m_debug, m_reset, &m_mouseState))
 	{
+		auto start = std::chrono::steady_clock::now();
 		bgfx::setViewRect(0, 0, 0, uint16_t(m_width), uint16_t(m_height));
 		bgfx::touch(0);
 		bgfx::dbgTextClear();
+
+		auto stats = bgfx::getStats();
+		bgfx::dbgTextPrintf(0, 0, 0xf, "FPS: %.2f", m_fps);
+		bgfx::dbgTextPrintf(0, 1, 0xf, "GPU: %.2fms", (float)(stats->gpuTimeEnd - stats->gpuTimeBegin) / 10000000.0f);
 
 		float ratio = (float)m_width / (float)m_height;
 		float width = std::max(ratio, 1.0f);
@@ -79,6 +85,11 @@ bool Application::update() {
 		this->currentScreen->update(0.1);
 
 		bgfx::frame();
+
+		auto end = std::chrono::steady_clock::now();
+		auto diff = end - start;
+		auto ns = std::chrono::nanoseconds(diff).count();
+		m_fps = 1000000000.0f / (float)ns;
 
 		return true;
 	}

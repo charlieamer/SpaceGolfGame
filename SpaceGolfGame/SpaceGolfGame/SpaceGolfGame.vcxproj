@@ -136,7 +136,11 @@
     <ClCompile Include="Systems\BounceSystem.cpp" />
     <ClCompile Include="Systems\GravitySystem.cpp" />
     <ClCompile Include="Systems\MeshRenderingSystem.cpp" />
+    <ClCompile Include="Systems\ParticleUpdateSystem.cpp" />
+    <ClCompile Include="Systems\PlanetCacheBaseSystem.cpp" />
+    <ClCompile Include="Systems\PlanetCollisionSystem.cpp" />
     <ClCompile Include="Systems\VelocitySystem.cpp" />
+    <ClCompile Include="utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\bgfx\.build\projects\vs2017\bgfx.vcxproj">
@@ -167,12 +171,16 @@
     <ClInclude Include="Components\BaseMeshComponent.h" />
     <ClInclude Include="Components\CircleRadiusComponent.h" />
     <ClInclude Include="Components\MeshTransformCacheComponent.h" />
+    <ClInclude Include="Components\ParticleComponent.h" />
+    <ClInclude Include="Components\ParticleEmitterComponent.h" />
+    <ClInclude Include="Components\PlanetCollisionComponent.h" />
     <ClInclude Include="Components\PlanetComponent.h" />
     <ClInclude Include="Components\PositionComponent.h" />
     <ClInclude Include="Components\StaticMeshComponent.h" />
     <ClInclude Include="Components\VelocityComponent.h" />
     <ClInclude Include="Entities\CircleEntity.h" />
     <ClInclude Include="Events\MouseEvents.h" />
+    <ClInclude Include="Events\PlanetCollisionEvent.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Rendering\MeshGenerators.h" />
     <ClInclude Include="Rendering\RenderingData.h" />
@@ -187,7 +195,11 @@
     <ClInclude Include="Systems\BounceSystem.h" />
     <ClInclude Include="Systems\GravitySystem.h" />
     <ClInclude Include="Systems\MeshRenderingSystem.h" />
+    <ClInclude Include="Systems\ParticleUpdateSystem.h" />
+    <ClInclude Include="Systems\PlanetCacheBaseSystem.h" />
+    <ClInclude Include="Systems\PlanetCollisionSystem.h" />
     <ClInclude Include="Systems\VelocitySystem.h" />
+    <ClInclude Include="utilities.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Data\Shaders\fs_cubes.sc" />

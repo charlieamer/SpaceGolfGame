@@ -3,12 +3,15 @@
 
 #include "../../Components/PositionComponent.h"
 #include "../../Components/MeshTransformCacheComponent.h"
+#include "../../Components/VelocityComponent.h"
+#include "../../Components/MassComponent.h"
+#include "../../Components/GravityComponent.h"
 
 Vector2f AimingGameState::calculateDirection(Vector2i mouse)
 {
 	Vector2f diff(mouse - this->startingMousePos);
 	diff.x *= -1.0f;
-	diff /= 500.0f;
+	diff /= 5000.0f;
 	return diff;
 }
 
@@ -26,13 +29,16 @@ void AimingGameState::activate()
 	this->aimingEntity = this->gameScreen->entities.create();
 
 	this->mesh = this->aimingEntity.assign<DynamicMeshComponent>();
-	this->mesh->vertices.push_back(Pos2fColorVertex(ballPos));
-	this->mesh->vertices.push_back(Pos2fColorVertex(ballPos));
-	this->mesh->indices.push_back(0);
-	this->mesh->indices.push_back(1);
-	this->mesh->renderState = 0 | BGFX_STATE_DEFAULT | BGFX_STATE_PT_LINES;
+	for (int i = 0; i < 50; i++) {
+		this->mesh->vertices.push_back(Pos2fColorVertex(ballPos));
+		this->mesh->indices.push_back(i);
+	}
+	this->mesh->renderState = 0 | BGFX_STATE_DEFAULT | BGFX_STATE_PT_LINESTRIP;
 
 	this->aimingEntity.assign<MeshTransformCacheComponent>();
+	this->aimingEntity.assign<VelocityComponent>(0, 0);
+	this->aimingEntity.assign_from_copy<MassComponent>(*this->gameScreen->ball.component<MassComponent>());
+	this->aimingEntity.assign_from_copy<GravityComponent>(*this->gameScreen->ball.component<GravityComponent>());
 	
 	this->gameScreen->events.subscribe<MouseMoveEvent>(*this);
 	this->gameScreen->events.subscribe<LeftMouseUpEvent>(*this);
@@ -48,8 +54,7 @@ void AimingGameState::deactivate()
 void AimingGameState::receive(const MouseMoveEvent & move)
 {
 	Vector2f diff = this->calculateDirection(move.now);
-	this->mesh->vertices[1] = Pos2fColorVertex(this->ballPos + diff);
-	this->mesh->verticesValid = false;
+	this->aimingEntity.component<VelocityComponent>()->v = diff;
 }
 
 void AimingGameState::receive(const LeftMouseUpEvent & move)

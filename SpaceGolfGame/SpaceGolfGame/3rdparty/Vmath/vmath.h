@@ -505,6 +505,15 @@ public:
 		return x * x + y * y;
 	}
 
+	/**
+	* Return dot product with other vector.
+	* @return x1*x2 + y1*y2
+	*/
+	T dot(Vector2<T> rhs) const
+	{
+		return x * rhs.x + y * rhs.y;
+	}
+
 	//--------------[ misc. operations ]-----------------------
 	/**
 	 * Linear interpolation of two vectors
@@ -518,6 +527,19 @@ public:
 	Vector2<T> lerp(T fact, const Vector2<T>& r) const
 	{
 		return (*this) + (r - (*this)) * fact;
+	}
+
+
+	/**
+	* Return reflection vector with normal n
+	* @param n Normal vector which is used for reflection
+	* @note https://math.stackexchange.com/questions/13261/how-to-get-a-reflection-vector
+	*/
+	Vector2<T> reflect(const Vector2<T>& n) const
+	{
+		Vector2<T> norm = n;
+		norm.normalize();
+		return (*this) - norm * (T)2.0 * dot(norm);
 	}
 
 	//-------------[ conversion ]-----------------------------

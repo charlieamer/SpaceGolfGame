@@ -20,6 +20,7 @@ public:
 	uint32_t m_height;
 	uint32_t m_debug;
 	uint32_t m_reset;
+	float m_fps;
 	Aabb3f screenExtents;
 
 	entry::MouseState m_mouseState;

@@ -1,11 +1,10 @@
 #include "MeshGenerators.h"
 #include <bx/fpumath.h>
 
-StaticMeshComponent generateCircleMesh(int vertices)
+StaticMeshComponent generateCircleMesh(uint32_t color, int vertices)
 {
 	StaticMeshComponent ret;
 	double angle = 0;
-	uint32_t color = 0xff00ff00;
 
 	for (int i = 0; i < vertices / 2; i++) {
 		ret.vertices.push_back(Pos2fColorVertex({ (float)cos(angle), (float)sin(angle) }, color));
@@ -22,5 +21,16 @@ StaticMeshComponent generateCircleMesh(int vertices)
 		| BGFX_STATE_DEFAULT
 		| BGFX_STATE_PT_TRISTRIP;
 
+	return ret;
+}
+
+DynamicMeshComponent generatePoint(uint32_t color)
+{
+	DynamicMeshComponent ret;
+	ret.vertices.push_back(Pos2fColorVertex({ 0,0 }, color));
+	ret.indices.push_back(0);
+	ret.renderState = 0
+		| BGFX_STATE_DEFAULT
+		| BGFX_STATE_PT_POINTS;
 	return ret;
 }

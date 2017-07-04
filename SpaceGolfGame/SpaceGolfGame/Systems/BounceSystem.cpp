@@ -3,6 +3,8 @@
 #include "../Components/PositionComponent.h"
 #include "../Components/AABBCacheComponent.h"
 #include "../Components/VelocityComponent.h"
+#include "../Components/PlanetCollisionComponent.h"
+#include "../Events/PlanetCollisionEvent.h"
 #include <vmath.h>
 
 BounceSystem::BounceSystem(Aabb3f* extents) : extents(extents)
@@ -42,4 +44,25 @@ void BounceSystem::update(entityx::EntityManager & entities, entityx::EventManag
 			velocity.v.y *= -1.0f;
 		}
 	});
+}
+
+void BounceSystem::configure(entityx::EventManager & manager)
+{
+	manager.subscribe<PlanetCollisionEvent>(*this);
+}
+
+void BounceSystem::receive(const PlanetCollisionEvent & collision)
+{
+	Vector2f &v = collision.collider.component<VelocityComponent>()->v;
+	Vector2f &p = collision.collider.component<PositionComponent>()->pos;
+	Vector2f &planet = collision.planet.component<PositionComponent>()->pos;
+	Vector2f relativeEntry = collision.entry - planet;
+
+	v = v.reflect(relativeEntry);
+
+	Vector2f vNorm = v;
+	vNorm.normalize();
+	p = collision.entry + vNorm * (v.length() - (collision.entry - p).length());
+
+	v *= collision.collider.component<PlanetCollisionComponent>()->damping;
 }

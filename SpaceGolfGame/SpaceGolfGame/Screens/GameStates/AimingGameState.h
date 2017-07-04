@@ -16,6 +16,8 @@ class AimingGameState :
 	Vector2f &ballPos;
 
 	Vector2f calculateDirection(Vector2i mouse);
+
+
 public:
 	AimingGameState(GameScreen* screen, Vector2i mousePos);
 	~AimingGameState();

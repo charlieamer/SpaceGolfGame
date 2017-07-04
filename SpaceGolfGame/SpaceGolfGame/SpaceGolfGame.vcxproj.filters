@@ -119,6 +119,18 @@
     <ClCompile Include="Screens\GameStates\AimingGameState.cpp">
       <Filter>Source Files\Screens\States</Filter>
     </ClCompile>
+    <ClCompile Include="Systems\PlanetCollisionSystem.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="utilities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\ParticleUpdateSystem.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\PlanetCacheBaseSystem.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Screens\BaseScreen.h">
@@ -207,6 +219,30 @@
     </ClInclude>
     <ClInclude Include="Screens\GameStates\AimingGameState.h">
       <Filter>Header Files\Screens\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\PlanetCollisionComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Events\PlanetCollisionEvent.h">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\PlanetCollisionSystem.h">
+      <Filter>Header Files\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="utilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\ParticleEmitterComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\ParticleComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\ParticleUpdateSystem.h">
+      <Filter>Header Files\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\PlanetCacheBaseSystem.h">
+      <Filter>Header Files\Systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,6 @@
 #pragma once
 #include <entityx/System.h>
+#include <entityx/Event.h>
 #include <bgfx/bgfx.h>
 #include <vmath.h>
 #include <map>
@@ -51,5 +52,7 @@ public:
 
 	// Inherited via System
 	virtual void update(entityx::EntityManager & entities, entityx::EventManager & events, entityx::TimeDelta dt) override;
+
+	void receive(const entityx::EntityDestroyedEvent & destroyed);
 };
 
