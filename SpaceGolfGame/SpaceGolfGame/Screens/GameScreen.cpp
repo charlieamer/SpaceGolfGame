@@ -7,7 +7,7 @@
 #include "../Systems/GravitySystem.h"
 #include "../Systems/PlanetCollisionSystem.h"
 #include "../Systems/ParticleUpdateSystem.h"
-#include "../Entities/CircleEntity.h"
+#include "../Entities/EntityGenerator.h"
 #include "../Rendering/MeshGenerators.h"
 #include "../Components/MeshTransformCacheComponent.h"
 #include "../Components/VelocityComponent.h"
@@ -21,19 +21,44 @@
 
 #include "GameStates/IdleGameState.h"
 
+#include "../LevelParsing/GleedLevel.h"
+#include "../utilities.h"
+
 #include <math.h>
 
-GameScreen::GameScreen(Application* app) : BaseScreen(app)
+GameScreen::GameScreen(Application* app, rapidxml::xml_document<>& document) : BaseScreen(app)
 {
+
+	GleedLevel level(*document.first_node("Level"));
+
+	GleedLayer& objectiveLayer = GleedUtilities::getObjectByName(level.layers, "Objectives");
+	GleedLayer& planetsLayer = GleedUtilities::getObjectByName(level.layers, "Planets");
+	GleedRectangle& extentsRect = GleedUtilities::getRectangle(objectiveLayer, "Bounds");
+	GleedCircle& ballCircle = GleedUtilities::getCircle(objectiveLayer, "Ball");
+
+	float gravity = std::stof(level.properties["Gravity"]);
+	Aabb3f extents = GleedUtilities::rectangleToAABB(extentsRect);
+
 	this->systems.add<MeshRenderingSystem>();
 	this->systems.add<AABBCacheSystem>();
-	this->systems.add<GravitySystem>(0.0000003);
+	this->systems.add<GravitySystem>(gravity);
 	this->systems.add<VelocitySystem>();
-	this->systems.add<BounceSystem>(&app->screenExtents);
+	this->systems.add<BounceSystem>(extents);
 	this->systems.add<PlanetCollisionSystem>();
 	this->systems.add<ParticleUpdateSystem>();
 	this->systems.configure();
 
+	this->ball = entities.create();
+	loadComponents(this->ball, ballCircle);
+
+	for (auto& planet : planetsLayer.objects) {
+		GleedCircle& circle = *static_cast<GleedCircle*>(&*planet);
+		entityx::Entity planet = entities.create();
+		loadComponents(planet, circle);
+		planet.assign<PlanetComponent>();
+	}
+
+	/*
 	this->ball = CreateCircleEntity(this->entities, Vector2f(0.5f, 0), 0.01f);
 	ball.assign_from_copy(generateCircleMesh(0xffaa0000, 10));
 	ball.assign<MeshTransformCacheComponent>();
@@ -54,7 +79,8 @@ GameScreen::GameScreen(Application* app) : BaseScreen(app)
 	planet2.assign<MeshTransformCacheComponent>();
 	planet2.assign<PlanetComponent>();
 	planet2.assign<MassComponent>(150);
-	
+
+	*/
 	this->setGameState(new IdleGameState(this));
 }
 

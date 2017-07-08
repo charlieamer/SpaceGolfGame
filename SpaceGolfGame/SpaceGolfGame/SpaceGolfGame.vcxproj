@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\ACER\Documents\GitHub\entityx;C:\Users\ACER\Documents\GitHub\bx\include\compat\msvc;C:\Users\ACER\Documents\GitHub\bimg\include;C:\Users\ACER\Documents\GitHub\bgfx\examples\common;C:\Users\ACER\Documents\GitHub\bx\include;C:\Users\ACER\Documents\GitHub\bgfx\include;3rdparty/Vmath;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)..\..\entityx;$(SolutionDir)..\..\bx\include\compat\msvc;$(SolutionDir)..\..\bimg\include;$(SolutionDir)..\..\bgfx\examples\common;$(SolutionDir)..\..\bx\include;$(SolutionDir)..\..\bgfx\include;3rdparty/Vmath;3rdparty/RapidXML;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -122,9 +122,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="3rdparty\Vmath\vmath.cpp" />
-    <ClCompile Include="Entities\CircleEntity.cpp" />
+    <ClCompile Include="Entities\EntityGenerator.cpp" />
+    <ClCompile Include="LevelParsing\GleedBaseObject.cpp" />
+    <ClCompile Include="LevelParsing\GleedCircle.cpp" />
+    <ClCompile Include="LevelParsing\GleedColor.cpp" />
+    <ClCompile Include="LevelParsing\GleedLayer.cpp" />
+    <ClCompile Include="LevelParsing\GleedLevel.cpp" />
+    <ClCompile Include="LevelParsing\GleedPosition.cpp" />
+    <ClCompile Include="LevelParsing\GleedRectangle.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Rendering\MeshGenerators.cpp" />
+    <ClCompile Include="Rendering\Shader.cpp" />
     <ClCompile Include="Screens\BaseScreen.cpp" />
     <ClCompile Include="Screens\GameScreen.cpp" />
     <ClCompile Include="Screens\GameStates\AimingGameState.cpp" />
@@ -163,6 +171,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="3rdparty\RapidXML\rapidxml.hpp" />
+    <ClInclude Include="3rdparty\RapidXML\rapidxml_iterators.hpp" />
+    <ClInclude Include="3rdparty\RapidXML\rapidxml_print.hpp" />
+    <ClInclude Include="3rdparty\RapidXML\rapidxml_utils.hpp" />
     <ClInclude Include="3rdparty\Vmath\vmath.h" />
     <ClInclude Include="Components\AABBCacheComponent.h" />
     <ClInclude Include="Components\DynamicMeshComponent.h" />
@@ -178,12 +190,20 @@
     <ClInclude Include="Components\PositionComponent.h" />
     <ClInclude Include="Components\StaticMeshComponent.h" />
     <ClInclude Include="Components\VelocityComponent.h" />
-    <ClInclude Include="Entities\CircleEntity.h" />
+    <ClInclude Include="Entities\EntityGenerator.h" />
     <ClInclude Include="Events\MouseEvents.h" />
     <ClInclude Include="Events\PlanetCollisionEvent.h" />
+    <ClInclude Include="LevelParsing\GleedBaseObject.h" />
+    <ClInclude Include="LevelParsing\GleedCircle.h" />
+    <ClInclude Include="LevelParsing\GleedColor.h" />
+    <ClInclude Include="LevelParsing\GleedLayer.h" />
+    <ClInclude Include="LevelParsing\GleedLevel.h" />
+    <ClInclude Include="LevelParsing\GleedPosition.h" />
+    <ClInclude Include="LevelParsing\GleedRectangle.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Rendering\MeshGenerators.h" />
     <ClInclude Include="Rendering\RenderingData.h" />
+    <ClInclude Include="Rendering\Shader.h" />
     <ClInclude Include="Screens\BaseScreen.h" />
     <ClInclude Include="Screens\GameScreen.h" />
     <ClInclude Include="Screens\GameStates\AimingGameState.h" />

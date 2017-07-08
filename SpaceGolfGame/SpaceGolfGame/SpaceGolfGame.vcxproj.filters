@@ -69,6 +69,15 @@
     <Filter Include="Source Files\Screens\States">
       <UniqueIdentifier>{8016820d-cdfa-4ed9-b50e-e76df6e2b47a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\3rdparty\RapidXML">
+      <UniqueIdentifier>{25da83dd-10ab-4840-8d02-8d920c86b70c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\LevelParsing">
+      <UniqueIdentifier>{31e9d14e-11a3-4432-96f5-94d31b34ffef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\LevelParsing">
+      <UniqueIdentifier>{4714e4f6-f65f-485e-9cb2-fe0ab21f2ab0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -82,9 +91,6 @@
     </ClCompile>
     <ClCompile Include="3rdparty\Vmath\vmath.cpp">
       <Filter>Source Files\3rdparty\Vmath</Filter>
-    </ClCompile>
-    <ClCompile Include="Entities\CircleEntity.cpp">
-      <Filter>Source Files\Entities</Filter>
     </ClCompile>
     <ClCompile Include="Rendering\MeshGenerators.cpp">
       <Filter>Source Files\Rendering</Filter>
@@ -131,6 +137,33 @@
     <ClCompile Include="Systems\PlanetCacheBaseSystem.cpp">
       <Filter>Source Files\Systems</Filter>
     </ClCompile>
+    <ClCompile Include="LevelParsing\GleedBaseObject.cpp">
+      <Filter>Source Files\LevelParsing</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelParsing\GleedCircle.cpp">
+      <Filter>Source Files\LevelParsing</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelParsing\GleedColor.cpp">
+      <Filter>Source Files\LevelParsing</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelParsing\GleedLayer.cpp">
+      <Filter>Source Files\LevelParsing</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelParsing\GleedLevel.cpp">
+      <Filter>Source Files\LevelParsing</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelParsing\GleedPosition.cpp">
+      <Filter>Source Files\LevelParsing</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelParsing\GleedRectangle.cpp">
+      <Filter>Source Files\LevelParsing</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\EntityGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Screens\BaseScreen.h">
@@ -144,9 +177,6 @@
     </ClInclude>
     <ClInclude Include="3rdparty\Vmath\vmath.h">
       <Filter>Header Files\3rdparty\Vmath</Filter>
-    </ClInclude>
-    <ClInclude Include="Entities\CircleEntity.h">
-      <Filter>Header Files\Entities</Filter>
     </ClInclude>
     <ClInclude Include="Components\CircleRadiusComponent.h">
       <Filter>Header Files\Components</Filter>
@@ -243,6 +273,45 @@
     </ClInclude>
     <ClInclude Include="Systems\PlanetCacheBaseSystem.h">
       <Filter>Header Files\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\RapidXML\rapidxml.hpp">
+      <Filter>Header Files\3rdparty\RapidXML</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\RapidXML\rapidxml_iterators.hpp">
+      <Filter>Header Files\3rdparty\RapidXML</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\RapidXML\rapidxml_print.hpp">
+      <Filter>Header Files\3rdparty\RapidXML</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdparty\RapidXML\rapidxml_utils.hpp">
+      <Filter>Header Files\3rdparty\RapidXML</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelParsing\GleedBaseObject.h">
+      <Filter>Header Files\LevelParsing</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelParsing\GleedCircle.h">
+      <Filter>Header Files\LevelParsing</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelParsing\GleedColor.h">
+      <Filter>Header Files\LevelParsing</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelParsing\GleedLayer.h">
+      <Filter>Header Files\LevelParsing</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelParsing\GleedLevel.h">
+      <Filter>Header Files\LevelParsing</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelParsing\GleedPosition.h">
+      <Filter>Header Files\LevelParsing</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelParsing\GleedRectangle.h">
+      <Filter>Header Files\LevelParsing</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\EntityGenerator.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\Shader.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

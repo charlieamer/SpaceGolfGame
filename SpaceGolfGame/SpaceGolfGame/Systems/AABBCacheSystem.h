@@ -7,7 +7,8 @@
 class AABBCacheSystem
 	: public entityx::System<AABBCacheSystem>
 {
-	static void calculateAABB(Aabb3f &result, BaseMeshComponent *mesh);
+	static void calculateAABB(Aabb3f &result, BaseMeshComponent<Pos2fColorVertex> *mesh);
+	static void calculateAABB(Aabb3f &result, BaseMeshComponent<Pos2fColorTextureVertex> *mesh);
 public:
 	AABBCacheSystem();
 	~AABBCacheSystem();

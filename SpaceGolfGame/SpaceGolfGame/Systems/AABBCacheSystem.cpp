@@ -42,11 +42,20 @@ void AABBCacheSystem::update(entityx::EntityManager & entities, entityx::EventMa
 	});
 }
 
-void AABBCacheSystem::calculateAABB(Aabb3f & result, BaseMeshComponent * mesh)
+void AABBCacheSystem::calculateAABB(Aabb3f & result, BaseMeshComponent<Pos2fColorVertex> * mesh)
 {
 	// Calculate AABB based on mesh vertices
 	result = Aabb3f();
 	for (Pos2fColorVertex &vector : mesh->vertices) {
+		result.extend(Aabb3f(vector.m_x, vector.m_y, vector.m_z));
+	}
+}
+
+void AABBCacheSystem::calculateAABB(Aabb3f & result, BaseMeshComponent<Pos2fColorTextureVertex> * mesh)
+{
+	// Calculate AABB based on mesh vertices
+	result = Aabb3f();
+	for (Pos2fColorTextureVertex &vector : mesh->vertices) {
 		result.extend(Aabb3f(vector.m_x, vector.m_y, vector.m_z));
 	}
 }

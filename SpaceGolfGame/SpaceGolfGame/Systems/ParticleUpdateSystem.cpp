@@ -22,6 +22,7 @@ void ParticleUpdateSystem::emitParticle(entityx::Entity & entity, entityx::Entit
 	particle.assign<VelocityComponent>(velocity);
 	particle.assign<GravityComponent>();
 	particle.assign<MeshTransformCacheComponent>();
+	particle.assign<AABBCacheComponent>();
 	particle.assign_from_copy<DynamicMeshComponent>(generatePoint(Utilities::abgr(1.0f, 1.0f, 1.0f, 1.0f)));
 	particle.assign<PlanetCollisionComponent>(true, true, 0.9);
 }

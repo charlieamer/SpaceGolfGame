@@ -2,6 +2,14 @@
 #include <entityx/Entity.h>
 #include <vmath.h>
 #include <math.h>
+#include <rapidxml.hpp>
+#include <string>
+#include <memory>
+#include <vector>
+#include "LevelParsing/GleedBaseObject.h"
+#include "LevelParsing/GleedRectangle.h"
+#include "LevelParsing/GleedCircle.h"
+#include "LevelParsing/GleedLayer.h"
 
 namespace Utilities {
 	bool isColliding(entityx::Entity &first, entityx::Entity &second);
@@ -16,4 +24,29 @@ namespace Utilities {
 
 	template<typename T>
 	T cap(T value, T from, T to);
+
+	const std::vector<std::string> explode(const std::string& s, const char& c);
+}
+
+namespace FileUtilities {
+	std::string readFile(std::string path);
+}
+
+namespace XmlUtilities {
+	std::string value(rapidxml::xml_node<>& node);
+	std::string value(rapidxml::xml_attribute<>& node);
+	float parseFloat(rapidxml::xml_node<>& node);
+	int parseInt(rapidxml::xml_node<>& node);
+}
+
+namespace GleedUtilities {
+	template <typename T>
+	T& getObjectByName(const std::vector<std::shared_ptr<T>> &objects, std::string name);
+	template GleedLayer& getObjectByName(const std::vector<std::shared_ptr<GleedLayer>> &objects, std::string name);
+	template GleedCircle& getObjectByName(const std::vector<std::shared_ptr<GleedCircle>> &objects, std::string name);
+	template GleedRectangle& getObjectByName(const std::vector<std::shared_ptr<GleedRectangle>> &objects, std::string name);
+
+	Aabb3f rectangleToAABB(const GleedRectangle& rect);
+	GleedRectangle& getRectangle(const GleedLayer& layer, std::string name);
+	GleedCircle& getCircle(const GleedLayer& layer, std::string name);
 }

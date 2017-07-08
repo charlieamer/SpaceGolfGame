@@ -2,7 +2,7 @@
 #include "BaseMeshComponent.h"
 #include <bgfx/bgfx.h>
 
-struct DynamicMeshComponent : public BaseMeshComponent {
+struct DynamicMeshComponent : public BaseMeshComponent<Pos2fColorVertex> {
 	bgfx::DynamicIndexBufferHandle indicesHandle;
 	bgfx::DynamicVertexBufferHandle verticesHandle;
 	bool indicesValid;

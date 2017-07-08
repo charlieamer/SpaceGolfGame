@@ -11,9 +11,9 @@ class BounceSystem
 	public entityx::Receiver<BounceSystem>
 {
 protected:
-	Aabb3f *extents;
+	Aabb3f extents;
 public:
-	BounceSystem(Aabb3f *extents);
+	BounceSystem(Aabb3f extents);
 	~BounceSystem();
 
 	// Inherited via System

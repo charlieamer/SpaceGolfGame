@@ -3,6 +3,7 @@
 #include "Components/CircleRadiusComponent.h"
 #include "Components/VelocityComponent.h"
 #include <math.h>
+#include <fstream>
 
 namespace Utilities {
 
@@ -106,6 +107,21 @@ namespace Utilities {
 			(unsigned char)cap(a * 256.0f, 0.0f, 255.999f));
 	}
 
+	const std::vector<std::string> explode(const std::string & s, const char & c)
+	{
+		std::string buff{ "" };
+		std::vector<std::string> v;
+
+		for (auto n : s)
+		{
+			if (n != c) buff += n; else
+				if (n == c && buff != "") { v.push_back(buff); buff = ""; }
+		}
+		if (buff != "") v.push_back(buff);
+
+		return v;
+	}
+
 	// Returns 2 solutions of quadratic equation based on a, b, c parameters
 	// http://tutorial.math.lamar.edu/Classes/Alg/SolveQuadraticEqnSummary_files/eq0002P.gif
 	void solveQuadratic(float a, float b, float c, float &s1, float &s2) {
@@ -129,4 +145,56 @@ namespace Utilities {
 		return value;
 	}
 	// template int cap<int>(int value, int from, int to);
+}
+
+std::string XmlUtilities::value(rapidxml::xml_node<>& node)
+{
+	return std::string(node.value(), node.value_size());
+}
+
+std::string XmlUtilities::value(rapidxml::xml_attribute<>& node)
+{
+	return std::string(node.value(), node.value_size());
+}
+
+float XmlUtilities::parseFloat(rapidxml::xml_node<>& node)
+{
+	return std::stof(value(node));
+}
+
+int XmlUtilities::parseInt(rapidxml::xml_node<>& node)
+{
+	return std::stoi(value(node));
+}
+
+std::string FileUtilities::readFile(std::string path)
+{
+	std::ifstream t(path);
+	return std::string((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
+}
+
+template<typename T>
+T & GleedUtilities::getObjectByName(const std::vector<std::shared_ptr<T>>& objects, std::string name)
+{
+	for (int i = 0; i < objects.size(); i++) {
+		if (objects[i]->name == name) {
+			return *objects[i];
+		}
+	}
+	throw "Object with name " + name + " not found";
+}
+
+Aabb3f GleedUtilities::rectangleToAABB(const GleedRectangle & rect)
+{
+	return Aabb3f(rect.position.x / 1000.0f, rect.position.y / 1000.0f, 0.0f, rect.position.x / 1000.0f + rect.width / 1000.0f, rect.position.y / 1000.0f + rect.height / 1000.0f, 0.0f);
+}
+
+GleedRectangle & GleedUtilities::getRectangle(const GleedLayer & layer, std::string name)
+{
+	return *static_cast<GleedRectangle*>(&getObjectByName(layer.objects, name));
+}
+
+GleedCircle & GleedUtilities::getCircle(const GleedLayer & layer, std::string name)
+{
+	return *static_cast<GleedCircle*>(&getObjectByName(layer.objects, name));
 }

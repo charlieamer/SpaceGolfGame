@@ -1,10 +1,18 @@
 #pragma once
 #include "BaseMeshComponent.h"
-struct StaticMeshComponent : public BaseMeshComponent {
+
+template <typename T>
+struct StaticMeshBaseComponent : public BaseMeshComponent<T> {
 	bgfx::IndexBufferHandle indicesHandle;
 	bgfx::VertexBufferHandle verticesHandle;
-	StaticMeshComponent() {
+	StaticMeshBaseComponent() {
 		indicesHandle = BGFX_INVALID_HANDLE;
 		verticesHandle = BGFX_INVALID_HANDLE;
 	}
+};
+
+struct StaticMeshComponent : public StaticMeshBaseComponent<Pos2fColorVertex> {
+};
+
+struct StaticTexturedMeshComponent : public StaticMeshBaseComponent<Pos2fColorTextureVertex> {
 };

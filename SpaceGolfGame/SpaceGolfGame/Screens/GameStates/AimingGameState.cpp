@@ -11,6 +11,7 @@ Vector2f AimingGameState::calculateDirection(Vector2i mouse)
 {
 	Vector2f diff(mouse - this->startingMousePos);
 	diff.x *= -1.0f;
+	diff.y *= -1.0f;
 	diff /= 5000.0f;
 	return diff;
 }
