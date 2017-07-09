@@ -198,3 +198,10 @@ GleedCircle & GleedUtilities::getCircle(const GleedLayer & layer, std::string na
 {
 	return *static_cast<GleedCircle*>(&getObjectByName(layer.objects, name));
 }
+
+Aabb3f GleedUtilities::textureToAABB(const GleedTexture & texture)
+{
+	float halfWidth = texture.originX / 1000.0f * texture.scaleX;
+	float halfHeight = texture.originY / 1000.0f * texture.scaleY;
+	return Aabb3f(-halfWidth, -halfHeight, 0.0f, halfWidth, halfHeight, 0.0f);
+}

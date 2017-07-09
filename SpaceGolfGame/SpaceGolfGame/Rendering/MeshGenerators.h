@@ -29,3 +29,4 @@ R generateCircleMesh(uint32_t color, int vertices = 10)
 }
 
 DynamicMeshComponent generatePoint(uint32_t color);
+StaticTexturedMeshComponent generateTexturedRectangle(Aabb3f bounds, std::string texturePath, uint32_t tint);

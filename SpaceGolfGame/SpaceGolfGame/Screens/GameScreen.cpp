@@ -33,6 +33,8 @@ GameScreen::GameScreen(Application* app, rapidxml::xml_document<>& document) : B
 
 	GleedLayer& objectiveLayer = GleedUtilities::getObjectByName(level.layers, "Objectives");
 	GleedLayer& planetsLayer = GleedUtilities::getObjectByName(level.layers, "Planets");
+	GleedLayer& texturesLayer = GleedUtilities::getObjectByName(level.layers, "Textures");
+
 	GleedRectangle& extentsRect = GleedUtilities::getRectangle(objectiveLayer, "Bounds");
 	GleedCircle& ballCircle = GleedUtilities::getCircle(objectiveLayer, "Ball");
 
@@ -56,6 +58,12 @@ GameScreen::GameScreen(Application* app, rapidxml::xml_document<>& document) : B
 		entityx::Entity planet = entities.create();
 		loadComponents(planet, circle);
 		planet.assign<PlanetComponent>();
+	}
+
+	for (auto& textureObj : texturesLayer.objects) {
+		GleedTexture& texture = *static_cast<GleedTexture*>(&*textureObj);
+		entityx::Entity textureEntity = entities.create();
+		loadComponents(textureEntity, texture);
 	}
 
 	/*

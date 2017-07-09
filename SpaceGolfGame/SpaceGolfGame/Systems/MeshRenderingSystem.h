@@ -8,6 +8,7 @@
 #include <string>
 #include "../Rendering/RenderingData.h"
 #include "../Rendering/Shader.h"
+#include "../Rendering/RenderTexture.h"
 #include "../Components/DynamicMeshComponent.h"
 #include "../Components/StaticMeshComponent.h"
 
@@ -42,6 +43,7 @@ class MeshRenderingSystem : public entityx::System<MeshRenderingSystem>
 	std::map<std::vector<Pos2fColorVertex>, bgfx::VertexBufferHandle, VectorComparison> vertexBufferCache;
 	std::map<std::vector<Pos2fColorTextureVertex>, bgfx::VertexBufferHandle, VectorComparison> vertexTexturedBufferCache;
 	std::map<std::vector<uint16_t>, bgfx::IndexBufferHandle, VectorComparison> indexBufferCache;
+	std::map<std::string, RenderTexture> textureCache;
 	Shader colorShader, texturedShader;
 public:
 	MeshRenderingSystem();
@@ -64,7 +66,7 @@ public:
 		}
 		if (mesh.verticesHandle.idx == bgfx::kInvalidHandle) {
 			if (cache.find(mesh.vertices) == cache.end()) {
-				cache[mesh.vertices] = bgfx::createVertexBuffer(bgfx::makeRef(mesh.vertices.data(), sizeof(Pos2fColorVertex) * mesh.vertices.size()), T::ms_decl);
+				cache[mesh.vertices] = bgfx::createVertexBuffer(bgfx::makeRef(mesh.vertices.data(), sizeof(mesh.vertices[0]) * mesh.vertices.size()), mesh.vertices[0].vertexDeclaration());
 				printf("MeshRenderingSystem - Created vertex buffer with size of %d\n", mesh.vertices.size());
 			}
 			mesh.verticesHandle = cache[mesh.vertices];
@@ -79,7 +81,7 @@ public:
 			mesh.indicesHandle = bgfx::createDynamicIndexBuffer(mesh.indices.size());
 		}
 		if (mesh.verticesHandle.idx == bgfx::kInvalidHandle) {
-			mesh.verticesHandle = bgfx::createDynamicVertexBuffer(mesh.vertices.size(), Pos2fColorVertex::ms_decl);
+			mesh.verticesHandle = bgfx::createDynamicVertexBuffer(mesh.vertices.size(), mesh.vertices[0].vertexDeclaration());
 		}
 		if (!mesh.indicesValid && mesh.indicesHandle.idx != bgfx::kInvalidHandle) {
 			mesh.indicesValid = true;

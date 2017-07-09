@@ -130,8 +130,10 @@
     <ClCompile Include="LevelParsing\GleedLevel.cpp" />
     <ClCompile Include="LevelParsing\GleedPosition.cpp" />
     <ClCompile Include="LevelParsing\GleedRectangle.cpp" />
+    <ClCompile Include="LevelParsing\GleedTexture.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Rendering\MeshGenerators.cpp" />
+    <ClCompile Include="Rendering\RenderTexture.cpp" />
     <ClCompile Include="Rendering\Shader.cpp" />
     <ClCompile Include="Screens\BaseScreen.cpp" />
     <ClCompile Include="Screens\GameScreen.cpp" />
@@ -200,9 +202,11 @@
     <ClInclude Include="LevelParsing\GleedLevel.h" />
     <ClInclude Include="LevelParsing\GleedPosition.h" />
     <ClInclude Include="LevelParsing\GleedRectangle.h" />
+    <ClInclude Include="LevelParsing\GleedTexture.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Rendering\MeshGenerators.h" />
     <ClInclude Include="Rendering\RenderingData.h" />
+    <ClInclude Include="Rendering\RenderTexture.h" />
     <ClInclude Include="Rendering\Shader.h" />
     <ClInclude Include="Screens\BaseScreen.h" />
     <ClInclude Include="Screens\GameScreen.h" />

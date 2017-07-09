@@ -18,10 +18,6 @@
 #include "utilities.h"
 #include "main.h"
 
-// Static stuff initialization, this solves some linker problems
-bgfx::VertexDecl Pos2fColorVertex::ms_decl;
-bgfx::VertexDecl Pos2fColorTextureVertex::ms_decl;
-
 void Application::init(int _argc, char** _argv) {
 	Args args(_argc, _argv);
 
@@ -39,13 +35,10 @@ void Application::init(int _argc, char** _argv) {
 	// Set view 0 clear state.
 	bgfx::setViewClear(0
 		, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH
-		, 0xaaaaaaff
+		, 0x222222ff
 		, 1.0f
 		, 0
 	);
-
-	Pos2fColorVertex::init();
-	Pos2fColorTextureVertex::init();
 
 	rapidxml::xml_document<> document;
 	std::string content = FileUtilities::readFile(_argv[1]);

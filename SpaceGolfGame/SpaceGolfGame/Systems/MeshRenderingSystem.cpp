@@ -9,7 +9,7 @@
 
 MeshRenderingSystem::MeshRenderingSystem() : colorShader("vs_only_color", "fs_only_color"), texturedShader("vs_textured", "fs_textured")
 {
-	texturedShader.addTexture("D:/Downloads/12301726_10207174111246182_109813069512709936_n.jpg", 0);
+	texturedShader.addUniform("s_texture0", bgfx::UniformType::Int1);
 }
 
 
@@ -73,6 +73,10 @@ void MeshRenderingSystem::update(entityx::EntityManager & entities, entityx::Eve
 	entities.each<StaticTexturedMeshComponent>([this, &drawn, &nonStatic, &notCached](entityx::Entity& entity, StaticTexturedMeshComponent& mesh) {
 		drawn++;
 		this->prepareStaticBuffers(mesh, this->vertexTexturedBufferCache);
+		if (this->textureCache.count(mesh.texturePath) == 0) {
+			this->textureCache[mesh.texturePath] = RenderTexture(mesh.texturePath);
+		}
+		this->textureCache[mesh.texturePath].use(this->texturedShader.getUniform("s_texture0"));
 		this->setTransform(entity, nonStatic, notCached);
 		this->texturedShader.use();
 	});

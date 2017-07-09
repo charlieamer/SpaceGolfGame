@@ -10,6 +10,7 @@
 #include "LevelParsing/GleedRectangle.h"
 #include "LevelParsing/GleedCircle.h"
 #include "LevelParsing/GleedLayer.h"
+#include "LevelParsing/GleedTexture.h"
 
 namespace Utilities {
 	bool isColliding(entityx::Entity &first, entityx::Entity &second);
@@ -49,4 +50,5 @@ namespace GleedUtilities {
 	Aabb3f rectangleToAABB(const GleedRectangle& rect);
 	GleedRectangle& getRectangle(const GleedLayer& layer, std::string name);
 	GleedCircle& getCircle(const GleedLayer& layer, std::string name);
+	Aabb3f textureToAABB(const GleedTexture& texture);
 }

@@ -12,6 +12,15 @@
 #include "../utilities.h"
 #include "../Rendering/MeshGenerators.h"
 
+void loadComponents(entityx::Entity entity, GleedTexture & texture) {
+	entity.assign_from_copy<StaticTexturedMeshComponent>(
+		generateTexturedRectangle(
+			GleedUtilities::textureToAABB(texture), 
+			"Assets/" + texture.path,
+			Utilities::abgr(texture.tint.r, texture.tint.g, texture.tint.b, texture.tint.a)));
+	loadComponents(entity, (GleedBaseObject&)texture);
+}
+
 void loadComponents(entityx::Entity entity, GleedCircle & circle)
 {
 	entity.assign<CircleRadiusComponent>(circle.radius / 1000.0f);

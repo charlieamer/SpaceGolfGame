@@ -15,4 +15,5 @@ struct StaticMeshComponent : public StaticMeshBaseComponent<Pos2fColorVertex> {
 };
 
 struct StaticTexturedMeshComponent : public StaticMeshBaseComponent<Pos2fColorTextureVertex> {
+	std::string texturePath;
 };

@@ -159,10 +159,16 @@
       <Filter>Source Files\LevelParsing</Filter>
     </ClCompile>
     <ClCompile Include="Entities\EntityGenerator.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelParsing\GleedTexture.cpp">
+      <Filter>Source Files\LevelParsing</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\RenderTexture.cpp">
+      <Filter>Source Files\Rendering</Filter>
     </ClCompile>
     <ClCompile Include="Rendering\Shader.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Rendering</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -310,8 +316,14 @@
     <ClInclude Include="Entities\EntityGenerator.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="Rendering\RenderTexture.h">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
     <ClInclude Include="Rendering\Shader.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelParsing\GleedTexture.h">
+      <Filter>Header Files\LevelParsing</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

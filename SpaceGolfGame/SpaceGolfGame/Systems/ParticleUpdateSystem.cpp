@@ -24,6 +24,7 @@ void ParticleUpdateSystem::emitParticle(entityx::Entity & entity, entityx::Entit
 	particle.assign<MeshTransformCacheComponent>();
 	particle.assign<AABBCacheComponent>();
 	particle.assign_from_copy<DynamicMeshComponent>(generatePoint(Utilities::abgr(1.0f, 1.0f, 1.0f, 1.0f)));
+	particle.component<DynamicMeshComponent>()->renderState |= BGFX_STATE_BLEND_ALPHA;
 	particle.assign<PlanetCollisionComponent>(true, true, 0.9);
 }
 
@@ -52,7 +53,7 @@ void ParticleUpdateSystem::update(entityx::EntityManager & entities, entityx::Ev
 		else {
 			DynamicMeshComponent* mesh = entity.component<DynamicMeshComponent>().get();
 			float a = (float)particle.remainingUpdates / (float)particle.maxUpdates + Utilities::random(-0.5f, 0.5f);
-			mesh->vertices[0].m_abgr = Utilities::abgr(a, a, a, 1.0f);
+			mesh->vertices[0].m_abgr = Utilities::abgr(1.0f, 1.0f, 1.0f, a);
 			mesh->verticesValid = false;
 		}
 	});

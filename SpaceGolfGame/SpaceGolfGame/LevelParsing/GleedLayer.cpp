@@ -2,6 +2,7 @@
 
 #include "GleedCircle.h"
 #include "GleedRectangle.h"
+#include "GleedTexture.h"
 
 GleedLayer::GleedLayer(rapidxml::xml_node<>& node) :
 	GleedBaseObject(*node.first_node("LayerProperties"))
@@ -11,6 +12,9 @@ GleedLayer::GleedLayer(rapidxml::xml_node<>& node) :
 			objects.emplace_back(new GleedCircle(*it->first_node("CircleItemProperties")));
 		} else if (it->first_node("RectangleItemProperties")) {
 			objects.emplace_back(new GleedRectangle(*it->first_node("RectangleItemProperties")));
+		}
+		else if (it->first_node("TextureItemProperties")) {
+			objects.emplace_back(new GleedTexture(*it->first_node("TextureItemProperties")));
 		}
 		else {
 			throw "Invalid object in layer";

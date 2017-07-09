@@ -13,8 +13,8 @@
         <string>0.0000005</string>
       </Property>
     </CustomProperties>
-    <ContentRootFolder>c:\</ContentRootFolder>
-    <NextItemNumber>7</NextItemNumber>
+    <ContentRootFolder>C:\Users\Ejuba\Desktop\SpaceGolf\Assets</ContentRootFolder>
+    <NextItemNumber>14</NextItemNumber>
     <CameraPosition>
       <X>0</X>
       <Y>25.0000477</Y>
@@ -74,13 +74,13 @@
                 <string>10</string>
               </Property>
               <Property Name="PlanetCollision" Type="string" Description="">
-                <string>0.8</string>
+                <string>0.75</string>
               </Property>
               <Property Name="Mesh" Type="string" Description="">
                 <string>10</string>
               </Property>
               <Property Name="ParticleEmitter" Type="string" Description="">
-                <string>2 0.3 0.001 100 5</string>
+                <string>1 0.3 0.001 100 5</string>
               </Property>
               <Property Name="Gravity" Type="string" Description="">
                 <string />
@@ -151,9 +151,6 @@
               <Property Name="Mass" Type="string" Description="30">
                 <string>40</string>
               </Property>
-              <Property Name="Mesh" Type="string" Description="">
-                <string>20</string>
-              </Property>
             </CustomProperties>
             <Radius>205</Radius>
             <FillColor>
@@ -221,11 +218,63 @@
         </Editor>
       </Editors>
     </Layer>
+    <Layer Name="Textures">
+      <LayerProperties>
+        <Name>Textures</Name>
+        <Id>0</Id>
+        <Visible>true</Visible>
+        <Position>
+          <X>0</X>
+          <Y>0</Y>
+        </Position>
+        <CustomProperties />
+        <ScrollSpeed>
+          <X>1</X>
+          <Y>1</Y>
+        </ScrollSpeed>
+      </LayerProperties>
+      <Editors>
+        <Editor ClrTypeOfEditor="4" ClrTypeOfProperties="5" Name="Texture_14">
+          <TextureItemProperties>
+            <Name>Texture_14</Name>
+            <Id>1499531596</Id>
+            <Visible>true</Visible>
+            <Position>
+              <X>-384</X>
+              <Y>11.000061</Y>
+            </Position>
+            <CustomProperties />
+            <Rotation>0</Rotation>
+            <Scale>
+              <X>0.2116509</X>
+              <Y>0.2116509</Y>
+            </Scale>
+            <TintColor>
+              <R>255</R>
+              <G>255</G>
+              <B>255</B>
+              <A>255</A>
+              <PackedValue>4294967295</PackedValue>
+            </TintColor>
+            <FlipHorizontally>false</FlipHorizontally>
+            <FlipVertically>false</FlipVertically>
+            <IsTemplate>false</IsTemplate>
+            <TexturePathRelativeToContentRoot>Planet Glow\Planet Glow-1.png</TexturePathRelativeToContentRoot>
+            <Origin>
+              <X>945</X>
+              <Y>708.5</Y>
+            </Origin>
+          </TextureItemProperties>
+        </Editor>
+      </Editors>
+    </Layer>
   </Layers>
   <TypeMap>
     <Type Name="Gleed2D.Plugins.RectangleItemEditor, Gleed2D.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Index="0" />
     <Type Name="Gleed2D.InGame.RectangleItemProperties, Gleed2D.InGame, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Index="1" />
     <Type Name="Gleed2D.Plugins.CircleItemEditor, Gleed2D.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Index="2" />
     <Type Name="Gleed2D.InGame.CircleItemProperties, Gleed2D.InGame, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Index="3" />
+    <Type Name="Gleed2D.Plugins.TextureItemEditor, Gleed2D.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Index="4" />
+    <Type Name="Gleed2D.InGame.TextureItemProperties, Gleed2D.InGame, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Index="5" />
   </TypeMap>
 </Level>
