@@ -78,6 +78,12 @@
     <Filter Include="Source Files\LevelParsing">
       <UniqueIdentifier>{4714e4f6-f65f-485e-9cb2-fe0ab21f2ab0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Gui">
+      <UniqueIdentifier>{c148be23-a44b-4bb0-8e49-a528ac674a23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gui">
+      <UniqueIdentifier>{1e761291-efd2-47fe-9276-de56a865a681}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -169,6 +175,21 @@
     </ClCompile>
     <ClCompile Include="Rendering\Shader.cpp">
       <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Gui\GuiBgfxRenderer.cpp">
+      <Filter>Source Files\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Gui\GuiBgfxGeometry.cpp">
+      <Filter>Source Files\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Gui\GuiBgfxTexture.cpp">
+      <Filter>Source Files\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Gui\GuiBgfxRenderTarget.cpp">
+      <Filter>Source Files\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Gui\GuiBgfxTextureTarget.cpp">
+      <Filter>Source Files\Gui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -324,6 +345,21 @@
     </ClInclude>
     <ClInclude Include="LevelParsing\GleedTexture.h">
       <Filter>Header Files\LevelParsing</Filter>
+    </ClInclude>
+    <ClInclude Include="Gui\GuiBgfxRenderer.h">
+      <Filter>Header Files\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Gui\GuiBgfxGeometry.h">
+      <Filter>Header Files\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Gui\GuiBgfxRenderTarget.h">
+      <Filter>Header Files\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Gui\GuiBgfxTextureTarget.h">
+      <Filter>Header Files\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Gui\GuiBgfxTexture.h">
+      <Filter>Header Files\Gui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

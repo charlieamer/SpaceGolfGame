@@ -25,6 +25,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "example-common", "..\..\bgf
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "entityx", "..\..\entityx\build\entityx.vcxproj", "{8E1D7F27-53E1-3C93-A5ED-1405F2F97A07}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CEGUIBase-0", "..\..\cegui-0.8.7\build\cegui\src\CEGUIBase-0.vcxproj", "{9DE074BF-7025-3A28-86D7-431BBDA2D6CC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CEGUIOpenGLRenderer-0", "..\..\cegui-0.8.7\build\cegui\src\RendererModules\OpenGL\CEGUIOpenGLRenderer-0.vcxproj", "{08AE815A-EFAE-3C4E-B456-8BCEBD188888}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -165,6 +169,30 @@ Global
 		{8E1D7F27-53E1-3C93-A5ED-1405F2F97A07}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|Win32
 		{8E1D7F27-53E1-3C93-A5ED-1405F2F97A07}.RelWithDebInfo|x86.ActiveCfg = RelWithDebInfo|Win32
 		{8E1D7F27-53E1-3C93-A5ED-1405F2F97A07}.RelWithDebInfo|x86.Build.0 = RelWithDebInfo|Win32
+		{9DE074BF-7025-3A28-86D7-431BBDA2D6CC}.Debug|x64.ActiveCfg = Debug|Win32
+		{9DE074BF-7025-3A28-86D7-431BBDA2D6CC}.Debug|x86.ActiveCfg = Debug|Win32
+		{9DE074BF-7025-3A28-86D7-431BBDA2D6CC}.Debug|x86.Build.0 = Debug|Win32
+		{9DE074BF-7025-3A28-86D7-431BBDA2D6CC}.MinSizeRel|x64.ActiveCfg = MinSizeRel|Win32
+		{9DE074BF-7025-3A28-86D7-431BBDA2D6CC}.MinSizeRel|x86.ActiveCfg = MinSizeRel|Win32
+		{9DE074BF-7025-3A28-86D7-431BBDA2D6CC}.MinSizeRel|x86.Build.0 = MinSizeRel|Win32
+		{9DE074BF-7025-3A28-86D7-431BBDA2D6CC}.Release|x64.ActiveCfg = Release|Win32
+		{9DE074BF-7025-3A28-86D7-431BBDA2D6CC}.Release|x86.ActiveCfg = Release|Win32
+		{9DE074BF-7025-3A28-86D7-431BBDA2D6CC}.Release|x86.Build.0 = Release|Win32
+		{9DE074BF-7025-3A28-86D7-431BBDA2D6CC}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|Win32
+		{9DE074BF-7025-3A28-86D7-431BBDA2D6CC}.RelWithDebInfo|x86.ActiveCfg = RelWithDebInfo|Win32
+		{9DE074BF-7025-3A28-86D7-431BBDA2D6CC}.RelWithDebInfo|x86.Build.0 = RelWithDebInfo|Win32
+		{08AE815A-EFAE-3C4E-B456-8BCEBD188888}.Debug|x64.ActiveCfg = Debug|Win32
+		{08AE815A-EFAE-3C4E-B456-8BCEBD188888}.Debug|x86.ActiveCfg = Debug|Win32
+		{08AE815A-EFAE-3C4E-B456-8BCEBD188888}.Debug|x86.Build.0 = Debug|Win32
+		{08AE815A-EFAE-3C4E-B456-8BCEBD188888}.MinSizeRel|x64.ActiveCfg = MinSizeRel|Win32
+		{08AE815A-EFAE-3C4E-B456-8BCEBD188888}.MinSizeRel|x86.ActiveCfg = MinSizeRel|Win32
+		{08AE815A-EFAE-3C4E-B456-8BCEBD188888}.MinSizeRel|x86.Build.0 = MinSizeRel|Win32
+		{08AE815A-EFAE-3C4E-B456-8BCEBD188888}.Release|x64.ActiveCfg = Release|Win32
+		{08AE815A-EFAE-3C4E-B456-8BCEBD188888}.Release|x86.ActiveCfg = Release|Win32
+		{08AE815A-EFAE-3C4E-B456-8BCEBD188888}.Release|x86.Build.0 = Release|Win32
+		{08AE815A-EFAE-3C4E-B456-8BCEBD188888}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|Win32
+		{08AE815A-EFAE-3C4E-B456-8BCEBD188888}.RelWithDebInfo|x86.ActiveCfg = RelWithDebInfo|Win32
+		{08AE815A-EFAE-3C4E-B456-8BCEBD188888}.RelWithDebInfo|x86.Build.0 = RelWithDebInfo|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

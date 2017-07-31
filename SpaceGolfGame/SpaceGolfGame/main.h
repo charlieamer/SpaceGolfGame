@@ -4,9 +4,12 @@
 #include <common.h>
 #include "Screens/BaseScreen.h"
 
+#include "Gui/GuiBgfxRenderer.h"
+
 class Application : public entry::AppI
 {
 	BaseScreen* currentScreen;
+	GuiBgfxRenderer* ceguiRenderer;
 
 	void init(int _argc, char** _argv) BX_OVERRIDE;
 

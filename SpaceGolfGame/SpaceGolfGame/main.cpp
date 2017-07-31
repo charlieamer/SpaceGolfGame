@@ -48,6 +48,14 @@ void Application::init(int _argc, char** _argv) {
 
 	this->currentScreen = new GameScreen(this, document);
 	delete[] xml;
+
+	ceguiRenderer = new GuiBgfxRenderer();
+	try {
+		CEGUI::System::create(*ceguiRenderer);
+	}
+	catch (CEGUI::Exception &ex) {
+		printf("Error initializing CEGUI:%s\n", ex.getMessage().c_str());
+	}
 }
 
 ENTRY_IMPLEMENT_MAIN(Application);
@@ -57,12 +65,18 @@ int Application::shutdown()
 	// Shutdown bgfx.
 	bgfx::shutdown();
 
+	ceguiRenderer->destroy();
+
 	return 0;
 }
 
 bool Application::update() {
+	if (ceguiRenderer == NULL) {
+	}
 	if (!entry::processEvents(m_width, m_height, m_debug, m_reset, &m_mouseState))
 	{
+		CEGUI::System::getSingleton().renderAllGUIContexts();
+
 		auto start = std::chrono::steady_clock::now();
 		bgfx::setViewRect(0, 0, 0, uint16_t(m_width), uint16_t(m_height));
 		bgfx::touch(0);

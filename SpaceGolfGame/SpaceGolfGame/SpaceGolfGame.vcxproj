@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)..\..\entityx;$(SolutionDir)..\..\bx\include\compat\msvc;$(SolutionDir)..\..\bimg\include;$(SolutionDir)..\..\bgfx\examples\common;$(SolutionDir)..\..\bx\include;$(SolutionDir)..\..\bgfx\include;3rdparty/Vmath;3rdparty/RapidXML;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)..\..\cegui-0.8.7\dependencies\src\glew-1.7.0\include;$(SolutionDir)..\..\cegui-0.8.7\build\cegui\include;$(SolutionDir)..\..\cegui-0.8.7\cegui\include;$(SolutionDir)..\..\entityx;$(SolutionDir)..\..\bx\include\compat\msvc;$(SolutionDir)..\..\bimg\include;$(SolutionDir)..\..\bgfx\examples\common;$(SolutionDir)..\..\bx\include;$(SolutionDir)..\..\bgfx\include;3rdparty/Vmath;3rdparty/RapidXML;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -78,7 +78,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <PreprocessorDefinitions>_ITERATOR_DEBUG_LEVEL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_ITERATOR_DEBUG_LEVEL=0;CEGUI_USE_GLEW;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
@@ -123,6 +123,11 @@
   <ItemGroup>
     <ClCompile Include="3rdparty\Vmath\vmath.cpp" />
     <ClCompile Include="Entities\EntityGenerator.cpp" />
+    <ClCompile Include="Gui\GuiBgfxGeometry.cpp" />
+    <ClCompile Include="Gui\GuiBgfxRenderer.cpp" />
+    <ClCompile Include="Gui\GuiBgfxRenderTarget.cpp" />
+    <ClCompile Include="Gui\GuiBgfxTexture.cpp" />
+    <ClCompile Include="Gui\GuiBgfxTextureTarget.cpp" />
     <ClCompile Include="LevelParsing\GleedBaseObject.cpp" />
     <ClCompile Include="LevelParsing\GleedCircle.cpp" />
     <ClCompile Include="LevelParsing\GleedColor.cpp" />
@@ -168,6 +173,9 @@
     <ProjectReference Include="..\..\..\bgfx\.build\projects\vs2017\example-common.vcxproj">
       <Project>{21cc0e26-bf62-11e2-a01e-0291bd4c8125}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\cegui-0.8.7\build\cegui\src\CEGUIBase-0.vcxproj">
+      <Project>{9de074bf-7025-3a28-86d7-431bbda2d6cc}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\entityx\build\entityx.vcxproj">
       <Project>{8e1d7f27-53e1-3c93-a5ed-1405f2f97a07}</Project>
     </ProjectReference>
@@ -195,6 +203,11 @@
     <ClInclude Include="Entities\EntityGenerator.h" />
     <ClInclude Include="Events\MouseEvents.h" />
     <ClInclude Include="Events\PlanetCollisionEvent.h" />
+    <ClInclude Include="Gui\GuiBgfxGeometry.h" />
+    <ClInclude Include="Gui\GuiBgfxRenderer.h" />
+    <ClInclude Include="Gui\GuiBgfxRenderTarget.h" />
+    <ClInclude Include="Gui\GuiBgfxTexture.h" />
+    <ClInclude Include="Gui\GuiBgfxTextureTarget.h" />
     <ClInclude Include="LevelParsing\GleedBaseObject.h" />
     <ClInclude Include="LevelParsing\GleedCircle.h" />
     <ClInclude Include="LevelParsing\GleedColor.h" />
