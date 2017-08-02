@@ -16,10 +16,13 @@ class GuiBgfxRenderer : public CEGUI::Renderer
 	set<GuiBgfxGeometry*> geometries;
 	vector<GuiBgfxRenderTarget*> targets;
 	uint8_t currentPass;
+
+	bgfx::ProgramHandle program;
+	bgfx::UniformHandle textureUniform;
 public:
 	void destroy();
 
-	GuiBgfxRenderer();
+	GuiBgfxRenderer(const char* shaderLocation, const char* fsFileLocation);
 	~GuiBgfxRenderer();
 
 	// Inherited via Renderer

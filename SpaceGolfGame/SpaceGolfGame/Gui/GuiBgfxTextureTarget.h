@@ -8,6 +8,7 @@ class GuiBgfxTextureTarget : public TextureTarget, public GuiBgfxRenderTarget
 {
 	bgfx::FrameBufferHandle handle;
 	const bgfx::Memory* textureMemory;
+	virtual void updateArea() override;
 public:
 	GuiBgfxTextureTarget(GuiBgfxRenderer& owner);
 	~GuiBgfxTextureTarget();

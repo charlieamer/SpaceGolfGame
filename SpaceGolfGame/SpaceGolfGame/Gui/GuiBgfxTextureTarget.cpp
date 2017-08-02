@@ -1,6 +1,10 @@
 #include "GuiBgfxTextureTarget.h"
 #include <bgfx/bgfx.h>
 
+void GuiBgfxTextureTarget::updateArea()
+{
+}
+
 GuiBgfxTextureTarget::GuiBgfxTextureTarget(GuiBgfxRenderer& owner) : GuiBgfxRenderTarget(owner)
 {
 	texture = NULL;
@@ -47,6 +51,7 @@ void GuiBgfxTextureTarget::declareRenderSize(const Sizef & sz)
 	*/
 
 	handle = bgfx::createFrameBuffer(sz.d_width, sz.d_height, bgfx::TextureFormat::RGBA8, BGFX_TEXTURE_RT_WRITE_ONLY);
+	area = Rectf(0, 0, sz.d_width, sz.d_height);
 }
 
 bool GuiBgfxTextureTarget::isRenderingInverted() const

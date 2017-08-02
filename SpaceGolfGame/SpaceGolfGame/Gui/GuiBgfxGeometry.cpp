@@ -6,12 +6,11 @@ using namespace CEGUI;
 GuiBgfxGeometry::GuiBgfxGeometry(GuiBgfxRenderer & renderer) : owner(renderer)
 {
 	effect = NULL;
-	indexHandle = BGFX_INVALID_HANDLE;
-	vertexHandle = BGFX_INVALID_HANDLE;
+	texture = NULL;
 	decl.begin()
 		.add(bgfx::Attrib::Position, 3, bgfx::AttribType::Float)
 		.add(bgfx::Attrib::TexCoord0, 2, bgfx::AttribType::Float)
-		.add(bgfx::Attrib::Color0, 4, bgfx::AttribType::Uint8)
+		.add(bgfx::Attrib::Color0, 4, bgfx::AttribType::Uint8, true)
 		.end();
 }
 
@@ -20,18 +19,27 @@ GuiBgfxGeometry::~GuiBgfxGeometry()
 {
 }
 
-void GuiBgfxGeometry::registerBuffers()
+void GuiBgfxGeometry::registerBuffers(Batch &batch)
 {
-	destroyBuffers();
-	bgfx::createIndexBuffer(bgfx::makeRef(indices.data(), sizeof(indices[0]) * indices.size()));
-	bgfx::createVertexBuffer(bgfx::makeRef(vertices.data(), sizeof(vertices[0]) * vertices.size()), decl);
+	destroyBuffers(batch);
+	batch.indexHandle = bgfx::createIndexBuffer(bgfx::makeRef(batch.indices.data(), sizeof(batch.indices[0]) * batch.indices.size()));
+	batch.vertexHandle = bgfx::createVertexBuffer(bgfx::makeRef(batch.vertices.data(), sizeof(batch.vertices[0]) * batch.vertices.size()), decl);
 }
 
 void GuiBgfxGeometry::destroyBuffers()
 {
-	if (vertexHandle.idx != bgfx::kInvalidHandle) {
-		bgfx::destroyIndexBuffer(indexHandle);
-		bgfx::destroyVertexBuffer(vertexHandle);
+	for (auto& batch : batches) {
+		destroyBuffers(batch);
+	}
+}
+
+void GuiBgfxGeometry::destroyBuffers(Batch & batch)
+{
+	if (batch.vertexHandle.idx != bgfx::kInvalidHandle) {
+		bgfx::destroyIndexBuffer(batch.indexHandle);
+		bgfx::destroyVertexBuffer(batch.vertexHandle);
+		batch.vertexHandle = BGFX_INVALID_HANDLE;
+		batch.indexHandle = BGFX_INVALID_HANDLE;
 	}
 }
 
@@ -55,22 +63,28 @@ void GuiBgfxGeometry::updateMatrix()
 void GuiBgfxGeometry::draw() const
 {
 	bgfx::setTransform(matrix);
-	bgfx::setIndexBuffer(indexHandle);
-	bgfx::setVertexBuffer(0, vertexHandle);
-	if (isClipping) {
-		bgfx::setScissor(clipping.d_min.d_x, clipping.d_min.d_y, clipping.d_max.d_x, clipping.d_max.d_y);
+	for (auto& batch : batches) {
+		if (batch.indexHandle.idx == bgfx::kInvalidHandle) {
+			continue;
+		}
+		bgfx::setIndexBuffer(batch.indexHandle);
+		bgfx::setVertexBuffer(0, batch.vertexHandle);
+		if (batch.clipping) {
+			//bgfx::setScissor(currentClipping.d_min.d_x, currentClipping.d_min.d_y, currentClipping.d_max.d_x, currentClipping.d_max.d_y);
+		}
+		else {
+			//bgfx::setScissor(0, 0, -1, -1);
+		}
+		if (batch.texture && batch.texture->getHandle().idx != bgfx::kInvalidHandle) {
+			bgfx::setTexture(0, uniform, batch.texture->getHandle());
+		}
+		else {
+			bgfx::setTexture(0, uniform, BGFX_INVALID_HANDLE);
+		}
+		bgfx::setState(BGFX_STATE_RGB_WRITE | BGFX_STATE_ALPHA_WRITE | BGFX_STATE_PT_TRISTRIP | BGFX_STATE_BLEND_ALPHA);
+		bgfx::submit(owner.getCurrentPass(), program);
 	}
-	else {
-		bgfx::setScissor(0, 0, -1, -1);
-	}
-	if (texture && texture->getHandle().idx != bgfx::kInvalidHandle) {
-		bgfx::setTexture(0, uniform, texture->getHandle());
-	}
-	else {
-		bgfx::setTexture(0, uniform, BGFX_INVALID_HANDLE);
-	}
-	bgfx::submit(owner.getCurrentPass(), program);
-	bgfx::setScissor(0, 0, -1, -1);
+	//bgfx::setScissor(0, 0, -1, -1);
 }
 
 void GuiBgfxGeometry::setTranslation(const Vector3f & v)
@@ -93,21 +107,38 @@ void GuiBgfxGeometry::setPivot(const Vector3f & p)
 
 void GuiBgfxGeometry::setClippingRegion(const Rectf & region)
 {
-	clipping = region;
+	currentClipping = region;
 }
 
 void GuiBgfxGeometry::appendVertex(const Vertex & vertex)
 {
-	indices.push_back(vertices.size());
-	vertices.emplace_back(vertex);
-	registerBuffers();
+	appendGeometry(&vertex, 1);
 }
 
 void GuiBgfxGeometry::appendGeometry(const Vertex * const vbuff, uint vertex_count)
 {
+	addBatchIfNecessary();
+	Batch& current = currentBatch();
 	for (int i = 0; i < vertex_count; i++) {
-		appendVertex(vbuff[i]);
+		current.indices.push_back(current.vertices.size());
+		current.vertices.emplace_back(vbuff[i]);
 	}
+	registerBuffers(current);
+}
+
+Batch & GuiBgfxGeometry::currentBatch()
+{
+	return batches[batches.size() - 1];
+}
+
+void GuiBgfxGeometry::addBatchIfNecessary()
+{
+	if (batches.size() == 0 || currentBatch().vertices.size() > 0) {
+		batches.emplace_back();
+	}
+	Batch& batch = currentBatch();
+	batch.clipping = clipping;
+	batch.texture = texture;
 }
 
 void GuiBgfxGeometry::setActiveTexture(Texture * texture)
@@ -118,8 +149,7 @@ void GuiBgfxGeometry::setActiveTexture(Texture * texture)
 void GuiBgfxGeometry::reset()
 {
 	destroyBuffers();
-	vertices.clear();
-	indices.clear();
+	batches.clear();
 }
 
 Texture * GuiBgfxGeometry::getActiveTexture() const
@@ -129,12 +159,16 @@ Texture * GuiBgfxGeometry::getActiveTexture() const
 
 uint GuiBgfxGeometry::getVertexCount() const
 {
-	return vertices.size();
+	uint ret = 0;
+	for (auto& batch : batches) {
+		ret += batch.vertices.size();
+	}
+	return ret;
 }
 
 uint GuiBgfxGeometry::getBatchCount() const
 {
-	return 1;
+	return batches.size();
 }
 
 void GuiBgfxGeometry::setRenderEffect(RenderEffect * effect)
@@ -149,12 +183,12 @@ RenderEffect * GuiBgfxGeometry::getRenderEffect()
 
 void GuiBgfxGeometry::setClippingActive(const bool active)
 {
-	isClipping = active;
+	clipping = active;
 }
 
 bool GuiBgfxGeometry::isClippingActive() const
 {
-	return isClipping;
+	return clipping;
 }
 
 void GuiBgfxGeometry::setProgramHandle(bgfx::ProgramHandle programHandle, bgfx::UniformHandle uniformHandle)

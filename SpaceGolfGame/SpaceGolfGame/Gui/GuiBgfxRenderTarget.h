@@ -8,6 +8,8 @@ class GuiBgfxRenderTarget : public RenderTarget
 protected:
 	GuiBgfxRenderer& owner;
 	uint8_t passId;
+	Rectf area;
+	virtual void updateArea();
 public:
 	GuiBgfxRenderTarget(GuiBgfxRenderer& owner);
 	~GuiBgfxRenderTarget();

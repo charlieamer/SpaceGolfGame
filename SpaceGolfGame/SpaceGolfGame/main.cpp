@@ -49,13 +49,17 @@ void Application::init(int _argc, char** _argv) {
 	this->currentScreen = new GameScreen(this, document);
 	delete[] xml;
 
-	ceguiRenderer = new GuiBgfxRenderer();
-	try {
-		CEGUI::System::create(*ceguiRenderer);
-	}
-	catch (CEGUI::Exception &ex) {
-		printf("Error initializing CEGUI:%s\n", ex.getMessage().c_str());
-	}
+	ceguiRenderer = new GuiBgfxRenderer("vs_textured", "fs_textured");
+	CEGUI::System::create(*ceguiRenderer);
+
+	CEGUI::SchemeManager::getSingleton().createFromFile("TaharezLook.scheme");
+
+	CEGUI::Window *gJumpBtnWindow = NULL;
+	gJumpBtnWindow = CEGUI::WindowManager::getSingleton().createWindow("TaharezLook/Button", "JumpPushButton");  // Create Window
+	gJumpBtnWindow->setPosition(CEGUI::UVector2(CEGUI::UDim(500, 0), CEGUI::UDim(500, 0)));
+	gJumpBtnWindow->setSize(CEGUI::USize(CEGUI::UDim(0, 500), CEGUI::UDim(0, 200)));
+	gJumpBtnWindow->setText("Jump!");
+	CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(gJumpBtnWindow);
 }
 
 ENTRY_IMPLEMENT_MAIN(Application);
@@ -63,20 +67,16 @@ ENTRY_IMPLEMENT_MAIN(Application);
 int Application::shutdown()
 {
 	// Shutdown bgfx.
-	bgfx::shutdown();
-
 	ceguiRenderer->destroy();
+
+	bgfx::shutdown();
 
 	return 0;
 }
 
 bool Application::update() {
-	if (ceguiRenderer == NULL) {
-	}
 	if (!entry::processEvents(m_width, m_height, m_debug, m_reset, &m_mouseState))
 	{
-		CEGUI::System::getSingleton().renderAllGUIContexts();
-
 		auto start = std::chrono::steady_clock::now();
 		bgfx::setViewRect(0, 0, 0, uint16_t(m_width), uint16_t(m_height));
 		bgfx::touch(0);
@@ -103,6 +103,7 @@ bool Application::update() {
 
 		this->currentScreen->processMouse(m_mouseState);
 		this->currentScreen->update(0.1);
+		CEGUI::System::getSingleton().renderAllGUIContexts();
 
 		bgfx::frame();
 

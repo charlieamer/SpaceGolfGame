@@ -2,13 +2,20 @@
 #include "GuiBgfxGeometry.h"
 #include "GuiBgfxTextureTarget.h"
 
+#include <bgfx_utils.h>
+
 void GuiBgfxRenderer::destroy()
 {
+	bgfx::destroyProgram(program);
+	bgfx::destroyUniform(textureUniform);
 }
 
-GuiBgfxRenderer::GuiBgfxRenderer()
+GuiBgfxRenderer::GuiBgfxRenderer(const char* vsFileLocation, const char* fsFileLocation)
 {
 	targets.push_back(new GuiBgfxRenderTarget(*this));
+
+	program = loadProgram(vsFileLocation, fsFileLocation);
+	textureUniform = bgfx::createUniform("s_texture0", bgfx::UniformType::Int1);
 }
 
 
@@ -25,6 +32,7 @@ GeometryBuffer & GuiBgfxRenderer::createGeometryBuffer()
 {
 	GuiBgfxGeometry* ret = new GuiBgfxGeometry(*this);
 	geometries.insert(ret);
+	ret->setProgramHandle(program, textureUniform);
 	return *ret;
 }
 
@@ -120,7 +128,7 @@ void GuiBgfxRenderer::beginRendering()
 			target->setPassId(256 - targets.size() + pass++);
 		}
 		else {
-			target->setPassId(0);
+			target->setPassId(1);
 		}
 	}
 }
@@ -137,6 +145,7 @@ void GuiBgfxRenderer::setDisplaySize(const Sizef & size)
 const Sizef & GuiBgfxRenderer::getDisplaySize() const
 {
 	return Sizef(bgfx::getStats()->width, bgfx::getStats()->height);
+	// return Sizef(1, 1);
 }
 
 const Vector2f & GuiBgfxRenderer::getDisplayDPI() const

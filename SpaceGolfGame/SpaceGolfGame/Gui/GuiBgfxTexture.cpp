@@ -31,33 +31,14 @@ const Sizef & GuiBgfxTexture::getOriginalDataSize() const
 
 const Vector2f & GuiBgfxTexture::getTexelScaling() const
 {
-	return Vector2f(1, 1);
+	return Vector2f(1.0f / size.d_width, 1.0f / size.d_height);
 }
 
 void GuiBgfxTexture::loadFromFile(const String & filename, const String & resourceGroup)
 {
-	RawDataContainer texFile;
-	System::getSingleton().getResourceProvider()->
-		loadRawDataContainer(filename, texFile, resourceGroup);
-
-	// get and check existence of CEGUI::System (needed to access ImageCodec)
-	System* sys = System::getSingletonPtr();
-	if (!sys)
-		CEGUI_THROW(RendererException(
-			"CEGUI::System object has not been created: "
-			"unable to access ImageCodec."));
-
-	Texture* res = sys->getImageCodec().load(texFile, this);
-
-	// unload file data buffer
-	System::getSingleton().getResourceProvider()->
-		unloadRawDataContainer(texFile);
-
-	if (!res)
-		// It's an error
-		CEGUI_THROW(RendererException(
-			sys->getImageCodec().getIdentifierString() +
-			" failed to load image '" + filename + "'."));
+	bgfx::TextureInfo info;
+	handle = loadTexture(filename.c_str(), 0, 0, &info);
+	size = Sizef(info.width, info.height);
 }
 
 void GuiBgfxTexture::loadFromMemory(const void * buffer, const Sizef & buffer_size, PixelFormat pixel_format)
@@ -86,7 +67,7 @@ void GuiBgfxTexture::loadFromMemory(const bgfx::Memory* mem, const Sizef & buffe
 	handle = bgfx::createTexture2D(
 		uint16_t(buffer_size.d_width)
 		, uint16_t(buffer_size.d_height)
-		, 1
+		, false
 		, 1
 		, format
 		, 0

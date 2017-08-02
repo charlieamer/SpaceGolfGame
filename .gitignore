@@ -21,8 +21,7 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
-SpaceGolfGame/SpaceGolfGame.exe
-SpaceGolfGame/*.dll
+SpaceGolfGame/runtime
 
 # Visual Studio 2015 cache/options directory
 .vs/

@@ -2,6 +2,11 @@
 #include <bgfx/bgfx.h>
 #include <bx/fpumath.h>
 
+void GuiBgfxRenderTarget::updateArea()
+{
+	area = Rectf(0, 0, bgfx::getStats()->width, bgfx::getStats()->height);
+}
+
 GuiBgfxRenderTarget::GuiBgfxRenderTarget(GuiBgfxRenderer& owner) : owner(owner)
 {
 }
@@ -28,8 +33,7 @@ void GuiBgfxRenderTarget::setArea(const Rectf & area)
 
 const Rectf & GuiBgfxRenderTarget::getArea() const
 {
-	// CEGUI_THROW(new RendererException("Set area supported in render target"));
-	return Rectf(0, 0, bgfx::getStats()->width, bgfx::getStats()->height);
+	return area;
 }
 
 bool GuiBgfxRenderTarget::isImageryCache() const
@@ -39,6 +43,22 @@ bool GuiBgfxRenderTarget::isImageryCache() const
 
 void GuiBgfxRenderTarget::activate()
 {
+	owner.activateTarget(this);
+	updateArea();
+	Rectf area = this->getArea();
+
+	int width = area.getWidth();
+	int height = area.getHeight();
+	float ortho[16];
+	bx::mtxOrtho(ortho, 0, -width, height, 0, 0, 100, 0, false);
+	float at[3] = { 0, 0, 0.0f };
+	float eye[3] = { 0, 0, 1.0f };
+	float up[3] = { 0.0f, 1.0f, 0.0f };
+	float transform[16];
+	bx::mtxLookAt(transform, eye, at, up);
+	bgfx::setViewTransform(getPassId(), transform, ortho);
+	bgfx::setViewRect(getPassId(), 0, 0, width, height);
+	bgfx::setViewClear(getPassId(), 0);
 }
 
 void GuiBgfxRenderTarget::deactivate()

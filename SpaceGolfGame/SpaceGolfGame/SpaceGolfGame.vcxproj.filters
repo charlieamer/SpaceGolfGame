@@ -54,12 +54,6 @@
     <Filter Include="Source Files\Rendering">
       <UniqueIdentifier>{e0b1d745-9175-49a9-a0b1-9e59544c948f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data">
-      <UniqueIdentifier>{19be632f-1b09-46e4-af1e-2cb09da9926c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Data\Shaders">
-      <UniqueIdentifier>{ca3cc11c-d3d5-49ba-8c09-4375485bf4b3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Events">
       <UniqueIdentifier>{0b49e088-f871-4323-8402-b72c3f51c1ad}</UniqueIdentifier>
     </Filter>
@@ -361,13 +355,5 @@
     <ClInclude Include="Gui\GuiBgfxTexture.h">
       <Filter>Header Files\Gui</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Data\Shaders\vs_cubes.sc">
-      <Filter>Data\Shaders</Filter>
-    </None>
-    <None Include="..\Data\Shaders\fs_cubes.sc">
-      <Filter>Data\Shaders</Filter>
-    </None>
   </ItemGroup>
 </Project>

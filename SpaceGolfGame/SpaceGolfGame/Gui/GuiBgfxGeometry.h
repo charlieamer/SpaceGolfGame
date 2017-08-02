@@ -15,10 +15,10 @@ struct GuiBgfxVertex {
 		z = vert.position.d_z;
 		u = vert.tex_coords.d_x;
 		v = vert.tex_coords.d_y;
-		a = vert.colour_val.getAlpha();
-		b = vert.colour_val.getBlue();
-		g = vert.colour_val.getGreen();
-		r = vert.colour_val.getRed();
+		a = vert.colour_val.getAlpha() * 255.0f;
+		b = vert.colour_val.getBlue() * 255.0f;
+		g = vert.colour_val.getGreen() * 255.0f;
+		r = vert.colour_val.getRed() * 255.0f;
 	}
 
 	float x, y, z;
@@ -26,12 +26,19 @@ struct GuiBgfxVertex {
 	unsigned char a, b, g, r;
 };
 
-class GuiBgfxGeometry : public CEGUI::GeometryBuffer
-{
+struct Batch {
+	Batch() { vertexHandle = BGFX_INVALID_HANDLE; indexHandle = BGFX_INVALID_HANDLE; texture = NULL; }
 	vector<GuiBgfxVertex> vertices;
 	vector<uint16_t> indices;
 	bgfx::VertexBufferHandle vertexHandle;
 	bgfx::IndexBufferHandle indexHandle;
+	GuiBgfxTexture* texture;
+	bool clipping;
+};
+
+class GuiBgfxGeometry : public CEGUI::GeometryBuffer
+{
+	vector<Batch> batches;
 	bgfx::ProgramHandle program;
 	bgfx::UniformHandle uniform;
 
@@ -41,16 +48,19 @@ class GuiBgfxGeometry : public CEGUI::GeometryBuffer
 	CEGUI::Vector3f translation;
 	CEGUI::Quaternion rotation;
 	CEGUI::Vector3f pivot;
-	CEGUI::Rectf clipping;
-	bool isClipping;
 
-	void registerBuffers();
+	void registerBuffers(Batch &batch);
 	bgfx::VertexDecl decl;
 
 	void updateMatrix();
 	float matrix[16];
 
 	GuiBgfxRenderer& owner;
+
+	Batch& currentBatch();
+	void addBatchIfNecessary();
+	CEGUI::Rectf currentClipping;
+	bool clipping;
 public:
 	GuiBgfxGeometry(GuiBgfxRenderer & owner);
 	~GuiBgfxGeometry();
@@ -75,5 +85,6 @@ public:
 
 	void setProgramHandle(bgfx::ProgramHandle programHandle, bgfx::UniformHandle uniformHandle);
 	void destroyBuffers();
+	void destroyBuffers(Batch &batch);
 };
 
