@@ -176,7 +176,7 @@ std::string FileUtilities::readFile(std::string path)
 template<typename T>
 T & GleedUtilities::getObjectByName(const std::vector<std::shared_ptr<T>>& objects, std::string name)
 {
-	for (int i = 0; i < objects.size(); i++) {
+	for (unsigned i = 0; i < objects.size(); i++) {
 		if (objects[i]->name == name) {
 			return *objects[i];
 		}

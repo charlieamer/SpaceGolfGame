@@ -17,7 +17,7 @@ R generateCircleMesh(uint32_t color, int vertices = 10)
 	}
 	ret.vertices.push_back(T({ -1.0f, 0.0f }, color));
 
-	for (int i = 0; i < ret.vertices.size(); i++) {
+	for (unsigned i = 0; i < ret.vertices.size(); i++) {
 		ret.indices.push_back(i);
 	}
 

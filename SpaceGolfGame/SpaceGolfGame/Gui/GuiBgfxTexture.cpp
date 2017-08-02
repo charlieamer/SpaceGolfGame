@@ -7,6 +7,7 @@ using namespace CEGUI;
 GuiBgfxTexture::GuiBgfxTexture(String name)
 {
 	this->name = name;
+	handle = BGFX_INVALID_HANDLE;
 }
 
 
@@ -49,16 +50,19 @@ void GuiBgfxTexture::loadFromMemory(const void * buffer, const Sizef & buffer_si
 	switch (pixel_format) {
 	case PixelFormat::PF_RGB:
 		format = bgfx::TextureFormat::RGB8;
-		bytes = 3;
+		bytes = buffer_size.d_width * buffer_size.d_height * 3;
 		break;
 	case PixelFormat::PF_RGBA:
 		format = bgfx::TextureFormat::RGBA8;
-		bytes = 4;
+		bytes = buffer_size.d_width * buffer_size.d_height * 4;
 		break;
 	default:
 		CEGUI_THROW(RendererException("Unsupported pixel format"));
 	}
-	auto mem = bgfx::makeRef(buffer, buffer_size.d_width * buffer_size.d_height * bytes);
+	destroy();
+	data = new unsigned char[bytes];
+	memcpy_s(data, bytes, buffer, bytes);
+	auto mem = bgfx::makeRef(data, bytes);
 	loadFromMemory(mem, buffer_size, format);
 }
 
@@ -95,5 +99,8 @@ bool GuiBgfxTexture::isPixelFormatSupported(const PixelFormat fmt) const
 
 void GuiBgfxTexture::destroy()
 {
-	bgfx::destroyTexture(handle);
+	if (handle.idx != bgfx::kInvalidHandle) {
+		bgfx::destroyTexture(handle);
+		delete[] data;
+	}
 }

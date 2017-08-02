@@ -3503,8 +3503,8 @@ public:
 			T sinTheta = (T) sqrt(1.0 - cosTheta * cosTheta);
 			if (fabs(sinTheta) < epsilon)
 			{
-				ret.w = 0.5 * w + 0.5 * q2.w;
-				ret.v = v.lerp(0.5, q2.v);
+				ret.w = (T) 0.5 * w + (T) 0.5 * q2.w;
+				ret.v = v.lerp((T) 0.5, q2.v);
 			}
 			else
 			{

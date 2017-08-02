@@ -119,7 +119,7 @@ void GuiBgfxGeometry::appendGeometry(const Vertex * const vbuff, uint vertex_cou
 {
 	addBatchIfNecessary();
 	Batch& current = currentBatch();
-	for (int i = 0; i < vertex_count; i++) {
+	for (unsigned i = 0; i < vertex_count; i++) {
 		current.indices.push_back(current.vertices.size());
 		current.vertices.emplace_back(vbuff[i]);
 	}

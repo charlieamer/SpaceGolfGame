@@ -56,8 +56,8 @@ void Application::init(int _argc, char** _argv) {
 
 	CEGUI::Window *gJumpBtnWindow = NULL;
 	gJumpBtnWindow = CEGUI::WindowManager::getSingleton().createWindow("TaharezLook/Button", "JumpPushButton");  // Create Window
-	gJumpBtnWindow->setPosition(CEGUI::UVector2(CEGUI::UDim(500, 0), CEGUI::UDim(500, 0)));
-	gJumpBtnWindow->setSize(CEGUI::USize(CEGUI::UDim(0, 500), CEGUI::UDim(0, 200)));
+	gJumpBtnWindow->setPosition(CEGUI::UVector2(CEGUI::UDim(0, 0), CEGUI::UDim(0, 0)));
+	gJumpBtnWindow->setSize(CEGUI::USize(CEGUI::UDim(0, 500), CEGUI::UDim(0, 500)));
 	gJumpBtnWindow->setText("Jump!");
 	CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(gJumpBtnWindow);
 }
@@ -103,6 +103,8 @@ bool Application::update() {
 
 		this->currentScreen->processMouse(m_mouseState);
 		this->currentScreen->update(0.1);
+		CEGUI::System::getSingleton().injectTimePulse(0.1);
+		CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setPosition(CEGUI::Vector2f(m_mouseState.m_mx, m_mouseState.m_my));
 		CEGUI::System::getSingleton().renderAllGUIContexts();
 
 		bgfx::frame();

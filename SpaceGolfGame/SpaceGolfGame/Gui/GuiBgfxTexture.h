@@ -7,6 +7,7 @@ class GuiBgfxTexture : public CEGUI::Texture
 	CEGUI::String name;
 	CEGUI::Sizef size;
 	bgfx::TextureHandle handle;
+	unsigned char* data;
 public:
 	GuiBgfxTexture(CEGUI::String name);
 	~GuiBgfxTexture();

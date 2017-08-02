@@ -87,13 +87,7 @@
       <AdditionalDependencies>psapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>cd
-mkdir ..\runtime\Assets
-mkdir ..\runtime\levels
-mkdir ..\runtime\shaders
-xcopy ..\Assets ..\runtime\Assets /E
-xcopy ..\levels ..\runtime\levels /E
-xcopy ..\shaders ..\runtime\shaders /E</Command>
+      <Command>runtime.bat</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -116,13 +110,7 @@ xcopy ..\shaders ..\runtime\shaders /E</Command>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>cd
-mkdir ..\runtime\Assets
-mkdir ..\runtime\levels
-mkdir ..\runtime\shaders
-xcopy ..\Assets ..\runtime\Assets /E
-xcopy ..\levels ..\runtime\levels /E
-xcopy ..\shaders ..\runtime\shaders /E</Command>
+      <Command>runtime.bat</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

@@ -27,7 +27,7 @@ void GravitySystem::update(entityx::EntityManager & entities, entityx::EventMana
 			(entityx::Entity &entity, GravityComponent &gravity, VelocityComponent &velocity, MassComponent &mass, DynamicMeshComponent &mesh) {
 		Vector2f tempVelocity = velocity.v;
 		Vector2f tempPosition = Vector2f(mesh.vertices[0].m_x, mesh.vertices[0].m_y);
-		for (int i = 1; i < mesh.indices.size(); i++) {
+		for (unsigned i = 1; i < mesh.indices.size(); i++) {
 			Vector2f force = GravitySystem::forceAtPosition(tempPosition);
 			tempVelocity += force * this->constant * mass.m;
 			tempPosition += tempVelocity;
