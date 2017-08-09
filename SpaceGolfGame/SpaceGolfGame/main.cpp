@@ -54,11 +54,7 @@ void Application::init(int _argc, char** _argv) {
 
 	CEGUI::SchemeManager::getSingleton().createFromFile("TaharezLook.scheme");
 
-	CEGUI::Window *gJumpBtnWindow = NULL;
-	gJumpBtnWindow = CEGUI::WindowManager::getSingleton().createWindow("TaharezLook/Button", "JumpPushButton");  // Create Window
-	gJumpBtnWindow->setPosition(CEGUI::UVector2(CEGUI::UDim(0, 0), CEGUI::UDim(0, 0)));
-	gJumpBtnWindow->setSize(CEGUI::USize(CEGUI::UDim(0, 500), CEGUI::UDim(0, 500)));
-	gJumpBtnWindow->setText("Jump!");
+	CEGUI::Window *gJumpBtnWindow = CEGUI::WindowManager::getSingleton().loadLayoutFromFile("gui/test/test.layout");
 	CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(gJumpBtnWindow);
 }
 
@@ -83,8 +79,8 @@ bool Application::update() {
 		bgfx::dbgTextClear();
 
 		auto stats = bgfx::getStats();
-		bgfx::dbgTextPrintf(0, 0, 0xf, "FPS: %.0f", m_fps);
-		bgfx::dbgTextPrintf(0, 1, 0xf, "GPU: %.2fms", (float)(stats->gpuTimeEnd - stats->gpuTimeBegin) / 10000000.0f);
+		// bgfx::dbgTextPrintf(0, 0, 0xf, "FPS: %.0f", m_fps);
+		// bgfx::dbgTextPrintf(0, 1, 0xf, "GPU: %.2fms", (float)(stats->gpuTimeEnd - stats->gpuTimeBegin) / 10000000.0f);
 
 		float ratio = (float)m_width / (float)m_height;
 		float width = std::max(ratio, 1.0f);

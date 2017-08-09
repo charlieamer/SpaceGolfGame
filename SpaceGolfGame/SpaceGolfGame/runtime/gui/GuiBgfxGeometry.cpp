@@ -82,7 +82,7 @@ void GuiBgfxGeometry::draw() const
 		else {
 			bgfx::setTexture(0, uniform, BGFX_INVALID_HANDLE);
 		}
-		bgfx::setState(BGFX_STATE_RGB_WRITE | BGFX_STATE_ALPHA_WRITE | BGFX_STATE_PT_TRISTRIP | BGFX_STATE_BLEND_ALPHA);
+		bgfx::setState(BGFX_STATE_RGB_WRITE | BGFX_STATE_ALPHA_WRITE | BGFX_STATE_PT_LINES | BGFX_STATE_BLEND_ALPHA);
 		bgfx::submit(owner.getCurrentPass(), program);
 	}
 	//bgfx::setScissor(0, 0, -1, -1);
