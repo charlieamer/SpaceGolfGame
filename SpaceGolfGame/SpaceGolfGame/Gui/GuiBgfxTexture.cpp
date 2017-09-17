@@ -32,11 +32,12 @@ const Sizef & GuiBgfxTexture::getOriginalDataSize() const
 
 const Vector2f & GuiBgfxTexture::getTexelScaling() const
 {
-	return Vector2f(1.0f / size.d_width, 1.0f / size.d_height);
+	return texel;
 }
 
 void GuiBgfxTexture::loadFromFile(const String & filename, const String & resourceGroup)
 {
+    CEGUI::Logger::getSingleton().logEvent("[BgfxRenderer::GuiBgfxTexture::loadFromFile] Loading texture from file: " + filename);
 	bgfx::TextureInfo info;
 	handle = loadTexture(filename.c_str(), 0, 0, &info);
 	size = Sizef(info.width, info.height);
@@ -44,7 +45,10 @@ void GuiBgfxTexture::loadFromFile(const String & filename, const String & resour
 
 void GuiBgfxTexture::loadFromMemory(const void * buffer, const Sizef & buffer_size, PixelFormat pixel_format)
 {
-	size = buffer_size;
+	setSize(buffer_size);
+    char tmp[200];
+    sprintf(tmp, "[BgfxRenderer::GuiBgfxTexture::loadFromMemory] Loading from memory: %dx%d", (int)buffer_size.d_width, (int)buffer_size.d_height);
+    CEGUI::Logger::getSingleton().logEvent(tmp);
 	long bytes;
 	bgfx::TextureFormat::Enum format;
 	switch (pixel_format) {
@@ -61,7 +65,7 @@ void GuiBgfxTexture::loadFromMemory(const void * buffer, const Sizef & buffer_si
 	}
 	destroy();
 	data = new unsigned char[bytes];
-	memcpy_s(data, bytes, buffer, bytes);
+	memcpy(data, buffer, bytes);
 	auto mem = bgfx::makeRef(data, bytes);
 	loadFromMemory(mem, buffer_size, format);
 }
@@ -100,7 +104,12 @@ bool GuiBgfxTexture::isPixelFormatSupported(const PixelFormat fmt) const
 void GuiBgfxTexture::destroy()
 {
 	if (handle.idx != bgfx::kInvalidHandle) {
-		bgfx::destroyTexture(handle);
+		bgfx::destroy(handle);
 		delete[] data;
 	}
+}
+void GuiBgfxTexture::setSize(const CEGUI::Sizef& value)
+{
+    size = value;
+    texel = Vector2f(1.0f / size.d_width, 1.0f / size.d_height);
 }

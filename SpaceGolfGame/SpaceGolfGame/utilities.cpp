@@ -30,11 +30,12 @@ namespace Utilities {
 	// Null-safe method of geting velocity of an object
 	Vector2f& getVelocity(entityx::Entity & entity)
 	{
+        static Vector2f tmp;
 		if (entity.component<VelocityComponent>()) {
 			return entity.component<VelocityComponent>()->v;
 		}
 		else {
-			return Vector2f();
+			return tmp;
 		}
 	}
 
@@ -172,17 +173,17 @@ std::string FileUtilities::readFile(std::string path)
 	std::ifstream t(path);
 	return std::string((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
 }
-
-template<typename T>
-T & GleedUtilities::getObjectByName(const std::vector<std::shared_ptr<T>>& objects, std::string name)
-{
-	for (unsigned i = 0; i < objects.size(); i++) {
-		if (objects[i]->name == name) {
-			return *objects[i];
-		}
-	}
-	throw "Object with name " + name + " not found";
-}
+//
+//template<typename T>
+//T & GleedUtilities::getObjectByName(const std::vector<std::shared_ptr<T>>& objects, std::string name)
+//{
+//	for (unsigned i = 0; i < objects.size(); i++) {
+//		if (objects[i]->name == name) {
+//			return *objects[i];
+//		}
+//	}
+//	throw "Object with name " + name + " not found";
+//}
 
 Aabb3f GleedUtilities::rectangleToAABB(const GleedRectangle & rect)
 {

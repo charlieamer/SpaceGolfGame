@@ -15,10 +15,10 @@ struct DynamicMeshComponent : public BaseMeshComponent<Pos2fColorVertex> {
 	}
 	~DynamicMeshComponent() {
 		if (indicesHandle.idx != bgfx::kInvalidHandle) {
-			bgfx::destroyDynamicIndexBuffer(indicesHandle);
+			bgfx::destroy(indicesHandle);
 		}
 		if (verticesHandle.idx != bgfx::kInvalidHandle) {
-			bgfx::destroyDynamicVertexBuffer(verticesHandle);
+			bgfx::destroy(verticesHandle);
 		}
 	}
 };

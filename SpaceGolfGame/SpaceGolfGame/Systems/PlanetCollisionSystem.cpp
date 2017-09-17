@@ -18,7 +18,7 @@ PlanetCollisionSystem::~PlanetCollisionSystem()
 void PlanetCollisionSystem::update(entityx::EntityManager & entities, entityx::EventManager & events, entityx::TimeDelta dt)
 {
 	this->populatePlanets(entities);
-	entities.each<PlanetCollisionComponent>([&entities, &events, this](entityx::Entity &colliderEntity, PlanetCollisionComponent &planetCollision) {
+	entities.each<PlanetCollisionComponent>([&entities, &events, this](entityx::Entity colliderEntity, PlanetCollisionComponent &planetCollision) {
 		for (auto& planetEntity : this->planets) {
 			if (Utilities::isColliding(colliderEntity, planetEntity)) {
 				if (planetCollision.generateEvent) {

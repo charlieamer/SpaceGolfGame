@@ -21,7 +21,7 @@ AABBCacheSystem::~AABBCacheSystem()
 
 void AABBCacheSystem::update(entityx::EntityManager & entities, entityx::EventManager & events, entityx::TimeDelta dt)
 {
-	entities.each<AABBCacheComponent>([](entityx::Entity& entity, AABBCacheComponent& aabb) {
+	entities.each<AABBCacheComponent>([](entityx::Entity entity, AABBCacheComponent& aabb) {
 		if (!aabb.valid) {
 			aabb.valid = true;
 			if (entity.component<CircleRadiusComponent>()) {

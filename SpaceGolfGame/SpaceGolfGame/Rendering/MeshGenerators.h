@@ -2,7 +2,7 @@
 #include "../Components/StaticMeshComponent.h"
 #include "../Components/DynamicMeshComponent.h"
 #include "../Rendering/RenderingData.h"
-#include <bx/fpumath.h>
+#include <bx/math.h>
 
 template<typename T, typename R>
 R generateCircleMesh(uint32_t color, int vertices = 10)

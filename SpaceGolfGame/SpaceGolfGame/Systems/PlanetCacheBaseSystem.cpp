@@ -9,7 +9,7 @@ void PlanetCacheBaseSystem::populatePlanets(entityx::EntityManager & entities, b
 		planets.clear();
 	}
 	if (planets.size() == 0) {
-		entities.each<PositionComponent, MassComponent, PlanetComponent>([this](entityx::Entity &entity, PositionComponent&, MassComponent&, PlanetComponent&) {
+		entities.each<PositionComponent, MassComponent, PlanetComponent>([this](entityx::Entity entity, PositionComponent&, MassComponent&, PlanetComponent&) {
 			this->planets.push_back(entity);
 		});
 	}

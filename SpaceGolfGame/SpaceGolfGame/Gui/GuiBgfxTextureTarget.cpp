@@ -61,5 +61,5 @@ void GuiBgfxTextureTarget::destroy()
 		texture->destroy();
 		delete textureMemory->data;
 	}
-	bgfx::destroyFrameBuffer(handle);
+	bgfx::destroy(handle);
 }

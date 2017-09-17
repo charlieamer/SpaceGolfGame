@@ -17,8 +17,15 @@
 
 #include "utilities.h"
 #include "main.h"
+#include <iostream>
 
-void Application::init(int _argc, char** _argv) {
+namespace bx {
+    void debugOutput(const char* _out) {
+        std::cout << termcolor::yellow << _out << termcolor::reset;
+    }
+}
+
+void Application::init(int32_t _argc, const char* const* _argv, uint32_t _width, uint32_t _height) {
 	Args args(_argc, _argv);
 
 	m_width = 1280;
@@ -43,7 +50,7 @@ void Application::init(int _argc, char** _argv) {
 	rapidxml::xml_document<> document;
 	std::string content = FileUtilities::readFile(_argv[1]);
 	char* xml = new char[content.length() + 2];
-	strcpy_s(xml, content.length() + 1, content.c_str());
+	strcpy(xml, content.c_str());
 	document.parse<0>(xml);
 
 	this->currentScreen = new GameScreen(this, document);
@@ -56,9 +63,9 @@ void Application::init(int _argc, char** _argv) {
 
 	CEGUI::Window *gJumpBtnWindow = CEGUI::WindowManager::getSingleton().loadLayoutFromFile("gui/test/test.layout");
 	CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(gJumpBtnWindow);
-}
+};
 
-ENTRY_IMPLEMENT_MAIN(Application);
+ENTRY_IMPLEMENT_MAIN(Application, "Space golf game", "A golf in space");
 
 int Application::shutdown()
 {
@@ -78,7 +85,7 @@ bool Application::update() {
 		bgfx::touch(0);
 		bgfx::dbgTextClear();
 
-		auto stats = bgfx::getStats();
+//		auto stats = bgfx::getStats();
 		// bgfx::dbgTextPrintf(0, 0, 0xf, "FPS: %.0f", m_fps);
 		// bgfx::dbgTextPrintf(0, 1, 0xf, "GPU: %.2fms", (float)(stats->gpuTimeEnd - stats->gpuTimeBegin) / 10000000.0f);
 

@@ -18,7 +18,7 @@ BounceSystem::~BounceSystem()
 
 void BounceSystem::update(entityx::EntityManager & entities, entityx::EventManager & events, entityx::TimeDelta dt)
 {
-	entities.each<PositionComponent, VelocityComponent>([this](entityx::Entity &entity, PositionComponent &position, VelocityComponent &velocity) {
+	entities.each<PositionComponent, VelocityComponent>([this](entityx::Entity entity, PositionComponent &position, VelocityComponent &velocity) {
 		Aabb3f aabb;
 		if (entity.component<AABBCacheComponent>()) {
 			aabb = entity.component<AABBCacheComponent>().get()->AABB;

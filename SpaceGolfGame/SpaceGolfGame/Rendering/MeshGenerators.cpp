@@ -1,5 +1,4 @@
 #include "MeshGenerators.h"
-#include <bx/fpumath.h>
 
 DynamicMeshComponent generatePoint(uint32_t color)
 {

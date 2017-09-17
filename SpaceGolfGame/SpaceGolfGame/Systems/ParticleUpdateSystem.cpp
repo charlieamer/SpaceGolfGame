@@ -39,14 +39,14 @@ ParticleUpdateSystem::~ParticleUpdateSystem()
 
 void ParticleUpdateSystem::update(entityx::EntityManager & entities, entityx::EventManager & events, entityx::TimeDelta dt)
 {
-	entities.each<ParticleEmitterComponent>([&entities, this](entityx::Entity & entity, ParticleEmitterComponent & emitter) {
+	entities.each<ParticleEmitterComponent>([&entities, this](entityx::Entity entity, ParticleEmitterComponent & emitter) {
 		if (emitter.active) {
 			for (int i = 0; i < emitter.amount; i++) {
 				this->emitParticle(entity, entities, emitter);
 			}
 		}
 	});
-	entities.each<ParticleComponent>([](entityx::Entity & entity, ParticleComponent & particle) {
+	entities.each<ParticleComponent>([](entityx::Entity entity, ParticleComponent & particle) {
 		if (--particle.remainingUpdates <= 0) {
 			entity.destroy();
 		}

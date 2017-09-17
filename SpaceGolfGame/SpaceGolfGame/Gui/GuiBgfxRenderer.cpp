@@ -6,8 +6,8 @@
 
 void GuiBgfxRenderer::destroy()
 {
-	bgfx::destroyProgram(program);
-	bgfx::destroyUniform(textureUniform);
+	bgfx::destroy(program);
+	bgfx::destroy(textureUniform);
 }
 
 void GuiBgfxRenderer::updateScreenSize(int width, int height)
@@ -151,7 +151,8 @@ void GuiBgfxRenderer::setDisplaySize(const Sizef & size)
 
 const Vector2f & GuiBgfxRenderer::getDisplayDPI() const
 {
-	return Vector2f(72, 72);
+    static Vector2f tmp = Vector2f(72, 72);
+	return tmp;
 }
 
 uint GuiBgfxRenderer::getMaxTextureSize() const
@@ -162,7 +163,8 @@ uint GuiBgfxRenderer::getMaxTextureSize() const
 
 const String & GuiBgfxRenderer::getIdentifierString() const
 {
-	return "Bgfx Renderer";
+    static String tmp = "Bgfx Renderer";
+	return tmp;
 }
 
 void GuiBgfxRenderer::activateTarget(GuiBgfxRenderTarget * target)

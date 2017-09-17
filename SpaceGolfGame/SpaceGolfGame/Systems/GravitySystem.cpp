@@ -19,12 +19,12 @@ void GravitySystem::update(entityx::EntityManager & entities, entityx::EventMana
 {
 	this->populatePlanets(entities);
 	entities.each<GravityComponent, VelocityComponent, PositionComponent, MassComponent>([this, &entities]
-			(entityx::Entity &entity, GravityComponent &gravity, VelocityComponent &velocity, PositionComponent& position, MassComponent& m1) {
+			(entityx::Entity entity, GravityComponent &gravity, VelocityComponent &velocity, PositionComponent& position, MassComponent& m1) {
 		Vector2f force = GravitySystem::forceAtPosition(position.pos);
 		velocity.v += force * this->constant * m1.m;
 	});
 	entities.each<GravityComponent, VelocityComponent, MassComponent, DynamicMeshComponent>([this, &entities]
-			(entityx::Entity &entity, GravityComponent &gravity, VelocityComponent &velocity, MassComponent &mass, DynamicMeshComponent &mesh) {
+			(entityx::Entity entity, GravityComponent &gravity, VelocityComponent &velocity, MassComponent &mass, DynamicMeshComponent &mesh) {
 		Vector2f tempVelocity = velocity.v;
 		Vector2f tempPosition = Vector2f(mesh.vertices[0].m_x, mesh.vertices[0].m_y);
 		for (unsigned i = 1; i < mesh.indices.size(); i++) {

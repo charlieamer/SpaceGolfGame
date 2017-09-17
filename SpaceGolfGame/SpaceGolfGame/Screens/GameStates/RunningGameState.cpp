@@ -30,7 +30,7 @@ void RunningGameState::receive(const PlanetCollisionEvent & collision)
 	if (collision.collider == this->gameScreen->ball) {
 		float speedSq = this->gameScreen->ball.component<VelocityComponent>()->v.lengthSq();
 		printf("Terminal velocity squared: %f\n", speedSq);
-		if (speedSq < 0.00006f) {
+		if (speedSq < 0.00006f || isnan(speedSq)) {
 			this->gameScreen->ball.component<PositionComponent>()->pos = collision.entry;
 			this->gameScreen->setGameState(new IdleGameState(this->gameScreen));
 		}

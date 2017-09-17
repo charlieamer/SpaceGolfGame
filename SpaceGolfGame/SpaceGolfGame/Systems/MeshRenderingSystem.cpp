@@ -64,13 +64,13 @@ void MeshRenderingSystem::update(entityx::EntityManager & entities, entityx::Eve
 	int drawn = 0;
 	int nonStatic = 0;
 	int notCached = 0;
-	entities.each<StaticMeshComponent>([this, &drawn, &nonStatic, &notCached](entityx::Entity& entity, StaticMeshComponent& mesh) {
+	entities.each<StaticMeshComponent>([this, &drawn, &nonStatic, &notCached](entityx::Entity entity, StaticMeshComponent& mesh) {
 		drawn++;
 		this->prepareStaticBuffers(mesh, this->vertexBufferCache);
 		this->setTransform(entity, nonStatic, notCached);
 		this->colorShader.use();
 	});
-	entities.each<StaticTexturedMeshComponent>([this, &drawn, &nonStatic, &notCached](entityx::Entity& entity, StaticTexturedMeshComponent& mesh) {
+	entities.each<StaticTexturedMeshComponent>([this, &drawn, &nonStatic, &notCached](entityx::Entity entity, StaticTexturedMeshComponent& mesh) {
 		drawn++;
 		this->prepareStaticBuffers(mesh, this->vertexTexturedBufferCache);
 		if (this->textureCache.count(mesh.texturePath) == 0) {
@@ -80,7 +80,7 @@ void MeshRenderingSystem::update(entityx::EntityManager & entities, entityx::Eve
 		this->setTransform(entity, nonStatic, notCached);
 		this->texturedShader.use();
 	});
-	entities.each<DynamicMeshComponent>([this, &drawn, &nonStatic, &notCached](entityx::Entity& entity, DynamicMeshComponent& mesh) {
+	entities.each<DynamicMeshComponent>([this, &drawn, &nonStatic, &notCached](entityx::Entity entity, DynamicMeshComponent& mesh) {
 		drawn++;
 		this->prepareDynamicBuffers(mesh);
 		this->setTransform(entity, nonStatic, notCached);

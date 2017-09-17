@@ -9,9 +9,9 @@ Shader::Shader(const char* vsName, const char* fsName)
 
 Shader::~Shader()
 {
-	bgfx::destroyProgram(handle);
+	bgfx::destroy(handle);
 	for (auto& uniform : uniforms) {
-		bgfx::destroyUniform(uniform.second);
+		bgfx::destroy(uniform.second);
 	}
 }
 

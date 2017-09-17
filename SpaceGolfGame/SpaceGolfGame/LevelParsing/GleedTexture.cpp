@@ -2,7 +2,7 @@
 
 #include "../utilities.h"
 
-GleedTexture::GleedTexture(rapidxml::xml_node<> &node) : tint(*node.first_node("TintColor")), GleedBaseObject(node)
+GleedTexture::GleedTexture(rapidxml::xml_node<> &node) : GleedBaseObject(node), tint(*node.first_node("TintColor"))
 {
 	auto scale = node.first_node("Scale");
 	scaleX = XmlUtilities::parseFloat(*scale->first_node("X"));

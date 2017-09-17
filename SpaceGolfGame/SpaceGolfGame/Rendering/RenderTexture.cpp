@@ -1,9 +1,12 @@
 #include "RenderTexture.h"
 #include <bgfx_utils.h>
 
+#include <iostream>
+
 RenderTexture::RenderTexture(std::string path)
 {
 	handle = loadTexture(path.c_str());
+    std::cout << "Loading texture " << path << std::endl;
 }
 
 void RenderTexture::use(bgfx::UniformHandle sampler)
@@ -17,5 +20,5 @@ RenderTexture::~RenderTexture()
 
 void RenderTexture::destroy()
 {
-	bgfx::destroyTexture(handle);
+	bgfx::destroy(handle);
 }

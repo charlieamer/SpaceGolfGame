@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Project Name="SpaceGolfGame" Version="10.0.0" InternalType="Console">
+  <VirtualDirectory Name="3rdparty">
+    <VirtualDirectory Name="nvtt">
+      <VirtualDirectory Name="bc6h">
+        <File Name="../../bimg/3rdparty/nvtt/bc6h/bits.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc6h/shapes_two.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc6h/tile.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc6h/zoh.cpp"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc6h/zoh.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc6h/zohone.cpp"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc6h/zohtwo.cpp"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc6h/zoh_utils.cpp"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc6h/zoh_utils.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="bc7">
+        <File Name="../../bimg/3rdparty/nvtt/bc7/avpcl.cpp"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc7/avpcl.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc7/avpcl_mode0.cpp"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc7/avpcl_mode1.cpp"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc7/avpcl_mode2.cpp"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc7/avpcl_mode3.cpp"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc7/avpcl_mode4.cpp"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc7/avpcl_mode5.cpp"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc7/avpcl_mode6.cpp"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc7/avpcl_mode7.cpp"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc7/avpcl_utils.cpp"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc7/avpcl_utils.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc7/bits.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc7/endpts.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc7/shapes_three.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc7/shapes_two.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/bc7/tile.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="nvcore">
+        <File Name="../../bimg/3rdparty/nvtt/nvcore/array.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/nvcore/debug.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/nvcore/defsgnucdarwin.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/nvcore/defsgnuclinux.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/nvcore/defsgnucwin32.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/nvcore/defsvcwin32.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/nvcore/foreach.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/nvcore/hash.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/nvcore/memory.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/nvcore/nvcore.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/nvcore/posh.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/nvcore/stdstream.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/nvcore/stream.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/nvcore/strlib.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/nvcore/utils.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="nvmath">
+        <File Name="../../bimg/3rdparty/nvtt/nvmath/fitting.cpp"/>
+        <File Name="../../bimg/3rdparty/nvtt/nvmath/fitting.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/nvmath/matrix.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/nvmath/nvmath.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/nvmath/plane.h"/>
+        <File Name="../../bimg/3rdparty/nvtt/nvmath/vector.h"/>
+      </VirtualDirectory>
+      <File Name="../../bimg/3rdparty/nvtt/nvtt.cpp"/>
+      <File Name="../../bimg/3rdparty/nvtt/nvtt.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="iqa">
+      <VirtualDirectory Name="include">
+        <File Name="../../bimg/3rdparty/iqa/include/convolve.h"/>
+        <File Name="../../bimg/3rdparty/iqa/include/decimate.h"/>
+        <File Name="../../bimg/3rdparty/iqa/include/iqa.h"/>
+        <File Name="../../bimg/3rdparty/iqa/include/iqa_os.h"/>
+        <File Name="../../bimg/3rdparty/iqa/include/math_utils.h"/>
+        <File Name="../../bimg/3rdparty/iqa/include/ssim.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="source">
+        <File Name="../../bimg/3rdparty/iqa/source/convolve.c"/>
+        <File Name="../../bimg/3rdparty/iqa/source/decimate.c"/>
+        <File Name="../../bimg/3rdparty/iqa/source/math_utils.c"/>
+        <File Name="../../bimg/3rdparty/iqa/source/mse.c"/>
+        <File Name="../../bimg/3rdparty/iqa/source/ms_ssim.c"/>
+        <File Name="../../bimg/3rdparty/iqa/source/psnr.c"/>
+        <File Name="../../bimg/3rdparty/iqa/source/ssim.c"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="edtaa3">
+      <File Name="../../bimg/3rdparty/edtaa3/edtaa3func.cpp"/>
+      <File Name="../../bimg/3rdparty/edtaa3/edtaa3func.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="etc1">
+      <File Name="../../bimg/3rdparty/etc1/etc1.cpp"/>
+      <File Name="../../bimg/3rdparty/etc1/etc1.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="etc2">
+      <File Name="../../bimg/3rdparty/etc2/Math.hpp"/>
+      <File Name="../../bimg/3rdparty/etc2/ProcessCommon.hpp"/>
+      <File Name="../../bimg/3rdparty/etc2/ProcessRGB.cpp"/>
+      <File Name="../../bimg/3rdparty/etc2/ProcessRGB.hpp"/>
+      <File Name="../../bimg/3rdparty/etc2/Tables.cpp"/>
+      <File Name="../../bimg/3rdparty/etc2/Tables.hpp"/>
+      <File Name="../../bimg/3rdparty/etc2/Types.hpp"/>
+      <File Name="../../bimg/3rdparty/etc2/Vector.hpp"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="libsquish">
+      <File Name="../../bimg/3rdparty/libsquish/alpha.cpp"/>
+      <File Name="../../bimg/3rdparty/libsquish/alpha.h"/>
+      <File Name="../../bimg/3rdparty/libsquish/clusterfit.cpp"/>
+      <File Name="../../bimg/3rdparty/libsquish/clusterfit.h"/>
+      <File Name="../../bimg/3rdparty/libsquish/colourblock.cpp"/>
+      <File Name="../../bimg/3rdparty/libsquish/colourblock.h"/>
+      <File Name="../../bimg/3rdparty/libsquish/colourfit.cpp"/>
+      <File Name="../../bimg/3rdparty/libsquish/colourfit.h"/>
+      <File Name="../../bimg/3rdparty/libsquish/colourset.cpp"/>
+      <File Name="../../bimg/3rdparty/libsquish/colourset.h"/>
+      <File Name="../../bimg/3rdparty/libsquish/config.h"/>
+      <File Name="../../bimg/3rdparty/libsquish/maths.cpp"/>
+      <File Name="../../bimg/3rdparty/libsquish/maths.h"/>
+      <File Name="../../bimg/3rdparty/libsquish/rangefit.cpp"/>
+      <File Name="../../bimg/3rdparty/libsquish/rangefit.h"/>
+      <File Name="../../bimg/3rdparty/libsquish/simd.h"/>
+      <File Name="../../bimg/3rdparty/libsquish/simd_float.h"/>
+      <File Name="../../bimg/3rdparty/libsquish/singlecolourfit.cpp"/>
+      <File Name="../../bimg/3rdparty/libsquish/singlecolourfit.h"/>
+      <File Name="../../bimg/3rdparty/libsquish/squish.cpp"/>
+      <File Name="../../bimg/3rdparty/libsquish/squish.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="maratis-tcl">
+      <File Name="../../bimg/3rdparty/maratis-tcl/m_image.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="pvrtc">
+      <File Name="../../bimg/3rdparty/pvrtc/AlphaBitmap.h"/>
+      <File Name="../../bimg/3rdparty/pvrtc/Bitmap.h"/>
+      <File Name="../../bimg/3rdparty/pvrtc/BitScale.cpp"/>
+      <File Name="../../bimg/3rdparty/pvrtc/BitScale.h"/>
+      <File Name="../../bimg/3rdparty/pvrtc/BitUtility.h"/>
+      <File Name="../../bimg/3rdparty/pvrtc/ColorRgba.h"/>
+      <File Name="../../bimg/3rdparty/pvrtc/Interval.h"/>
+      <File Name="../../bimg/3rdparty/pvrtc/MortonTable.cpp"/>
+      <File Name="../../bimg/3rdparty/pvrtc/MortonTable.h"/>
+      <File Name="../../bimg/3rdparty/pvrtc/Point2.h"/>
+      <File Name="../../bimg/3rdparty/pvrtc/PvrTcDecoder.cpp"/>
+      <File Name="../../bimg/3rdparty/pvrtc/PvrTcDecoder.h"/>
+      <File Name="../../bimg/3rdparty/pvrtc/PvrTcEncoder.cpp"/>
+      <File Name="../../bimg/3rdparty/pvrtc/PvrTcEncoder.h"/>
+      <File Name="../../bimg/3rdparty/pvrtc/PvrTcPacket.cpp"/>
+      <File Name="../../bimg/3rdparty/pvrtc/PvrTcPacket.h"/>
+      <File Name="../../bimg/3rdparty/pvrtc/RgbaBitmap.h"/>
+      <File Name="../../bimg/3rdparty/pvrtc/RgbBitmap.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="stb">
+      <File Name="../../bimg/3rdparty/stb/stb_image.h"/>
+      <File Name="../../bimg/3rdparty/stb/stb_image_resize.h"/>
+      <File Name="../../bimg/3rdparty/stb/stb_image_write.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="tinyexr">
+      <File Name="../../bimg/3rdparty/tinyexr/tinyexr.h"/>
+    </VirtualDirectory>
+  </VirtualDirectory>
+  <Plugins>
+    <Plugin Name="qmake">
+      <![CDATA[00010001N0005Debug000000000000]]>
+    </Plugin>
+  </Plugins>
+  <Description/>
+  <Dependencies/>
+  <VirtualDirectory Name="SpaceGolfGame">
+    <VirtualDirectory Name="Screens">
+      <VirtualDirectory Name="GameStates">
+        <File Name="SpaceGolfGame/Screens/GameStates/AimingGameState.cpp"/>
+        <File Name="SpaceGolfGame/Screens/GameStates/AimingGameState.h"/>
+        <File Name="SpaceGolfGame/Screens/GameStates/BaseGameState.cpp"/>
+        <File Name="SpaceGolfGame/Screens/GameStates/BaseGameState.h"/>
+        <File Name="SpaceGolfGame/Screens/GameStates/IdleGameState.cpp"/>
+        <File Name="SpaceGolfGame/Screens/GameStates/IdleGameState.h"/>
+        <File Name="SpaceGolfGame/Screens/GameStates/PlayingBaseGameState.cpp"/>
+        <File Name="SpaceGolfGame/Screens/GameStates/PlayingBaseGameState.h"/>
+        <File Name="SpaceGolfGame/Screens/GameStates/RunningGameState.cpp"/>
+        <File Name="SpaceGolfGame/Screens/GameStates/RunningGameState.h"/>
+      </VirtualDirectory>
+      <File Name="SpaceGolfGame/Screens/BaseScreen.cpp"/>
+      <File Name="SpaceGolfGame/Screens/BaseScreen.h"/>
+      <File Name="SpaceGolfGame/Screens/GameScreen.cpp"/>
+      <File Name="SpaceGolfGame/Screens/GameScreen.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="3rdparty">
+      <VirtualDirectory Name="RapidXML">
+        <File Name="SpaceGolfGame/3rdparty/RapidXML/rapidxml.hpp"/>
+        <File Name="SpaceGolfGame/3rdparty/RapidXML/rapidxml_iterators.hpp"/>
+        <File Name="SpaceGolfGame/3rdparty/RapidXML/rapidxml_print.hpp"/>
+        <File Name="SpaceGolfGame/3rdparty/RapidXML/rapidxml_utils.hpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="Vmath">
+        <File Name="SpaceGolfGame/3rdparty/Vmath/vmath.cpp"/>
+        <File Name="SpaceGolfGame/3rdparty/Vmath/vmath.h"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <File Name="SpaceGolfGame/main.cpp"/>
+    <File Name="SpaceGolfGame/main.h"/>
+    <File Name="SpaceGolfGame/utilities.cpp"/>
+    <File Name="SpaceGolfGame/utilities.h"/>
+    <VirtualDirectory Name="Components">
+      <File Name="SpaceGolfGame/Components/AABBCacheComponent.h"/>
+      <File Name="SpaceGolfGame/Components/BaseMeshComponent.h"/>
+      <File Name="SpaceGolfGame/Components/CircleRadiusComponent.h"/>
+      <File Name="SpaceGolfGame/Components/DynamicMeshComponent.h"/>
+      <File Name="SpaceGolfGame/Components/GravityComponent.h"/>
+      <File Name="SpaceGolfGame/Components/MassComponent.h"/>
+      <File Name="SpaceGolfGame/Components/MeshTransformCacheComponent.h"/>
+      <File Name="SpaceGolfGame/Components/ParticleComponent.h"/>
+      <File Name="SpaceGolfGame/Components/ParticleEmitterComponent.h"/>
+      <File Name="SpaceGolfGame/Components/PlanetCollisionComponent.h"/>
+      <File Name="SpaceGolfGame/Components/PlanetComponent.h"/>
+      <File Name="SpaceGolfGame/Components/PositionComponent.h"/>
+      <File Name="SpaceGolfGame/Components/StaticMeshComponent.h"/>
+      <File Name="SpaceGolfGame/Components/VelocityComponent.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="Entities">
+      <File Name="SpaceGolfGame/Entities/EntityGenerator.cpp"/>
+      <File Name="SpaceGolfGame/Entities/EntityGenerator.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="Events">
+      <File Name="SpaceGolfGame/Events/MouseEvents.h"/>
+      <File Name="SpaceGolfGame/Events/PlanetCollisionEvent.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="Gui">
+      <File Name="SpaceGolfGame/Gui/GuiBgfxGeometry.cpp"/>
+      <File Name="SpaceGolfGame/Gui/GuiBgfxGeometry.h"/>
+      <File Name="SpaceGolfGame/Gui/GuiBgfxRenderer.cpp"/>
+      <File Name="SpaceGolfGame/Gui/GuiBgfxRenderer.h"/>
+      <File Name="SpaceGolfGame/Gui/GuiBgfxRenderTarget.cpp"/>
+      <File Name="SpaceGolfGame/Gui/GuiBgfxRenderTarget.h"/>
+      <File Name="SpaceGolfGame/Gui/GuiBgfxTexture.cpp"/>
+      <File Name="SpaceGolfGame/Gui/GuiBgfxTexture.h"/>
+      <File Name="SpaceGolfGame/Gui/GuiBgfxTextureTarget.cpp"/>
+      <File Name="SpaceGolfGame/Gui/GuiBgfxTextureTarget.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="LevelParsing">
+      <File Name="SpaceGolfGame/LevelParsing/GleedBaseObject.cpp"/>
+      <File Name="SpaceGolfGame/LevelParsing/GleedBaseObject.h"/>
+      <File Name="SpaceGolfGame/LevelParsing/GleedCircle.cpp"/>
+      <File Name="SpaceGolfGame/LevelParsing/GleedCircle.h"/>
+      <File Name="SpaceGolfGame/LevelParsing/GleedColor.cpp"/>
+      <File Name="SpaceGolfGame/LevelParsing/GleedColor.h"/>
+      <File Name="SpaceGolfGame/LevelParsing/GleedLayer.cpp"/>
+      <File Name="SpaceGolfGame/LevelParsing/GleedLayer.h"/>
+      <File Name="SpaceGolfGame/LevelParsing/GleedLevel.cpp"/>
+      <File Name="SpaceGolfGame/LevelParsing/GleedLevel.h"/>
+      <File Name="SpaceGolfGame/LevelParsing/GleedPosition.cpp"/>
+      <File Name="SpaceGolfGame/LevelParsing/GleedPosition.h"/>
+      <File Name="SpaceGolfGame/LevelParsing/GleedRectangle.cpp"/>
+      <File Name="SpaceGolfGame/LevelParsing/GleedRectangle.h"/>
+      <File Name="SpaceGolfGame/LevelParsing/GleedTexture.cpp"/>
+      <File Name="SpaceGolfGame/LevelParsing/GleedTexture.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="Rendering">
+      <File Name="SpaceGolfGame/Rendering/MeshGenerators.cpp"/>
+      <File Name="SpaceGolfGame/Rendering/MeshGenerators.h"/>
+      <File Name="SpaceGolfGame/Rendering/RenderingData.h"/>
+      <File Name="SpaceGolfGame/Rendering/RenderTexture.cpp"/>
+      <File Name="SpaceGolfGame/Rendering/RenderTexture.h"/>
+      <File Name="SpaceGolfGame/Rendering/Shader.cpp"/>
+      <File Name="SpaceGolfGame/Rendering/Shader.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="Systems">
+      <File Name="SpaceGolfGame/Systems/AABBCacheSystem.cpp"/>
+      <File Name="SpaceGolfGame/Systems/AABBCacheSystem.h"/>
+      <File Name="SpaceGolfGame/Systems/BounceSystem.cpp"/>
+      <File Name="SpaceGolfGame/Systems/BounceSystem.h"/>
+      <File Name="SpaceGolfGame/Systems/GravitySystem.cpp"/>
+      <File Name="SpaceGolfGame/Systems/GravitySystem.h"/>
+      <File Name="SpaceGolfGame/Systems/MeshRenderingSystem.cpp"/>
+      <File Name="SpaceGolfGame/Systems/MeshRenderingSystem.h"/>
+      <File Name="SpaceGolfGame/Systems/ParticleUpdateSystem.cpp"/>
+      <File Name="SpaceGolfGame/Systems/ParticleUpdateSystem.h"/>
+      <File Name="SpaceGolfGame/Systems/PlanetCacheBaseSystem.cpp"/>
+      <File Name="SpaceGolfGame/Systems/PlanetCacheBaseSystem.h"/>
+      <File Name="SpaceGolfGame/Systems/PlanetCollisionSystem.cpp"/>
+      <File Name="SpaceGolfGame/Systems/PlanetCollisionSystem.h"/>
+      <File Name="SpaceGolfGame/Systems/VelocitySystem.cpp"/>
+      <File Name="SpaceGolfGame/Systems/VelocitySystem.h"/>
+    </VirtualDirectory>
+  </VirtualDirectory>
+  <VirtualDirectory Name="bgfx">
+    <File Name="../../bgfx/src/amalgamated.cpp"/>
+    <File Name="../../bgfx/3rdparty/ib-compress/indexbuffercompression.cpp"/>
+    <File Name="../../bgfx/3rdparty/ib-compress/indexbufferdecompression.cpp"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="bx">
+    <File Name="../../bx/src/amalgamated.cpp"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="bgfx_utils">
+    <File Name="../../bgfx/examples/common/bgfx_utils.cpp"/>
+    <File Name="../../bgfx/examples/common/entry/cmd.cpp"/>
+    <File Name="../../bgfx/examples/common/entry/input.cpp"/>
+    <File Name="../../bgfx/examples/common/entry/entry.cpp"/>
+    <File Name="../../bgfx/examples/common/entry/entry_windows.cpp"/>
+    <File Name="../../bgfx/examples/common/entry/entry_sdl.cpp"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="bimg">
+    <File Name="../../bimg/src/image.cpp"/>
+    <File Name="../../bimg/src/image_decode.cpp"/>
+    <File Name="../../bimg/src/image_encode.cpp"/>
+  </VirtualDirectory>
+  <Settings Type="Executable">
+    <GlobalSettings>
+      <Compiler Options="" C_Options="" Assembler="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="">
+        <LibraryPath Value="."/>
+      </Linker>
+      <ResourceCompiler Options=""/>
+    </GlobalSettings>
+    <Configuration Name="Debug" CompilerType="MinGW ( MinGW )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g;-O0;-Wall;-std=gnu++11" C_Options="" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="."/>
+        <IncludePath Value="C:\Users\ACER\Documents\GitHub\bx\include"/>
+        <IncludePath Value="C:\Users\ACER\Documents\GitHub\bimg\include"/>
+        <IncludePath Value="C:\Users\ACER\Documents\GitHub\bimg\3rdparty"/>
+        <IncludePath Value="C:\Users\ACER\Documents\GitHub\bimg\3rdparty\nvtt"/>
+        <IncludePath Value="C:\Users\ACER\Documents\GitHub\bimg\3rdparty\iqa\include"/>
+        <IncludePath Value="C:\Users\ACER\Documents\GitHub\bgfx\include"/>
+        <IncludePath Value="C:\Users\ACER\Documents\GitHub\entityx"/>
+        <IncludePath Value="C:\Users\ACER\Documents\GitHub\SpaceGolfGame\SpaceGolfGame\SpaceGolfGame\3rdparty\Vmath"/>
+        <IncludePath Value="C:\Users\ACER\Documents\GitHub\SpaceGolfGame\SpaceGolfGame\SpaceGolfGame\3rdparty\RapidXML"/>
+        <IncludePath Value="C:\Users\ACER\Documents\GitHub\SpaceGolfGame\SpaceGolfGame\SpaceGolfGame\3rdparty\termcolor"/>
+        <IncludePath Value="C:\Users\ACER\Documents\GitHub\cegui-0.8.7\cegui\include"/>
+        <IncludePath Value="C:\Users\ACER\Documents\GitHub\bgfx\examples\common"/>
+        <IncludePath Value="C:\Users\ACER\Documents\GitHub\bx\include\compat\mingw"/>
+        <IncludePath Value="C:\Users\ACER\Documents\GitHub\cegui-0.8.7\build-sublime\cegui\include"/>
+        <IncludePath Value="C:\Users\ACER\Documents\GitHub\bgfx\3rdparty\khronos"/>
+        <IncludePath Value="C:\Users\ACER\Documents\GitHub\bgfx\3rdparty"/>
+        <IncludePath Value="C:\Users\ACER\Documents\dev\sdl2\x86_64-w64-mingw32\include"/>
+        <Preprocessor Value="CEGUI_STATIC"/>
+        <Preprocessor Value="__USE_MINGW_ANSI_STDIO=1"/>
+        <Preprocessor Value="BGFX_CONFIG_RENDERER_OPENGL=21"/>
+        <Preprocessor Value="BGFX_CONFIG_DEBUG=1"/>
+        <Preprocessor Value="PRIx64=\&quot;I64x\&quot;"/>
+        <Preprocessor Value="PRIxPTR=\&quot;Ix\&quot;"/>
+        <Preprocessor Value="ENTRY_CONFIG_USE_SDL"/>
+        <Preprocessor Value="ENTRY_CONFIG_IMPLEMENT_MAIN"/>
+      </Compiler>
+      <Linker Options="" Required="yes">
+        <LibraryPath Value="C:\Users\ACER\Documents\GitHub\cegui-0.8.7\build-sublime\lib"/>
+        <LibraryPath Value="C:\Users\ACER\Documents\GitHub\cegui-0.8.7\dependencies\build-mingw\dependencies\lib\static"/>
+        <LibraryPath Value="C:\Users\ACER\Documents\GitHub\entityx\build-mingw"/>
+        <LibraryPath Value="C:\Users\ACER\Documents\dev\sdl2\i686-w64-mingw32\lib"/>
+        <Library Value="cegui"/>
+        <Library Value="entityx"/>
+        <Library Value="opengl32"/>
+        <Library Value="Ws2_32"/>
+        <Library Value="ole32"/>
+        <Library Value="comctl32"/>
+        <Library Value="gdi32"/>
+        <Library Value="comdlg32"/>
+        <Library Value="uuid"/>
+        <Library Value="psapi"/>
+        <Library Value="freetype"/>
+        <Library Value="IL"/>
+        <Library Value="ILU"/>
+        <Library Value="SDL2"/>
+        <Library Value="SDL2main"/>
+        <Library Value="jpeg"/>
+        <Library Value="mng"/>
+        <Library Value="png"/>
+        <Library Value="tiff"/>
+        <Library Value="zlib"/>
+      </Linker>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="$(IntermediateDirectory)/$(ProjectName).exe" IntermediateDirectory="./Debug" Command="../$(IntermediateDirectory)/$(ProjectName).exe" CommandArguments="levels/test.gleed" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="./runtime" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <BuildSystem Name="Default"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="yes">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild>
+        <Command Enabled="yes">runtime.bat</Command>
+      </PostBuild>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+    <Configuration Name="Release" CompilerType="MinGW ( MinGW )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-O2;-Wall" C_Options="-O2;-Wall" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="."/>
+        <Preprocessor Value="NDEBUG"/>
+      </Compiler>
+      <Linker Options="" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="$(IntermediateDirectory)/$(ProjectName)" IntermediateDirectory="./Release" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <BuildSystem Name="Default"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+  </Settings>
+</CodeLite_Project>

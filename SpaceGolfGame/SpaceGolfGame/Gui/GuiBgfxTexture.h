@@ -6,8 +6,10 @@ class GuiBgfxTexture : public CEGUI::Texture
 {
 	CEGUI::String name;
 	CEGUI::Sizef size;
+    CEGUI::Vector2f texel;
 	bgfx::TextureHandle handle;
 	unsigned char* data;
+    void setSize(const CEGUI::Sizef & value);
 public:
 	GuiBgfxTexture(CEGUI::String name);
 	~GuiBgfxTexture();

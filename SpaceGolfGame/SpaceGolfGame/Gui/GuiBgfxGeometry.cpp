@@ -1,5 +1,5 @@
 #include "GuiBgfxGeometry.h"
-#include <bx/fpumath.h>
+#include <bx/math.h>
 #include "GuiBgfxRenderer.h"
 using namespace CEGUI;
 
@@ -36,8 +36,8 @@ void GuiBgfxGeometry::destroyBuffers()
 void GuiBgfxGeometry::destroyBuffers(Batch & batch)
 {
 	if (batch.vertexHandle.idx != bgfx::kInvalidHandle) {
-		bgfx::destroyIndexBuffer(batch.indexHandle);
-		bgfx::destroyVertexBuffer(batch.vertexHandle);
+		bgfx::destroy(batch.indexHandle);
+		bgfx::destroy(batch.vertexHandle);
 		batch.vertexHandle = BGFX_INVALID_HANDLE;
 		batch.indexHandle = BGFX_INVALID_HANDLE;
 	}
@@ -52,12 +52,12 @@ void GuiBgfxGeometry::updateMatrix()
 	float quat[4] = { rotation.d_x , rotation.d_y, rotation.d_z, rotation.d_w }, tmp1[16], tmp2[16];
 	bx::mtxQuat(tmp1, quat);
 	bx::mtxMul(tmp2, matrix, tmp1);
-	memcpy_s(matrix, sizeof(float) * 16, tmp2, sizeof(float) * 16);
+	memcpy(matrix, tmp2, sizeof(float) * 16);
 	
 	bx::mtxIdentity(tmp1);
 	bx::mtxTranslate(tmp1, -pivot.d_x, -pivot.d_y, -pivot.d_z);
 	bx::mtxMul(tmp2, matrix, tmp1);
-	memcpy_s(matrix, sizeof(float) * 16, tmp2, sizeof(float) * 16);
+	memcpy(matrix, tmp2, sizeof(float) * 16);
 }
 
 void GuiBgfxGeometry::draw() const

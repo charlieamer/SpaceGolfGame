@@ -1,6 +1,6 @@
 #include "GuiBgfxRenderTarget.h"
 #include <bgfx/bgfx.h>
-#include <bx/fpumath.h>
+#include <bx/math.h>
 
 GuiBgfxRenderTarget::GuiBgfxRenderTarget(GuiBgfxRenderer& owner) : owner(owner)
 {

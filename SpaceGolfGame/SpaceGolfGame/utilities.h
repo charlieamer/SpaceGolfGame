@@ -42,7 +42,15 @@ namespace XmlUtilities {
 
 namespace GleedUtilities {
 	template <typename T>
-	T& getObjectByName(const std::vector<std::shared_ptr<T>> &objects, std::string name);
+	T& getObjectByName(const std::vector<std::shared_ptr<T>> &objects, std::string name) 
+    {
+        for (unsigned i = 0; i < objects.size(); i++) {
+            if (objects[i]->name == name) {
+                return *objects[i];
+            }
+        }
+        throw "Object with name " + name + " not found";
+    };
 	template GleedLayer& getObjectByName(const std::vector<std::shared_ptr<GleedLayer>> &objects, std::string name);
 	template GleedCircle& getObjectByName(const std::vector<std::shared_ptr<GleedCircle>> &objects, std::string name);
 	template GleedRectangle& getObjectByName(const std::vector<std::shared_ptr<GleedRectangle>> &objects, std::string name);

@@ -52,12 +52,12 @@ void GuiBgfxGeometry::updateMatrix()
 	float quat[4] = { rotation.d_x , rotation.d_y, rotation.d_z, rotation.d_w }, tmp1[16], tmp2[16];
 	bx::mtxQuat(tmp1, quat);
 	bx::mtxMul(tmp2, matrix, tmp1);
-	memcpy_s(matrix, sizeof(float) * 16, tmp2, sizeof(float) * 16);
+	memcpy(matrix, tmp2, sizeof(float) * 16);
 	
 	bx::mtxIdentity(tmp1);
 	bx::mtxTranslate(tmp1, -pivot.d_x, -pivot.d_y, -pivot.d_z);
 	bx::mtxMul(tmp2, matrix, tmp1);
-	memcpy_s(matrix, sizeof(float) * 16, tmp2, sizeof(float) * 16);
+	memcpy(matrix, tmp2, sizeof(float) * 16);
 }
 
 void GuiBgfxGeometry::draw() const
@@ -82,7 +82,7 @@ void GuiBgfxGeometry::draw() const
 		else {
 			bgfx::setTexture(0, uniform, BGFX_INVALID_HANDLE);
 		}
-		bgfx::setState(BGFX_STATE_RGB_WRITE | BGFX_STATE_ALPHA_WRITE | BGFX_STATE_PT_LINES | BGFX_STATE_BLEND_ALPHA);
+		bgfx::setState(BGFX_STATE_RGB_WRITE | BGFX_STATE_ALPHA_WRITE | BGFX_STATE_PT_TRISTRIP | BGFX_STATE_BLEND_ALPHA);
 		bgfx::submit(owner.getCurrentPass(), program);
 	}
 	//bgfx::setScissor(0, 0, -1, -1);

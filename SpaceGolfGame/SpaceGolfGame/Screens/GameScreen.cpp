@@ -55,9 +55,9 @@ GameScreen::GameScreen(Application* app, rapidxml::xml_document<>& document) : B
 
 	for (auto& planet : planetsLayer.objects) {
 		GleedCircle& circle = *static_cast<GleedCircle*>(&*planet);
-		entityx::Entity planet = entities.create();
-		loadComponents(planet, circle);
-		planet.assign<PlanetComponent>();
+		entityx::Entity planetEntity = entities.create();
+		loadComponents(planetEntity, circle);
+		planetEntity.assign<PlanetComponent>();
 	}
 
 	for (auto& textureObj : texturesLayer.objects) {

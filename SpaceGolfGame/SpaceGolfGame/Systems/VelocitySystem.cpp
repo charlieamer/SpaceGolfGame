@@ -15,7 +15,7 @@ VelocitySystem::~VelocitySystem()
 
 void VelocitySystem::update(entityx::EntityManager & entities, entityx::EventManager & events, entityx::TimeDelta dt)
 {
-	entities.each<PositionComponent, VelocityComponent>([](entityx::Entity& entity, PositionComponent& position, VelocityComponent& velocity) {
+	entities.each<PositionComponent, VelocityComponent>([](entityx::Entity entity, PositionComponent& position, VelocityComponent& velocity) {
 		if (velocity.v.lengthSq() > 0) {
 			position.pos += velocity.v;
 			if (entity.component<MeshTransformCacheComponent>()) {
