@@ -1,6 +1,7 @@
 #include "GuiBgfxGeometry.h"
 #include <bx/math.h>
 #include "GuiBgfxRenderer.h"
+#include <iostream>
 using namespace CEGUI;
 
 GuiBgfxGeometry::GuiBgfxGeometry(GuiBgfxRenderer & renderer) : owner(renderer)

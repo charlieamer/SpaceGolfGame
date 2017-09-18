@@ -11,6 +11,7 @@
 #include "../Rendering/RenderTexture.h"
 #include "../Components/DynamicMeshComponent.h"
 #include "../Components/StaticMeshComponent.h"
+#include "../utilities.h"
 
 struct VectorComparison {
 	template<typename T>
@@ -60,14 +61,14 @@ public:
 		if (mesh.indicesHandle.idx == bgfx::kInvalidHandle) {
 			if (this->indexBufferCache.find(mesh.indices) == this->indexBufferCache.end()) {
 				this->indexBufferCache[mesh.indices] = bgfx::createIndexBuffer(bgfx::makeRef(mesh.indices.data(), sizeof(uint16_t) * mesh.indices.size()));
-				printf("MeshRenderingSystem - Created indices buffer with size of %d\n", mesh.indices.size());
+				Debug::p(Debug::PrintSeverity::PRINT_DEBUG, "MeshRenderingSystem - Created indices buffer with size of %d\n", mesh.indices.size());
 			}
 			mesh.indicesHandle = this->indexBufferCache[mesh.indices];
 		}
 		if (mesh.verticesHandle.idx == bgfx::kInvalidHandle) {
 			if (cache.find(mesh.vertices) == cache.end()) {
 				cache[mesh.vertices] = bgfx::createVertexBuffer(bgfx::makeRef(mesh.vertices.data(), sizeof(mesh.vertices[0]) * mesh.vertices.size()), mesh.vertices[0].vertexDeclaration());
-				printf("MeshRenderingSystem - Created vertex buffer with size of %d\n", mesh.vertices.size());
+				Debug::p(Debug::PrintSeverity::PRINT_DEBUG, "MeshRenderingSystem - Created vertex buffer with size of %d\n", mesh.vertices.size());
 			}
 			mesh.verticesHandle = cache[mesh.vertices];
 		}

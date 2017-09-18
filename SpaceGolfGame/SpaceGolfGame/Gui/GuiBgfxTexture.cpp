@@ -37,10 +37,12 @@ const Vector2f & GuiBgfxTexture::getTexelScaling() const
 
 void GuiBgfxTexture::loadFromFile(const String & filename, const String & resourceGroup)
 {
-    CEGUI::Logger::getSingleton().logEvent("[BgfxRenderer::GuiBgfxTexture::loadFromFile] Loading texture from file: " + filename);
 	bgfx::TextureInfo info;
 	handle = loadTexture(filename.c_str(), 0, 0, &info);
-	size = Sizef(info.width, info.height);
+	setSize(Sizef(info.width, info.height));
+    char tmp[100];
+    sprintf(tmp, "[BgfxRenderer::GuiBgfxTexture::loadFromFile] Loading texture from file: %s %dx%d", filename.c_str(), info.width, info.height);
+    CEGUI::Logger::getSingleton().logEvent(tmp);
 }
 
 void GuiBgfxTexture::loadFromMemory(const void * buffer, const Sizef & buffer_size, PixelFormat pixel_format)

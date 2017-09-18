@@ -4,6 +4,9 @@
 #include "Components/VelocityComponent.h"
 #include <math.h>
 #include <fstream>
+#include <mutex>
+#include <termcolor.hpp>
+#include <bx/mutex.h>
 
 namespace Utilities {
 
@@ -205,4 +208,37 @@ Aabb3f GleedUtilities::textureToAABB(const GleedTexture & texture)
 	float halfWidth = texture.originX / 1000.0f * texture.scaleX;
 	float halfHeight = texture.originY / 1000.0f * texture.scaleY;
 	return Aabb3f(-halfWidth, -halfHeight, 0.0f, halfWidth, halfHeight, 0.0f);
+}
+void Debug::p(Debug::PrintSeverity severity, const char* format, ...)
+{
+    va_list argList;
+    va_start(argList, format);
+    
+    char out[8192];
+    vsprintf(out, format, argList);
+    static bx::Mutex print_mutex;
+    print_mutex.lock();
+    std::cout << "[";
+    if (severity == Debug::PrintSeverity::PRINT_DEBUG) {
+        std::cout << termcolor::blue << "DEBUG";
+    }
+    if (severity == Debug::PrintSeverity::PRINT_SILLY) {
+        std::cout << termcolor::magenta << "SILLY";
+    }
+    if (severity == Debug::PrintSeverity::PRINT_INFO) {
+        std::cout << termcolor::green << "INFO";
+    }
+    if (severity == Debug::PrintSeverity::PRINT_WARN) {
+        std::cout << termcolor::yellow << "WARN";
+    }
+    if (severity == Debug::PrintSeverity::PRINT_ERROR) {
+        std::cout << termcolor::red << "ERROR";
+    }
+    std::cout << termcolor::reset << "]\t" << out;
+    if (out[strlen(out) - 1] != '\n') {
+        std::cout << std::endl;
+    }
+    print_mutex.unlock();
+    
+    va_end(argList);
 }

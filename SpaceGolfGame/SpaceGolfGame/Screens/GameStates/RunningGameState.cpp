@@ -4,6 +4,7 @@
 #include "../../Components/ParticleEmitterComponent.h"
 #include "../../Components/PlanetCollisionComponent.h"
 #include "IdleGameState.h"
+#include "../../utilities.h"
 
 RunningGameState::RunningGameState(GameScreen* screen, Vector2f initialVelocity) : PlayingBaseGameState(screen, GameStateId::RUNNING), initialVelocity(initialVelocity) {}
 
@@ -29,7 +30,7 @@ void RunningGameState::receive(const PlanetCollisionEvent & collision)
 {
 	if (collision.collider == this->gameScreen->ball) {
 		float speedSq = this->gameScreen->ball.component<VelocityComponent>()->v.lengthSq();
-		printf("Terminal velocity squared: %f\n", speedSq);
+		Debug::p(Debug::PrintSeverity::PRINT_INFO, "Terminal velocity squared: %f\n", speedSq);
 		if (speedSq < 0.00006f || isnan(speedSq)) {
 			this->gameScreen->ball.component<PositionComponent>()->pos = collision.entry;
 			this->gameScreen->setGameState(new IdleGameState(this->gameScreen));

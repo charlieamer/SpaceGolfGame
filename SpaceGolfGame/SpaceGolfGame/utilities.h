@@ -28,6 +28,16 @@ namespace Utilities {
 
 	const std::vector<std::string> explode(const std::string& s, const char& c);
 }
+namespace Debug {
+    enum PrintSeverity {
+        PRINT_SILLY,
+        PRINT_DEBUG,
+        PRINT_INFO,
+        PRINT_WARN,
+        PRINT_ERROR
+    };
+    void p(PrintSeverity severity, const char* format, ...);
+}
 
 namespace FileUtilities {
 	std::string readFile(std::string path);

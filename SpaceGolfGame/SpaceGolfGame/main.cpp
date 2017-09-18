@@ -21,7 +21,7 @@
 
 namespace bx {
     void debugOutput(const char* _out) {
-        std::cout << termcolor::yellow << _out << termcolor::reset;
+        Debug::p(Debug::PrintSeverity::PRINT_SILLY, "%s", _out);
     }
 }
 

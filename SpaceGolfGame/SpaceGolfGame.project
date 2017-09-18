@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Project Name="SpaceGolfGame" Version="10.0.0" InternalType="Console">
+  <Reconciliation>
+    <Regexes/>
+    <Excludepaths/>
+    <Ignorefiles/>
+    <Extensions>
+      <![CDATA[cpp;c;h;hpp;xrc;wxcp;fbp]]>
+    </Extensions>
+    <Topleveldir>../SpaceGolfGame</Topleveldir>
+  </Reconciliation>
+  <Plugins>
+    <Plugin Name="qmake">
+      <![CDATA[00010001N0005Debug000000000000]]>
+    </Plugin>
+  </Plugins>
   <VirtualDirectory Name="3rdparty">
     <VirtualDirectory Name="nvtt">
       <VirtualDirectory Name="bc6h">
@@ -152,11 +166,6 @@
       <File Name="../../bimg/3rdparty/tinyexr/tinyexr.h"/>
     </VirtualDirectory>
   </VirtualDirectory>
-  <Plugins>
-    <Plugin Name="qmake">
-      <![CDATA[00010001N0005Debug000000000000]]>
-    </Plugin>
-  </Plugins>
   <Description/>
   <Dependencies/>
   <VirtualDirectory Name="SpaceGolfGame">
@@ -335,6 +344,7 @@
         <Preprocessor Value="PRIxPTR=\&quot;Ix\&quot;"/>
         <Preprocessor Value="ENTRY_CONFIG_USE_SDL"/>
         <Preprocessor Value="ENTRY_CONFIG_IMPLEMENT_MAIN"/>
+        <Preprocessor Value="_GLIBCXX_USE_C99_STDINT_TR1"/>
       </Compiler>
       <Linker Options="" Required="yes">
         <LibraryPath Value="C:\Users\ACER\Documents\GitHub\cegui-0.8.7\build-sublime\lib"/>
