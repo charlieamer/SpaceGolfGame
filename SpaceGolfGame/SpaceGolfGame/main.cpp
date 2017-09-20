@@ -28,8 +28,11 @@ namespace bx {
 void Application::init(int32_t _argc, const char* const* _argv, uint32_t _width, uint32_t _height) {
 	Args args(_argc, _argv);
 
-	m_width = 1280;
-	m_height = 720;
+	m_width = _width;
+	m_height = _height;
+    m_width = 400;
+    m_height = 800;
+    
 	m_debug = BGFX_DEBUG_TEXT;
 	m_reset = BGFX_RESET_VSYNC;
 
@@ -42,7 +45,7 @@ void Application::init(int32_t _argc, const char* const* _argv, uint32_t _width,
 	// Set view 0 clear state.
 	bgfx::setViewClear(0
 		, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH
-		, 0x222222ff
+		, 0x000000ff
 		, 1.0f
 		, 0
 	);
@@ -63,6 +66,10 @@ void Application::init(int32_t _argc, const char* const* _argv, uint32_t _width,
 
 	CEGUI::Window *gJumpBtnWindow = CEGUI::WindowManager::getSingleton().loadLayoutFromFile("gui/test/test.layout");
 	CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(gJumpBtnWindow);
+//    CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setImage("TaharezLook/MouseArrow");
+
+    didSetInitialResolution = false;
+    entry::setWindowSize({0}, 1000, 1000);
 };
 
 ENTRY_IMPLEMENT_MAIN(Application, "Space golf game", "A golf in space");
@@ -78,8 +85,17 @@ int Application::shutdown()
 }
 
 bool Application::update() {
+    unsigned old_width = m_width, old_height = m_height;
+    if (!didSetInitialResolution) {
+        didSetInitialResolution = true;
+        entry::setWindowSize({0}, m_width, m_height);
+        Debug::p(Debug::PrintSeverity::PRINT_INFO, "Starting in %dx%d resolution", m_width, m_height);
+    }
 	if (!entry::processEvents(m_width, m_height, m_debug, m_reset, &m_mouseState))
 	{
+        if (m_width != old_width || m_height != old_height) {
+            CEGUI::System::getSingleton().notifyDisplaySizeChanged(CEGUI::Sizef(m_width, m_height));
+        }
 		auto start = std::chrono::steady_clock::now();
 		bgfx::setViewRect(0, 0, 0, uint16_t(m_width), uint16_t(m_height));
 		bgfx::touch(0);

@@ -27,7 +27,7 @@ StaticTexturedMeshComponent generateTexturedRectangle(Aabb3f bounds, std::string
 
 	ret.texturePath = texturePath;
 
-	ret.renderState = 0 | BGFX_STATE_DEFAULT | BGFX_STATE_PT_TRISTRIP | BGFX_STATE_BLEND_ALPHA;
+	ret.renderState = BGFX_STATE_RGB_WRITE | BGFX_STATE_ALPHA_WRITE | BGFX_STATE_PT_TRISTRIP | BGFX_STATE_BLEND_ALPHA;
 	
 	return ret;
 }

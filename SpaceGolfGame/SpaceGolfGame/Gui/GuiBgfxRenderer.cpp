@@ -6,6 +6,9 @@
 
 void GuiBgfxRenderer::destroy()
 {
+    destroyAllGeometryBuffers();
+    destroyAllTextures();
+    destroyAllTextureTargets();
 	bgfx::destroy(program);
 	bgfx::destroy(textureUniform);
 }
@@ -14,6 +17,10 @@ void GuiBgfxRenderer::updateScreenSize(int width, int height)
 {
 	screenArea = Rectf(0, 0, width, height);
 	screenSize = Sizef(width, height);
+    if (CEGUI::System::getSingletonPtr()) {
+        CEGUI::RenderTargetEventArgs args(&getDefaultRenderTarget());
+        getDefaultRenderTarget().fireEvent(RenderTarget::EventAreaChanged, args);
+    }
 }
 
 GuiBgfxRenderer::GuiBgfxRenderer(const char* vsFileLocation, const char* fsFileLocation)
@@ -78,7 +85,7 @@ void GuiBgfxRenderer::destroyAllTextureTargets()
 Texture & GuiBgfxRenderer::createTexture(const String & name)
 {
 	GuiBgfxTexture* ret = new GuiBgfxTexture(name);
-	textures[name] = ret;
+	textures[name.c_str()] = ret;
 	return *ret;
 }
 
@@ -99,8 +106,9 @@ void GuiBgfxRenderer::destroyTexture(Texture & texture)
 	destroyTexture(texture.getName());
 }
 
-void GuiBgfxRenderer::destroyTexture(const String & name)
+void GuiBgfxRenderer::destroyTexture(const String & ceguiName)
 {
+    string name = ceguiName.c_str();
 	if (textures.count(name) != 0) {
 		textures[name]->destroy();
 		delete textures[name];
@@ -119,12 +127,12 @@ void GuiBgfxRenderer::destroyAllTextures()
 
 Texture & GuiBgfxRenderer::getTexture(const String & name) const
 {
-	return *textures.at(name);
+	return *textures.at(name.c_str());
 }
 
 bool GuiBgfxRenderer::isTextureDefined(const String & name) const
 {
-	return textures.count(name) > 0;
+	return textures.count(name.c_str()) > 0;
 }
 
 void GuiBgfxRenderer::beginRendering()
@@ -146,7 +154,7 @@ void GuiBgfxRenderer::endRendering()
 
 void GuiBgfxRenderer::setDisplaySize(const Sizef & size)
 {
-	CEGUI_THROW(RendererException("Set display size not implemented"));
+    updateScreenSize(size.d_width, size.d_height);
 }
 
 const Vector2f & GuiBgfxRenderer::getDisplayDPI() const

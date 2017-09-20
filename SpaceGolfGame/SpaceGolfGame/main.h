@@ -27,6 +27,7 @@ public:
 	uint32_t m_reset;
 	float m_fps;
 	Aabb3f screenExtents;
+    bool didSetInitialResolution;
 
 	entry::MouseState m_mouseState;
     

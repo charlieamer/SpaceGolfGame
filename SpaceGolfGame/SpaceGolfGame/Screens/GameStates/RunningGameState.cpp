@@ -32,7 +32,9 @@ void RunningGameState::receive(const PlanetCollisionEvent & collision)
 		float speedSq = this->gameScreen->ball.component<VelocityComponent>()->v.lengthSq();
 		Debug::p(Debug::PrintSeverity::PRINT_INFO, "Terminal velocity squared: %f\n", speedSq);
 		if (speedSq < 0.00006f || isnan(speedSq)) {
-			this->gameScreen->ball.component<PositionComponent>()->pos = collision.entry;
+            Vector2f planet = collision.planet.component<PositionComponent>()->pos;
+            Vector2f diff = (collision.entry - planet);
+			this->gameScreen->ball.component<PositionComponent>()->pos = diff * 1.001 + planet;
 			this->gameScreen->setGameState(new IdleGameState(this->gameScreen));
 		}
 	}

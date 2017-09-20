@@ -13,8 +13,8 @@
         <string>0.0000005</string>
       </Property>
     </CustomProperties>
-    <ContentRootFolder>C:\Users\Ejuba\Desktop\SpaceGolf\Assets</ContentRootFolder>
-    <NextItemNumber>14</NextItemNumber>
+    <ContentRootFolder>C:\Users\ACER\Documents\GitHub\SpaceGolfGame\SpaceGolfGame\Assets</ContentRootFolder>
+    <NextItemNumber>17</NextItemNumber>
     <CameraPosition>
       <X>0</X>
       <Y>25.0000477</Y>
@@ -234,20 +234,20 @@
         </ScrollSpeed>
       </LayerProperties>
       <Editors>
-        <Editor ClrTypeOfEditor="4" ClrTypeOfProperties="5" Name="Texture_14">
+        <Editor ClrTypeOfEditor="4" ClrTypeOfProperties="5" Name="Texture_15">
           <TextureItemProperties>
-            <Name>Texture_14</Name>
-            <Id>1499531596</Id>
+            <Name>Texture_15</Name>
+            <Id>1505742739</Id>
             <Visible>true</Visible>
             <Position>
-              <X>-384</X>
-              <Y>11.000061</Y>
+              <X>-372</X>
+              <Y>547</Y>
             </Position>
             <CustomProperties />
             <Rotation>0</Rotation>
             <Scale>
-              <X>0.2116509</X>
-              <Y>0.2116509</Y>
+              <X>0.2657694</X>
+              <Y>0.2657694</Y>
             </Scale>
             <TintColor>
               <R>255</R>

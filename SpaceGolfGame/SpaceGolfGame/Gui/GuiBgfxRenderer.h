@@ -4,6 +4,7 @@
 #include <map>
 #include <set>
 #include <vector>
+#include <string>
 using namespace std;
 #include "GuiBgfxGeometry.h"
 #include "GuiBgfxTexture.h"
@@ -13,7 +14,7 @@ class GuiBgfxRenderer : public CEGUI::Renderer
 {
 	CEGUI::Rectf screenArea;
 	CEGUI::Sizef screenSize;
-	map<CEGUI::String, GuiBgfxTexture*> textures;
+	map<std::string, GuiBgfxTexture*> textures;
 	set<GuiBgfxGeometry*> geometries;
 	vector<GuiBgfxRenderTarget*> targets;
 	uint8_t currentPass;

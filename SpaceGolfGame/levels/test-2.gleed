@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Level>
+  <LevelProperties>
+    <Name>Test level</Name>
+    <Id>0</Id>
+    <Visible>true</Visible>
+    <Position>
+      <X>0</X>
+      <Y>0</Y>
+    </Position>
+    <CustomProperties>
+      <Property Name="Gravity" Type="string" Description="">
+        <string>0.0000005</string>
+      </Property>
+    </CustomProperties>
+    <ContentRootFolder>C:\Users\ACER\Documents\GitHub\SpaceGolfGame\SpaceGolfGame\Assets</ContentRootFolder>
+    <NextItemNumber>24</NextItemNumber>
+    <CameraPosition>
+      <X>0</X>
+      <Y>41.666748</Y>
+    </CameraPosition>
+    <Version>2.0.0.0</Version>
+  </LevelProperties>
+  <Layers>
+    <Layer Name="Objectives">
+      <LayerProperties>
+        <Name>Objectives</Name>
+        <Id>0</Id>
+        <Visible>true</Visible>
+        <Position>
+          <X>0</X>
+          <Y>0</Y>
+        </Position>
+        <CustomProperties />
+        <ScrollSpeed>
+          <X>1</X>
+          <Y>1</Y>
+        </ScrollSpeed>
+      </LayerProperties>
+      <Editors>
+        <Editor ClrTypeOfEditor="0" ClrTypeOfProperties="1" Name="Bounds">
+          <RectangleItemProperties>
+            <Name>Bounds</Name>
+            <Id>1499429997</Id>
+            <Visible>true</Visible>
+            <Position>
+              <X>-1006</X>
+              <Y>-1000</Y>
+            </Position>
+            <CustomProperties />
+            <Width>2000</Width>
+            <Height>2000</Height>
+            <FillColor>
+              <R>0</R>
+              <G>0</G>
+              <B>0</B>
+              <A>239</A>
+              <PackedValue>4009754624</PackedValue>
+            </FillColor>
+            <Rotation>0</Rotation>
+          </RectangleItemProperties>
+        </Editor>
+        <Editor ClrTypeOfEditor="2" ClrTypeOfProperties="3" Name="Ball">
+          <CircleItemProperties>
+            <Name>Ball</Name>
+            <Id>1499430545</Id>
+            <Visible>true</Visible>
+            <Position>
+              <X>-807.25</X>
+              <Y>698.5</Y>
+            </Position>
+            <CustomProperties>
+              <Property Name="Mass" Type="string" Description="">
+                <string>10</string>
+              </Property>
+              <Property Name="PlanetCollision" Type="string" Description="">
+                <string>0.75</string>
+              </Property>
+              <Property Name="Mesh" Type="string" Description="">
+                <string>10</string>
+              </Property>
+              <Property Name="ParticleEmitter" Type="string" Description="">
+                <string>1 0.3 0.001 100 5</string>
+              </Property>
+              <Property Name="Gravity" Type="string" Description="">
+                <string />
+              </Property>
+            </CustomProperties>
+            <Radius>10</Radius>
+            <FillColor>
+              <R>255</R>
+              <G>255</G>
+              <B>255</B>
+              <A>255</A>
+              <PackedValue>4294967295</PackedValue>
+            </FillColor>
+          </CircleItemProperties>
+        </Editor>
+        <Editor ClrTypeOfEditor="2" ClrTypeOfProperties="3" Name="Finish">
+          <CircleItemProperties>
+            <Name>Finish</Name>
+            <Id>1499430607</Id>
+            <Visible>true</Visible>
+            <Position>
+              <X>792.25</X>
+              <Y>268.5</Y>
+            </Position>
+            <CustomProperties>
+              <Property Name="Mass" Type="string" Description="">
+                <string>20</string>
+              </Property>
+            </CustomProperties>
+            <Radius>41</Radius>
+            <FillColor>
+              <R>255</R>
+              <G>255</G>
+              <B>0</B>
+              <A>255</A>
+              <PackedValue>4278255615</PackedValue>
+            </FillColor>
+          </CircleItemProperties>
+        </Editor>
+      </Editors>
+    </Layer>
+    <Layer Name="Planets">
+      <LayerProperties>
+        <Name>Planets</Name>
+        <Id>0</Id>
+        <Visible>true</Visible>
+        <Position>
+          <X>0</X>
+          <Y>0</Y>
+        </Position>
+        <CustomProperties />
+        <ScrollSpeed>
+          <X>1</X>
+          <Y>1</Y>
+        </ScrollSpeed>
+      </LayerProperties>
+      <Editors>
+        <Editor ClrTypeOfEditor="2" ClrTypeOfProperties="3" Name="Circle_3">
+          <CircleItemProperties>
+            <Name>Circle_3</Name>
+            <Id>1499430294</Id>
+            <Visible>true</Visible>
+            <Position>
+              <X>129.25</X>
+              <Y>424.499878</Y>
+            </Position>
+            <CustomProperties>
+              <Property Name="Mass" Type="string" Description="30">
+                <string>30</string>
+              </Property>
+            </CustomProperties>
+            <Radius>205</Radius>
+            <FillColor>
+              <R>0</R>
+              <G>192</G>
+              <B>0</B>
+              <A>255</A>
+              <PackedValue>4278239232</PackedValue>
+            </FillColor>
+          </CircleItemProperties>
+        </Editor>
+        <Editor ClrTypeOfEditor="2" ClrTypeOfProperties="3" Name="Circle_4">
+          <CircleItemProperties>
+            <Name>Circle_4</Name>
+            <Id>1499430297</Id>
+            <Visible>true</Visible>
+            <Position>
+              <X>453.25</X>
+              <Y>-303.000061</Y>
+            </Position>
+            <CustomProperties>
+              <Property Name="Mass" Type="string" Description="50">
+                <string>40</string>
+              </Property>
+            </CustomProperties>
+            <Radius>226</Radius>
+            <FillColor>
+              <R>0</R>
+              <G>192</G>
+              <B>0</B>
+              <A>255</A>
+              <PackedValue>4278239232</PackedValue>
+            </FillColor>
+          </CircleItemProperties>
+        </Editor>
+        <Editor ClrTypeOfEditor="2" ClrTypeOfProperties="3" Name="Circle_5">
+          <CircleItemProperties>
+            <Name>Circle_5</Name>
+            <Id>1499430299</Id>
+            <Visible>true</Visible>
+            <Position>
+              <X>-420.25</X>
+              <Y>132.499939</Y>
+            </Position>
+            <CustomProperties>
+              <Property Name="Mass" Type="string" Description="">
+                <string>15</string>
+              </Property>
+            </CustomProperties>
+            <Radius>111</Radius>
+            <FillColor>
+              <R>0</R>
+              <G>192</G>
+              <B>0</B>
+              <A>255</A>
+              <PackedValue>4278239232</PackedValue>
+            </FillColor>
+          </CircleItemProperties>
+        </Editor>
+      </Editors>
+    </Layer>
+    <Layer Name="Textures">
+      <LayerProperties>
+        <Name>Textures</Name>
+        <Id>0</Id>
+        <Visible>true</Visible>
+        <Position>
+          <X>0</X>
+          <Y>0</Y>
+        </Position>
+        <CustomProperties />
+        <ScrollSpeed>
+          <X>1</X>
+          <Y>1</Y>
+        </ScrollSpeed>
+      </LayerProperties>
+      <Editors>
+        <Editor ClrTypeOfEditor="4" ClrTypeOfProperties="5" Name="Texture_24">
+          <TextureItemProperties>
+            <Name>Texture_24</Name>
+            <Id>1505743720</Id>
+            <Visible>true</Visible>
+            <Position>
+              <X>-1492.75</X>
+              <Y>-1133.49988</Y>
+            </Position>
+            <CustomProperties />
+            <Rotation>0</Rotation>
+            <Scale>
+              <X>1.32883775</X>
+              <Y>1.32883775</Y>
+            </Scale>
+            <TintColor>
+              <R>255</R>
+              <G>255</G>
+              <B>255</B>
+              <A>255</A>
+              <PackedValue>4294967295</PackedValue>
+            </TintColor>
+            <FlipHorizontally>false</FlipHorizontally>
+            <FlipVertically>false</FlipVertically>
+            <IsTemplate>false</IsTemplate>
+            <TexturePathRelativeToContentRoot>Planets\sun.png</TexturePathRelativeToContentRoot>
+            <Origin>
+              <X>1000</X>
+              <Y>1000</Y>
+            </Origin>
+          </TextureItemProperties>
+        </Editor>
+        <Editor ClrTypeOfEditor="4" ClrTypeOfProperties="5" Name="Texture_19">
+          <TextureItemProperties>
+            <Name>Texture_19</Name>
+            <Id>1505743549</Id>
+            <Visible>true</Visible>
+            <Position>
+              <X>-421.333374</X>
+              <Y>133.666687</Y>
+            </Position>
+            <CustomProperties />
+            <Rotation>0</Rotation>
+            <Scale>
+              <X>0.36253494</X>
+              <Y>0.36253494</Y>
+            </Scale>
+            <TintColor>
+              <R>255</R>
+              <G>255</G>
+              <B>255</B>
+              <A>255</A>
+              <PackedValue>4294967295</PackedValue>
+            </TintColor>
+            <FlipHorizontally>false</FlipHorizontally>
+            <FlipVertically>false</FlipVertically>
+            <IsTemplate>false</IsTemplate>
+            <TexturePathRelativeToContentRoot>Planets\Untitled-3.1.png</TexturePathRelativeToContentRoot>
+            <Origin>
+              <X>600</X>
+              <Y>500</Y>
+            </Origin>
+          </TextureItemProperties>
+        </Editor>
+        <Editor ClrTypeOfEditor="4" ClrTypeOfProperties="5" Name="Texture_20">
+          <TextureItemProperties>
+            <Name>Texture_20</Name>
+            <Id>1505743571</Id>
+            <Visible>true</Visible>
+            <Position>
+              <X>131.333313</X>
+              <Y>425.333374</Y>
+            </Position>
+            <CustomProperties />
+            <Rotation>0</Rotation>
+            <Scale>
+              <X>0.832335532</X>
+              <Y>0.832335532</Y>
+            </Scale>
+            <TintColor>
+              <R>255</R>
+              <G>255</G>
+              <B>255</B>
+              <A>255</A>
+              <PackedValue>4294967295</PackedValue>
+            </TintColor>
+            <FlipHorizontally>false</FlipHorizontally>
+            <FlipVertically>false</FlipVertically>
+            <IsTemplate>false</IsTemplate>
+            <TexturePathRelativeToContentRoot>Planets\Untitled-4.png</TexturePathRelativeToContentRoot>
+            <Origin>
+              <X>488</X>
+              <Y>427</Y>
+            </Origin>
+          </TextureItemProperties>
+        </Editor>
+        <Editor ClrTypeOfEditor="4" ClrTypeOfProperties="5" Name="Texture_23">
+          <TextureItemProperties>
+            <Name>Texture_23</Name>
+            <Id>1505743688</Id>
+            <Visible>true</Visible>
+            <Position>
+              <X>429.75</X>
+              <Y>-283.999939</Y>
+            </Position>
+            <CustomProperties />
+            <Rotation>0</Rotation>
+            <Scale>
+              <X>0.9532945</X>
+              <Y>0.9532945</Y>
+            </Scale>
+            <TintColor>
+              <R>255</R>
+              <G>255</G>
+              <B>255</B>
+              <A>255</A>
+              <PackedValue>4294967295</PackedValue>
+            </TintColor>
+            <FlipHorizontally>false</FlipHorizontally>
+            <FlipVertically>false</FlipVertically>
+            <IsTemplate>false</IsTemplate>
+            <TexturePathRelativeToContentRoot>Planets\Untitled-5.png</TexturePathRelativeToContentRoot>
+            <Origin>
+              <X>488</X>
+              <Y>427</Y>
+            </Origin>
+          </TextureItemProperties>
+        </Editor>
+      </Editors>
+    </Layer>
+  </Layers>
+  <TypeMap>
+    <Type Name="Gleed2D.Plugins.RectangleItemEditor, Gleed2D.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Index="0" />
+    <Type Name="Gleed2D.InGame.RectangleItemProperties, Gleed2D.InGame, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Index="1" />
+    <Type Name="Gleed2D.Plugins.CircleItemEditor, Gleed2D.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Index="2" />
+    <Type Name="Gleed2D.InGame.CircleItemProperties, Gleed2D.InGame, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Index="3" />
+    <Type Name="Gleed2D.Plugins.TextureItemEditor, Gleed2D.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Index="4" />
+    <Type Name="Gleed2D.InGame.TextureItemProperties, Gleed2D.InGame, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Index="5" />
+  </TypeMap>
+</Level>
