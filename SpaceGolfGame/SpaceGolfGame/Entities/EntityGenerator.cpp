@@ -14,7 +14,7 @@
 
 void loadComponents(entityx::Entity entity, GleedTexture & texture) {
 	entity.assign_from_copy<MeshComponent>(
-		generateTexturedRectangle(
+		generateTexturedRectangleMesh(
 			GleedUtilities::textureToAABB(texture), 
 			"Assets/" + texture.path,
 			Utilities::abgr(texture.tint.r, texture.tint.g, texture.tint.b, texture.tint.a)));

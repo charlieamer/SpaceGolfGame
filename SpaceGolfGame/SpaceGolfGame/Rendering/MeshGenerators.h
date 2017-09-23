@@ -20,7 +20,9 @@ void generateCircleVertices(uint32_t color, int vertices, std::vector<VertexType
 	}
 }
 
+void generateTexturedRectangleVertices(uint32_t color, Aabb3f bounds, std::vector<Pos2fColorTextureVertex> &verticesResult, std::vector<uint16_t> &indicesResult);
+
 MeshComponent generateSolidCircleMesh(uint32_t color, int vertices = 10);
 MeshComponent generatePoint(uint32_t color);
 MeshComponent generatePoint(uint32_t color, uint64_t renderState);
-MeshComponent generateTexturedRectangle(Aabb3f bounds, std::string texturePath, uint32_t tint);
+MeshComponent generateTexturedRectangleMesh(Aabb3f bounds, std::string texturePath, uint32_t tint);
