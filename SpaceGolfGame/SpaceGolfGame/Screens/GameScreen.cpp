@@ -7,6 +7,7 @@
 #include "../Systems/GravitySystem.h"
 #include "../Systems/PlanetCollisionSystem.h"
 #include "../Systems/ParticleUpdateSystem.h"
+#include "../Systems/CleanupSystem.h"
 #include "../Entities/EntityGenerator.h"
 #include "../Rendering/MeshGenerators.h"
 #include "../Components/MeshTransformCacheComponent.h"
@@ -47,7 +48,9 @@ GameScreen::GameScreen(Application* app, rapidxml::xml_document<>& document) : B
 	this->systems.add<VelocitySystem>();
 	this->systems.add<BounceSystem>(extents);
 	this->systems.add<PlanetCollisionSystem>();
-	this->systems.add<ParticleUpdateSystem>();
+    this->systems.add<ParticleUpdateSystem>();
+    this->systems.add<CleanupSystem>();
+    
 	this->systems.configure();
 
 	this->ball = entities.create();

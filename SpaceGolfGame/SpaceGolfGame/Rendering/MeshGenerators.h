@@ -1,32 +1,26 @@
 #pragma once
-#include "../Components/StaticMeshComponent.h"
-#include "../Components/DynamicMeshComponent.h"
-#include "../Rendering/RenderingData.h"
+
+#include "../Components/MeshComponent.h"
 #include <bx/math.h>
 
-template<typename T, typename R>
-R generateCircleMesh(uint32_t color, int vertices = 10)
+template<typename VertexType>
+void generateCircleVertices(uint32_t color, int vertices, std::vector<VertexType> &verticesResult, std::vector<uint16_t> &indicesResult)
 {
-	R ret;
 	double angle = 0;
 
 	for (int i = 0; i < vertices / 2; i++) {
-		ret.vertices.push_back(T({ (float)cos(angle), (float)sin(angle) }, color));
-		ret.vertices.push_back(T({ (float)cos(angle),-(float)sin(angle) }, color));
+		verticesResult.push_back(VertexType({ (float)cos(angle), (float)sin(angle) }, color));
+		verticesResult.push_back(VertexType({ (float)cos(angle),-(float)sin(angle) }, color));
 		angle += bx::kPi2 / (float)vertices;
 	}
-	ret.vertices.push_back(T({ -1.0f, 0.0f }, color));
+	verticesResult.push_back(VertexType({ -1.0f, 0.0f }, color));
 
-	for (unsigned i = 0; i < ret.vertices.size(); i++) {
-		ret.indices.push_back(i);
+	for (unsigned i = 0; i < verticesResult.size(); i++) {
+		indicesResult.push_back(i);
 	}
-
-	ret.renderState = 0
-		| BGFX_STATE_DEFAULT
-		| BGFX_STATE_PT_TRISTRIP;
-
-	return ret;
 }
 
-DynamicMeshComponent generatePoint(uint32_t color);
-StaticTexturedMeshComponent generateTexturedRectangle(Aabb3f bounds, std::string texturePath, uint32_t tint);
+MeshComponent generateSolidCircleMesh(uint32_t color, int vertices = 10);
+MeshComponent generatePoint(uint32_t color);
+MeshComponent generatePoint(uint32_t color, uint64_t renderState);
+MeshComponent generateTexturedRectangle(Aabb3f bounds, std::string texturePath, uint32_t tint);

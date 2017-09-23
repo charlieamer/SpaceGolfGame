@@ -205,9 +205,7 @@
     <File Name="SpaceGolfGame/utilities.h"/>
     <VirtualDirectory Name="Components">
       <File Name="SpaceGolfGame/Components/AABBCacheComponent.h"/>
-      <File Name="SpaceGolfGame/Components/BaseMeshComponent.h"/>
       <File Name="SpaceGolfGame/Components/CircleRadiusComponent.h"/>
-      <File Name="SpaceGolfGame/Components/DynamicMeshComponent.h"/>
       <File Name="SpaceGolfGame/Components/GravityComponent.h"/>
       <File Name="SpaceGolfGame/Components/MassComponent.h"/>
       <File Name="SpaceGolfGame/Components/MeshTransformCacheComponent.h"/>
@@ -216,8 +214,9 @@
       <File Name="SpaceGolfGame/Components/PlanetCollisionComponent.h"/>
       <File Name="SpaceGolfGame/Components/PlanetComponent.h"/>
       <File Name="SpaceGolfGame/Components/PositionComponent.h"/>
-      <File Name="SpaceGolfGame/Components/StaticMeshComponent.h"/>
       <File Name="SpaceGolfGame/Components/VelocityComponent.h"/>
+      <File Name="SpaceGolfGame/Components/MeshComponent.h"/>
+      <File Name="SpaceGolfGame/Components/AimLineComponent.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="Entities">
       <File Name="SpaceGolfGame/Entities/EntityGenerator.cpp"/>
@@ -265,6 +264,10 @@
       <File Name="SpaceGolfGame/Rendering/RenderTexture.h"/>
       <File Name="SpaceGolfGame/Rendering/Shader.cpp"/>
       <File Name="SpaceGolfGame/Rendering/Shader.h"/>
+      <File Name="SpaceGolfGame/Rendering/RenderingBackend.h"/>
+      <File Name="SpaceGolfGame/Rendering/RenderManager.h"/>
+      <File Name="SpaceGolfGame/Rendering/RenderManager.cpp"/>
+      <File Name="SpaceGolfGame/Rendering/RenderingData.cpp"/>
     </VirtualDirectory>
     <VirtualDirectory Name="Systems">
       <File Name="SpaceGolfGame/Systems/AABBCacheSystem.cpp"/>
@@ -283,6 +286,8 @@
       <File Name="SpaceGolfGame/Systems/PlanetCollisionSystem.h"/>
       <File Name="SpaceGolfGame/Systems/VelocitySystem.cpp"/>
       <File Name="SpaceGolfGame/Systems/VelocitySystem.h"/>
+      <File Name="SpaceGolfGame/Systems/CleanupSystem.h"/>
+      <File Name="SpaceGolfGame/Systems/CleanupSystem.cpp"/>
     </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="bgfx">
@@ -317,7 +322,7 @@
       <ResourceCompiler Options=""/>
     </GlobalSettings>
     <Configuration Name="Debug" CompilerType="MinGW ( MinGW )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
-      <Compiler Options="-g;-Os;-O0;-Wall;-std=gnu++11" C_Options="" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+      <Compiler Options="-g;-Wall;-std=gnu++11" C_Options="" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
         <IncludePath Value="."/>
         <IncludePath Value="C:\Users\ACER\Documents\GitHub\bx\include"/>
         <IncludePath Value="C:\Users\ACER\Documents\GitHub\bimg\include"/>

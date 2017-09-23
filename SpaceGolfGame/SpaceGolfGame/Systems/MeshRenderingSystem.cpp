@@ -7,14 +7,14 @@
 #include <bgfx_utils.h>
 #include <entityx/Event.h>
 
-MeshRenderingSystem::MeshRenderingSystem() : colorShader("vs_only_color", "fs_only_color"), texturedShader("vs_textured", "fs_textured")
+MeshRenderingSystem::MeshRenderingSystem()
 {
-	texturedShader.addUniform("s_texture0", bgfx::UniformType::Int1);
 }
 
 
 MeshRenderingSystem::~MeshRenderingSystem()
 {
+    RenderManager::get().destroy();
 }
 
 Vector3f MeshRenderingSystem::getScale(entityx::Entity entity)
@@ -64,27 +64,10 @@ void MeshRenderingSystem::update(entityx::EntityManager & entities, entityx::Eve
 	int drawn = 0;
 	int nonStatic = 0;
 	int notCached = 0;
-	entities.each<StaticMeshComponent>([this, &drawn, &nonStatic, &notCached](entityx::Entity entity, StaticMeshComponent& mesh) {
+	entities.each<MeshComponent>([this, &drawn, &nonStatic, &notCached](entityx::Entity entity, MeshComponent& mesh) {
 		drawn++;
-		this->prepareStaticBuffers(mesh, this->vertexBufferCache);
 		this->setTransform(entity, nonStatic, notCached);
-		this->colorShader.use();
-	});
-	entities.each<StaticTexturedMeshComponent>([this, &drawn, &nonStatic, &notCached](entityx::Entity entity, StaticTexturedMeshComponent& mesh) {
-		drawn++;
-		this->prepareStaticBuffers(mesh, this->vertexTexturedBufferCache);
-		if (this->textureCache.count(mesh.texturePath) == 0) {
-			this->textureCache[mesh.texturePath] = RenderTexture(mesh.texturePath);
-		}
-		this->textureCache[mesh.texturePath].use(this->texturedShader.getUniform("s_texture0"));
-		this->setTransform(entity, nonStatic, notCached);
-		this->texturedShader.use();
-	});
-	entities.each<DynamicMeshComponent>([this, &drawn, &nonStatic, &notCached](entityx::Entity entity, DynamicMeshComponent& mesh) {
-		drawn++;
-		this->prepareDynamicBuffers(mesh);
-		this->setTransform(entity, nonStatic, notCached);
-		this->colorShader.use();
+        mesh.backend->render();
 	});
 	bgfx::dbgTextPrintf(0, 3, 0xf, "Entities: %d", entities.size());
 	bgfx::dbgTextPrintf(0, 4, 0xf, "Drawn entities: %d", drawn);

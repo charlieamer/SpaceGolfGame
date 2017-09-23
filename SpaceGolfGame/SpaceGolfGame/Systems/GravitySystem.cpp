@@ -4,7 +4,10 @@
 #include "../Components/PositionComponent.h"
 #include "../Components/PlanetComponent.h"
 #include "../Components/MassComponent.h"
-#include "../Components/DynamicMeshComponent.h"
+#include "../Components/MeshComponent.h"
+#include "../Components/AimLineComponent.h"
+#include "../utilities.h"
+using namespace Debug;
 
 GravitySystem::GravitySystem(float constant) : constant(constant)
 {
@@ -18,22 +21,25 @@ GravitySystem::~GravitySystem()
 void GravitySystem::update(entityx::EntityManager & entities, entityx::EventManager & events, entityx::TimeDelta dt)
 {
 	this->populatePlanets(entities);
-	entities.each<GravityComponent, VelocityComponent, PositionComponent, MassComponent>([this, &entities]
+	entities.each<GravityComponent, VelocityComponent, PositionComponent, MassComponent>([this]
 			(entityx::Entity entity, GravityComponent &gravity, VelocityComponent &velocity, PositionComponent& position, MassComponent& m1) {
 		Vector2f force = GravitySystem::forceAtPosition(position.pos);
 		velocity.v += force * this->constant * m1.m;
 	});
-	entities.each<GravityComponent, VelocityComponent, MassComponent, DynamicMeshComponent>([this, &entities]
-			(entityx::Entity entity, GravityComponent &gravity, VelocityComponent &velocity, MassComponent &mass, DynamicMeshComponent &mesh) {
-		Vector2f tempVelocity = velocity.v;
-		Vector2f tempPosition = Vector2f(mesh.vertices[0].m_x, mesh.vertices[0].m_y);
-		for (unsigned i = 1; i < mesh.indices.size(); i++) {
-			Vector2f force = GravitySystem::forceAtPosition(tempPosition);
-			tempVelocity += force * this->constant * mass.m;
-			tempPosition += tempVelocity;
-			mesh.vertices[i] = Pos2fColorVertex(tempPosition);
-		}
-		mesh.verticesValid = false;
+	entities.each<GravityComponent, VelocityComponent, MassComponent, MeshComponent, AimLineComponent>([this]
+			(entityx::Entity entity, GravityComponent &gravity, VelocityComponent &velocity, MassComponent &mass, MeshComponent &mesh, AimLineComponent &aimLine) {
+        auto backend = (SolidRenderingBackend<bgfx::IndexBufferHandle, bgfx::DynamicVertexBufferHandle>*)(mesh.getBackend());
+        if (backend) {
+            Vector2f tempVelocity = velocity.v;
+            Vector2f tempPosition = Vector2f(backend->vertices[0].m_x, backend->vertices[0].m_y);
+            for (unsigned i = 1; i < backend->indices.size(); i++) {
+                Vector2f force = GravitySystem::forceAtPosition(tempPosition);
+                tempVelocity += force * this->constant * mass.m;
+                tempPosition += tempVelocity;
+                backend->vertices[i] = Pos2fColorVertex(tempPosition);
+            }
+            backend->updateVertices();
+        }
 	});
 }
 

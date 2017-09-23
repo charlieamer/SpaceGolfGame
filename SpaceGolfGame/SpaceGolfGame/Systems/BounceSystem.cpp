@@ -63,6 +63,8 @@ void BounceSystem::receive(const PlanetCollisionEvent & collision)
 	Vector2f vNorm = v;
 	vNorm.normalize();
 	p = collision.entry + vNorm * (v.length() - (collision.entry - p).length());
+    
+    float &damping = collision.collider.component<PlanetCollisionComponent>()->damping;
 
-	v *= collision.collider.component<PlanetCollisionComponent>()->damping;
+	v *= damping;
 }

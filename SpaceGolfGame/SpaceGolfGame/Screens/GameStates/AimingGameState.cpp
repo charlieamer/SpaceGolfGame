@@ -6,6 +6,7 @@
 #include "../../Components/VelocityComponent.h"
 #include "../../Components/MassComponent.h"
 #include "../../Components/GravityComponent.h"
+#include "../../Components/AimLineComponent.h"
 
 Vector2f AimingGameState::calculateDirection(Vector2i mouse)
 {
@@ -29,15 +30,19 @@ void AimingGameState::activate()
 {
 	this->aimingEntity = this->gameScreen->entities.create();
 
-	this->mesh = this->aimingEntity.assign<DynamicMeshComponent>();
+    std::vector<Pos2fColorVertex> vertices;
+    std::vector<uint16_t> indices;
+    uint64_t renderState = 0 | BGFX_STATE_DEFAULT | BGFX_STATE_PT_LINESTRIP;
 	for (int i = 0; i < 50; i++) {
-		this->mesh->vertices.push_back(Pos2fColorVertex(ballPos));
-		this->mesh->indices.push_back(i);
+		vertices.push_back(Pos2fColorVertex(ballPos));
+		indices.push_back(i);
 	}
-	this->mesh->renderState = 0 | BGFX_STATE_DEFAULT | BGFX_STATE_PT_LINESTRIP;
+    auto backend = new SolidRenderingBackend<bgfx::IndexBufferHandle, bgfx::DynamicVertexBufferHandle>(indices, vertices, renderState);
+	this->mesh = this->aimingEntity.assign<MeshComponent>((RenderingBackendBase*)backend);
 
 	this->aimingEntity.assign<MeshTransformCacheComponent>();
 	this->aimingEntity.assign<VelocityComponent>(0, 0);
+    this->aimingEntity.assign<AimLineComponent>();
 	this->aimingEntity.assign_from_copy<MassComponent>(*this->gameScreen->ball.component<MassComponent>());
 	this->aimingEntity.assign_from_copy<GravityComponent>(*this->gameScreen->ball.component<GravityComponent>());
 	

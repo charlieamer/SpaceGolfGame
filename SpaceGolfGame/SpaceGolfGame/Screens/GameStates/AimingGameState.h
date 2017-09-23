@@ -1,7 +1,7 @@
 #pragma once
 #include "PlayingBaseGameState.h"
 #include <entityx/Entity.h>
-#include "../../Components/DynamicMeshComponent.h"
+#include "../../Components/MeshComponent.h"
 #include "../../Events/MouseEvents.h"
 #include <vmath.h>
 
@@ -10,7 +10,7 @@ class AimingGameState :
 	public entityx::Receiver<AimingGameState>
 {
 	entityx::Entity aimingEntity;
-	entityx::ComponentHandle<DynamicMeshComponent> mesh;
+	entityx::ComponentHandle<MeshComponent> mesh;
 
 	Vector2i startingMousePos;
 	Vector2f &ballPos;

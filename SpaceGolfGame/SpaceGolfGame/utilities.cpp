@@ -211,11 +211,11 @@ Aabb3f GleedUtilities::textureToAABB(const GleedTexture & texture)
 }
 void Debug::p(Debug::PrintSeverity severity, const char* format, ...)
 {
+    char out[8192];
     va_list argList;
     va_start(argList, format);
-    
-    char out[8192];
     vsprintf(out, format, argList);
+    va_end(argList);
     static bx::Mutex print_mutex;
     print_mutex.lock();
     std::cout << "[";
@@ -239,6 +239,4 @@ void Debug::p(Debug::PrintSeverity severity, const char* format, ...)
         std::cout << std::endl;
     }
     print_mutex.unlock();
-    
-    va_end(argList);
 }

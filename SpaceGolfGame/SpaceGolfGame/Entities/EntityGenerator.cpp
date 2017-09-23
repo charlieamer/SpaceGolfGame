@@ -13,7 +13,7 @@
 #include "../Rendering/MeshGenerators.h"
 
 void loadComponents(entityx::Entity entity, GleedTexture & texture) {
-	entity.assign_from_copy<StaticTexturedMeshComponent>(
+	entity.assign_from_copy<MeshComponent>(
 		generateTexturedRectangle(
 			GleedUtilities::textureToAABB(texture), 
 			"Assets/" + texture.path,
@@ -26,9 +26,8 @@ void loadComponents(entityx::Entity entity, GleedCircle & circle)
 	entity.assign<CircleRadiusComponent>(circle.radius / 1000.0f);
 	if (circle.properties.count("Mesh")) {
 		int vertexCount = std::stoi(circle.properties["Mesh"]);
-		entity.assign_from_copy<StaticMeshComponent>(
-			generateCircleMesh<Pos2fColorVertex, StaticMeshComponent>
-				(Utilities::abgr(circle.color.r, circle.color.g, circle.color.b, circle.color.a), vertexCount));
+		entity.assign_from_copy<MeshComponent>(
+			generateSolidCircleMesh(Utilities::abgr(circle.color.r, circle.color.g, circle.color.b, circle.color.a), vertexCount));
 	}
 	loadComponents(entity, (GleedBaseObject&)circle);
 }
