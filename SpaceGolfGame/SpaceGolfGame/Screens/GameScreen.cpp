@@ -8,6 +8,7 @@
 #include "../Systems/PlanetCollisionSystem.h"
 #include "../Systems/ParticleUpdateSystem.h"
 #include "../Systems/CleanupSystem.h"
+#include "../Systems/FollowSystem.h"
 #include "../Entities/EntityGenerator.h"
 #include "../Rendering/MeshGenerators.h"
 #include "../Components/MeshTransformCacheComponent.h"
@@ -18,6 +19,7 @@
 #include "../Components/PlanetComponent.h"
 #include "../Components/PlanetCollisionComponent.h"
 #include "../Components/ParticleEmitterComponent.h"
+#include "../Components/FollowComponent.h"
 #include "../Events/MouseEvents.h"
 
 #include "GameStates/IdleGameState.h"
@@ -50,11 +52,14 @@ GameScreen::GameScreen(Application* app, rapidxml::xml_document<>& document) : B
 	this->systems.add<PlanetCollisionSystem>();
     this->systems.add<ParticleUpdateSystem>();
     this->systems.add<CleanupSystem>();
+    this->systems.add<FollowSystem>();
     
 	this->systems.configure();
 
 	this->ball = entities.create();
 	loadComponents(this->ball, ballCircle);
+    
+    camera.assign<FollowComponent>(this->ball, 0.03);
 
 	for (auto& planet : planetsLayer.objects) {
 		GleedCircle& circle = *static_cast<GleedCircle*>(&*planet);
@@ -68,30 +73,7 @@ GameScreen::GameScreen(Application* app, rapidxml::xml_document<>& document) : B
 		entityx::Entity textureEntity = entities.create();
 		loadComponents(textureEntity, texture);
 	}
-
-	/*
-	this->ball = CreateCircleEntity(this->entities, Vector2f(0.5f, 0), 0.01f);
-	ball.assign_from_copy(generateCircleMesh(0xffaa0000, 10));
-	ball.assign<MeshTransformCacheComponent>();
-	ball.assign<AABBCacheComponent>();
-	ball.assign<GravityComponent>();
-	ball.assign<MassComponent>(1);
-	ball.assign<PlanetCollisionComponent>(true, true, 0.8f);
-	ball.assign<ParticleEmitterComponent>(ParticleEmitterComponent{ 2, 0.3f, 0.003f, 100, 1.0f, false });
-
-	entityx::Entity planet = CreateCircleEntity(this->entities, Vector2f(0, 0), 0.1f);
-	planet.assign_from_copy(generateCircleMesh(0xff00aa44, 25));
-	planet.assign<MeshTransformCacheComponent>();
-	planet.assign<PlanetComponent>();
-	planet.assign<MassComponent>(100);
-
-	entityx::Entity planet2 = CreateCircleEntity(this->entities, Vector2f(-0.8f, 0), 0.07f);
-	planet2.assign_from_copy(generateCircleMesh(0xff0044aa, 25));
-	planet2.assign<MeshTransformCacheComponent>();
-	planet2.assign<PlanetComponent>();
-	planet2.assign<MassComponent>(150);
-
-	*/
+    
 	this->setGameState(new IdleGameState(this));
 }
 

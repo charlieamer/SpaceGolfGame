@@ -5,8 +5,9 @@ class BaseGameState;
 #include <vmath.h>
 #include <bgfx_utils.h>
 #include <common.h>
+#include <entityx/entityx.h>
 
-class BaseScreen
+class BaseScreen : public entityx::EntityX
 {
 private:
 
@@ -16,6 +17,7 @@ private:
 protected:
 	Application* app;
 	BaseGameState *gameState;
+    entityx::Entity camera;
 
 	void removeGameStateIfExists();
 
@@ -30,6 +32,6 @@ public:
 	virtual void update(float timeDelta) = 0;
 	void processMouse(const entry::MouseState &state);
 	void setGameState(BaseGameState* newGameState);
-	Vector2f camera;
+    Vector2f getCameraPosition();
 };
 

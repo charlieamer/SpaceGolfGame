@@ -217,6 +217,7 @@
       <File Name="SpaceGolfGame/Components/VelocityComponent.h"/>
       <File Name="SpaceGolfGame/Components/MeshComponent.h"/>
       <File Name="SpaceGolfGame/Components/AimLineComponent.h"/>
+      <File Name="SpaceGolfGame/Components/FollowComponent.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="Entities">
       <File Name="SpaceGolfGame/Entities/EntityGenerator.cpp"/>
@@ -290,6 +291,8 @@
       <File Name="SpaceGolfGame/Systems/VelocitySystem.h"/>
       <File Name="SpaceGolfGame/Systems/CleanupSystem.h"/>
       <File Name="SpaceGolfGame/Systems/CleanupSystem.cpp"/>
+      <File Name="SpaceGolfGame/Systems/FollowSystem.h"/>
+      <File Name="SpaceGolfGame/Systems/FollowSystem.cpp"/>
     </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="bgfx">

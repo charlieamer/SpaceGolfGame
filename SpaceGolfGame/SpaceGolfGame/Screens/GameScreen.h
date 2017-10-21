@@ -5,7 +5,7 @@
 #include <rapidxml.hpp>
 
 class GameScreen :
-	public BaseScreen, public entityx::EntityX
+	public BaseScreen
 {
 public:
 	GameScreen(Application* app, rapidxml::xml_document<>& document);

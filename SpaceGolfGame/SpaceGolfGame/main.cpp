@@ -91,6 +91,8 @@ bool Application::update() {
         entry::setWindowSize({0}, m_width, m_height);
         Debug::p(Debug::PrintSeverity::PRINT_INFO, "Starting in %dx%d resolution", m_width, m_height);
     }
+    
+    Vector2f cameraPos;
 	if (!entry::processEvents(m_width, m_height, m_debug, m_reset, &m_mouseState))
 	{
         if (m_width != old_width || m_height != old_height) {
@@ -112,9 +114,11 @@ bool Application::update() {
 		bx::mtxOrtho(ortho, width, -width, height, -height, 0, 100, 0, false);
 		this->screenExtents.min = Vector3f(-width, -height, 0);
 		this->screenExtents.max = Vector3f(width, height, 0);
+        
+        cameraPos = this->currentScreen->getCameraPosition();
 		
-		float at[3] = { this->currentScreen->camera.x, this->currentScreen->camera.y, 0.0f };
-		float eye[3] = { this->currentScreen->camera.x, this->currentScreen->camera.y, 1.0f };
+		float at[3] = { cameraPos.x, cameraPos.y, 0.0f };
+		float eye[3] = { cameraPos.x, cameraPos.y, 1.0f };
 		float up[3] = { 0.0f, 1.0f, 0.0f };
 		float transform[16];
 		bx::mtxLookAt(transform, eye, at, up);

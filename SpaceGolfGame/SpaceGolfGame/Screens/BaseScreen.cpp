@@ -2,6 +2,7 @@
 #include "GameStates/BaseGameState.h"
 #include <CEGUI/System.h>
 #include <CEGUI/GUIContext.h>
+#include "../Components/PositionComponent.h"
 
 void BaseScreen::setGameState(BaseGameState * newGameState)
 {
@@ -21,6 +22,8 @@ void BaseScreen::removeGameStateIfExists()
 
 BaseScreen::BaseScreen(Application * app) : app(app), gameState(NULL)
 {
+    camera = entities.create();
+    camera.assign<PositionComponent>();
 }
 
 BaseScreen::~BaseScreen()
@@ -46,4 +49,8 @@ void BaseScreen::processMouse(const entry::MouseState & state)
 		this->onMouseMove(newMousePos - oldMousePos, newMousePos);
 		this->oldMousePos = newMousePos;
 	}
+}
+
+Vector2f BaseScreen::getCameraPosition() {
+    return this->camera.component<PositionComponent>()->pos;
 }
