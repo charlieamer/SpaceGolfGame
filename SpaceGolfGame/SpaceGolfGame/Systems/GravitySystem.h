@@ -15,5 +15,6 @@ public:
 	// Inherited via System
 	virtual void update(entityx::EntityManager & entities, entityx::EventManager & events, entityx::TimeDelta dt) override;
 	Vector2f forceAtPosition(Vector2f position);
+    bool isInPlanet(Vector2f position);
 };
 
