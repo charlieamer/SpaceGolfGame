@@ -11,13 +11,22 @@
 
 #include "../utilities.h"
 #include "../Rendering/MeshGenerators.h"
+#include "../Rendering/CustomMeshGenerators.h"
 
 void loadComponents(entityx::Entity entity, GleedTexture & texture) {
-	entity.assign_from_copy<MeshComponent>(
-		generateTexturedRectangleMesh(
-			GleedUtilities::textureToAABB(texture), 
-			"Assets/" + texture.path,
-			Utilities::abgr(texture.tint.r, texture.tint.g, texture.tint.b, texture.tint.a)));
+    auto tint = Utilities::abgr(texture.tint.r, texture.tint.g, texture.tint.b, texture.tint.a);
+    auto aabb = GleedUtilities::textureToAABB(texture);
+    std::string path = "Assets/" + texture.path;
+    if (texture.properties.count("generator")) {
+        if (texture.properties["generator"] == "planet") {
+            entity.assign_from_copy<MeshComponent>(generatePlanet(aabb, path, tint));
+        } else {
+            Debug::p(Debug::PrintSeverity::PRINT_ERROR, "Unknown generator \'%s\'", texture.properties["generator"].c_str());
+        }
+    } else {
+        entity.assign_from_copy<MeshComponent>(
+            generateTexturedRectangleMesh(aabb, path, tint));
+    }
 	loadComponents(entity, (GleedBaseObject&)texture);
 }
 

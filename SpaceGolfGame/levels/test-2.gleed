@@ -14,10 +14,10 @@
       </Property>
     </CustomProperties>
     <ContentRootFolder>C:\Users\ACER\Documents\GitHub\SpaceGolfGame\SpaceGolfGame\Assets</ContentRootFolder>
-    <NextItemNumber>24</NextItemNumber>
+    <NextItemNumber>39</NextItemNumber>
     <CameraPosition>
-      <X>0</X>
-      <Y>41.666748</Y>
+      <X>-316.667175</X>
+      <Y>-25.0000553</Y>
     </CameraPosition>
     <Version>2.0.0.0</Version>
   </LevelProperties>
@@ -228,6 +228,102 @@
         </ScrollSpeed>
       </LayerProperties>
       <Editors>
+        <Editor ClrTypeOfEditor="4" ClrTypeOfProperties="5" Name="Texture_35">
+          <TextureItemProperties>
+            <Name>Texture_35</Name>
+            <Id>1508601697</Id>
+            <Visible>true</Visible>
+            <Position>
+              <X>122.999573</X>
+              <Y>423.33313</Y>
+            </Position>
+            <CustomProperties />
+            <Rotation>0</Rotation>
+            <Scale>
+              <X>0.341345519</X>
+              <Y>0.341345519</Y>
+            </Scale>
+            <TintColor>
+              <R>255</R>
+              <G>192</G>
+              <B>128</B>
+              <A>255</A>
+              <PackedValue>4286628095</PackedValue>
+            </TintColor>
+            <FlipHorizontally>false</FlipHorizontally>
+            <FlipVertically>false</FlipVertically>
+            <IsTemplate>false</IsTemplate>
+            <TexturePathRelativeToContentRoot>Planet Glow\Planet Glow-1.png</TexturePathRelativeToContentRoot>
+            <Origin>
+              <X>945</X>
+              <Y>708.5</Y>
+            </Origin>
+          </TextureItemProperties>
+        </Editor>
+        <Editor ClrTypeOfEditor="4" ClrTypeOfProperties="5" Name="Texture_38">
+          <TextureItemProperties>
+            <Name>Texture_38</Name>
+            <Id>1508601915</Id>
+            <Visible>true</Visible>
+            <Position>
+              <X>-426.6671</X>
+              <Y>127.333191</Y>
+            </Position>
+            <CustomProperties />
+            <Rotation>0</Rotation>
+            <Scale>
+              <X>0.1935632</X>
+              <Y>0.1935632</Y>
+            </Scale>
+            <TintColor>
+              <R>128</R>
+              <G>200</G>
+              <B>255</B>
+              <A>255</A>
+              <PackedValue>4294953088</PackedValue>
+            </TintColor>
+            <FlipHorizontally>false</FlipHorizontally>
+            <FlipVertically>false</FlipVertically>
+            <IsTemplate>false</IsTemplate>
+            <TexturePathRelativeToContentRoot>Planet Glow\Planet Glow-1.png</TexturePathRelativeToContentRoot>
+            <Origin>
+              <X>945</X>
+              <Y>708.5</Y>
+            </Origin>
+          </TextureItemProperties>
+        </Editor>
+        <Editor ClrTypeOfEditor="4" ClrTypeOfProperties="5" Name="Texture_39">
+          <TextureItemProperties>
+            <Name>Texture_39</Name>
+            <Id>1508602084</Id>
+            <Visible>true</Visible>
+            <Position>
+              <X>449.333</X>
+              <Y>-309.3335</Y>
+            </Position>
+            <CustomProperties />
+            <Rotation>0</Rotation>
+            <Scale>
+              <X>0.5325605</X>
+              <Y>0.5325605</Y>
+            </Scale>
+            <TintColor>
+              <R>192</R>
+              <G>192</G>
+              <B>255</B>
+              <A>255</A>
+              <PackedValue>4294951104</PackedValue>
+            </TintColor>
+            <FlipHorizontally>false</FlipHorizontally>
+            <FlipVertically>false</FlipVertically>
+            <IsTemplate>false</IsTemplate>
+            <TexturePathRelativeToContentRoot>Planet Glow\Planet Glow-3.png</TexturePathRelativeToContentRoot>
+            <Origin>
+              <X>945</X>
+              <Y>708.5</Y>
+            </Origin>
+          </TextureItemProperties>
+        </Editor>
         <Editor ClrTypeOfEditor="4" ClrTypeOfProperties="5" Name="Texture_24">
           <TextureItemProperties>
             <Name>Texture_24</Name>
@@ -260,20 +356,24 @@
             </Origin>
           </TextureItemProperties>
         </Editor>
-        <Editor ClrTypeOfEditor="4" ClrTypeOfProperties="5" Name="Texture_19">
+        <Editor ClrTypeOfEditor="4" ClrTypeOfProperties="5" Name="Texture_25">
           <TextureItemProperties>
-            <Name>Texture_19</Name>
-            <Id>1505743549</Id>
+            <Name>Texture_25</Name>
+            <Id>1508599645</Id>
             <Visible>true</Visible>
             <Position>
-              <X>-421.333374</X>
-              <Y>133.666687</Y>
+              <X>-422</X>
+              <Y>133.000122</Y>
             </Position>
-            <CustomProperties />
+            <CustomProperties>
+              <Property Name="generator" Type="string" Description="">
+                <string>planet</string>
+              </Property>
+            </CustomProperties>
             <Rotation>0</Rotation>
             <Scale>
-              <X>0.36253494</X>
-              <Y>0.36253494</Y>
+              <X>0.439036369</X>
+              <Y>0.439036369</Y>
             </Scale>
             <TintColor>
               <R>255</R>
@@ -285,27 +385,31 @@
             <FlipHorizontally>false</FlipHorizontally>
             <FlipVertically>false</FlipVertically>
             <IsTemplate>false</IsTemplate>
-            <TexturePathRelativeToContentRoot>Planets\Untitled-3.1.png</TexturePathRelativeToContentRoot>
+            <TexturePathRelativeToContentRoot>Planets\earth.png</TexturePathRelativeToContentRoot>
             <Origin>
-              <X>600</X>
-              <Y>500</Y>
+              <X>254</X>
+              <Y>258.5</Y>
             </Origin>
           </TextureItemProperties>
         </Editor>
-        <Editor ClrTypeOfEditor="4" ClrTypeOfProperties="5" Name="Texture_20">
+        <Editor ClrTypeOfEditor="4" ClrTypeOfProperties="5" Name="Texture_26">
           <TextureItemProperties>
-            <Name>Texture_20</Name>
-            <Id>1505743571</Id>
+            <Name>Texture_26</Name>
+            <Id>1508600032</Id>
             <Visible>true</Visible>
             <Position>
-              <X>131.333313</X>
-              <Y>425.333374</Y>
+              <X>455.666382</X>
+              <Y>-300.666748</Y>
             </Position>
-            <CustomProperties />
+            <CustomProperties>
+              <Property Name="generator" Type="string" Description="">
+                <string>planet</string>
+              </Property>
+            </CustomProperties>
             <Rotation>0</Rotation>
             <Scale>
-              <X>0.832335532</X>
-              <Y>0.832335532</Y>
+              <X>0.66882</X>
+              <Y>0.66882</Y>
             </Scale>
             <TintColor>
               <R>255</R>
@@ -317,27 +421,31 @@
             <FlipHorizontally>false</FlipHorizontally>
             <FlipVertically>false</FlipVertically>
             <IsTemplate>false</IsTemplate>
-            <TexturePathRelativeToContentRoot>Planets\Untitled-4.png</TexturePathRelativeToContentRoot>
+            <TexturePathRelativeToContentRoot>Planets\ck16.png</TexturePathRelativeToContentRoot>
             <Origin>
-              <X>488</X>
-              <Y>427</Y>
+              <X>348.5</X>
+              <Y>348</Y>
             </Origin>
           </TextureItemProperties>
         </Editor>
-        <Editor ClrTypeOfEditor="4" ClrTypeOfProperties="5" Name="Texture_23">
+        <Editor ClrTypeOfEditor="4" ClrTypeOfProperties="5" Name="Texture_27">
           <TextureItemProperties>
-            <Name>Texture_23</Name>
-            <Id>1505743688</Id>
+            <Name>Texture_27</Name>
+            <Id>1508600035</Id>
             <Visible>true</Visible>
             <Position>
-              <X>429.75</X>
-              <Y>-283.999939</Y>
+              <X>129.9997</X>
+              <Y>425.6665</Y>
             </Position>
-            <CustomProperties />
+            <CustomProperties>
+              <Property Name="generator" Type="string" Description="">
+                <string>planet</string>
+              </Property>
+            </CustomProperties>
             <Rotation>0</Rotation>
             <Scale>
-              <X>0.9532945</X>
-              <Y>0.9532945</Y>
+              <X>0.6419298</X>
+              <Y>0.6419298</Y>
             </Scale>
             <TintColor>
               <R>255</R>
@@ -349,10 +457,10 @@
             <FlipHorizontally>false</FlipHorizontally>
             <FlipVertically>false</FlipVertically>
             <IsTemplate>false</IsTemplate>
-            <TexturePathRelativeToContentRoot>Planets\Untitled-5.png</TexturePathRelativeToContentRoot>
+            <TexturePathRelativeToContentRoot>Planets\ck17.png</TexturePathRelativeToContentRoot>
             <Origin>
-              <X>488</X>
-              <Y>427</Y>
+              <X>329</X>
+              <Y>329</Y>
             </Origin>
           </TextureItemProperties>
         </Editor>

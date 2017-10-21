@@ -160,11 +160,18 @@ template <typename IndexBufferType, typename VertexBufferType>
 class TexturedRenderingBackend : public SingleProgramRenderingBackend<IndexBufferType, VertexBufferType, Pos2fColorTextureVertex> {
     bgfx::TextureHandle texture;
     bgfx::UniformHandle uniform;
+    void init(std::string texturePath) {
+        uniform = RenderManager::get().getUniform("s_texture0", bgfx::UniformType::Int1);
+        texture = RenderManager::get().getTexture(texturePath);
+    }
 public:
     TexturedRenderingBackend(std::vector<uint16_t> indexValues, std::vector<Pos2fColorTextureVertex> vertexValues, std::string texturePath, uint64_t renderState) :
             SingleProgramRenderingBackend<IndexBufferType, VertexBufferType, Pos2fColorTextureVertex>(indexValues, vertexValues, "vs_textured", "fs_textured", renderState) {
-        uniform = RenderManager::get().getUniform("s_texture0", bgfx::UniformType::Int1);
-        texture = RenderManager::get().getTexture(texturePath);
+        init(texturePath);
+    }
+    TexturedRenderingBackend(std::vector<uint16_t> indexValues, std::vector<Pos2fColorTextureVertex> vertexValues, std::string texturePath, uint64_t renderState, std::string vs_shader, std::string fs_shader) :
+            SingleProgramRenderingBackend<IndexBufferType, VertexBufferType, Pos2fColorTextureVertex>(indexValues, vertexValues, vs_shader, fs_shader, renderState) {
+        init(texturePath);
     }
     virtual void render() override {
         bgfx::setTexture(0, uniform, texture);
