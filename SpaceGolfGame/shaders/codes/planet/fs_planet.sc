@@ -1,17 +1,12 @@
-$input v_color0, v_texcoord0
+$input v_color0, v_texcoord0, v_position
 
 #include "bgfx_shader.sh"
 SAMPLER2D(s_texture0, 0);
 
-// void main()
-// {
-// 	gl_FragColor = v_color0 * texture2D(s_texture0, v_texcoord0);
-// }
+#define RADIUS 0.5
+#define VISIBLE_RADIUS 0.48
 
-#define RADIUS 0.48
-
-
-vec3 lightPos = vec3(-1.49275, -1.13349988, 0);
+uniform vec4 vec4_light_pos;
 
 float getHeight(vec2 coord, float radius) {
     return sqrt(radius * radius - coord.x * coord.x  - coord.y * coord.y);
@@ -33,10 +28,10 @@ void main()
         vec3 diffuse = texture2D(s_texture0, v_texcoord0).rgb;
         // vec3 diffuse = vec3(1, 1, 1);
         vec3 normal = getNormal(sphereXY, RADIUS);
-        vec3 lightDirection = normalize(lightPos - vec3(current.xy, 0));
+        vec3 lightDirection = normalize(vec4_light_pos.xyz - vec3(v_position.xy, 0));
         float diffuseTerm = clamp(dot(lightDirection, normal), 0.10, 1);
         gl_FragColor = vec4(diffuseTerm * diffuse * rim, 1.0);
-        // gl_FragColor *= gl_FragColor.a;
+        gl_FragColor.a = 1.0 - clamp((dist - VISIBLE_RADIUS) * (1.0 / (RADIUS - VISIBLE_RADIUS)), 0.0, 1.0);
     } else {
         // gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
         discard;

@@ -218,6 +218,8 @@
       <File Name="SpaceGolfGame/Components/MeshComponent.h"/>
       <File Name="SpaceGolfGame/Components/AimLineComponent.h"/>
       <File Name="SpaceGolfGame/Components/FollowComponent.h"/>
+      <File Name="SpaceGolfGame/Components/LightComponent.h"/>
+      <File Name="SpaceGolfGame/Components/ZComponent.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="Entities">
       <File Name="SpaceGolfGame/Entities/EntityGenerator.cpp"/>
@@ -293,6 +295,8 @@
       <File Name="SpaceGolfGame/Systems/CleanupSystem.cpp"/>
       <File Name="SpaceGolfGame/Systems/FollowSystem.h"/>
       <File Name="SpaceGolfGame/Systems/FollowSystem.cpp"/>
+      <File Name="SpaceGolfGame/Systems/LightUpdateSystem.h"/>
+      <File Name="SpaceGolfGame/Systems/LightUpdateSystem.cpp"/>
     </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="bgfx">

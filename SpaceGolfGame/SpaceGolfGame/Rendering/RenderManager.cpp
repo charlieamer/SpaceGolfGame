@@ -71,4 +71,18 @@ bgfx::UniformHandle RenderManager::getUniform(std::string name, bgfx::UniformTyp
     return uniformCache[name];
 }
 
-#include "RenderingBackend.h"
+void RenderManager::setUniformVec4f(std::string name, Vector3f value)
+{
+    this->setUniformVec4f(name, value.x, value.y, value.z, 0);
+}
+
+void RenderManager::setUniformVec4f(std::string name, float a, float b, float c, float d)
+{
+    float vals[] = {a, b, c, d};
+    bgfx::setUniform(getUniform(name, bgfx::UniformType::Vec4), vals);
+}
+
+void RenderManager::setUniformMat16f(std::string name, float* data)
+{
+    bgfx::setUniform(getUniform(name, bgfx::UniformType::Mat4), data);
+}

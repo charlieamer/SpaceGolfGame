@@ -8,6 +8,8 @@
 #include "../Components/PlanetCollisionComponent.h"
 #include "../Components/ParticleEmitterComponent.h"
 #include "../Components/GravityComponent.h"
+#include "../Components/LightComponent.h"
+#include "../Components/ZComponent.h"
 
 #include "../utilities.h"
 #include "../Rendering/MeshGenerators.h"
@@ -17,11 +19,11 @@ void loadComponents(entityx::Entity entity, GleedTexture & texture) {
     auto tint = Utilities::abgr(texture.tint.r, texture.tint.g, texture.tint.b, texture.tint.a);
     auto aabb = GleedUtilities::textureToAABB(texture);
     std::string path = "Assets/" + texture.path;
-    if (texture.properties.count("generator")) {
-        if (texture.properties["generator"] == "planet") {
+    if (texture.properties.count("Generator")) {
+        if (texture.properties["Generator"] == "planet") {
             entity.assign_from_copy<MeshComponent>(generatePlanet(aabb, path, tint));
         } else {
-            Debug::p(Debug::PrintSeverity::PRINT_ERROR, "Unknown generator \'%s\'", texture.properties["generator"].c_str());
+            Debug::p(Debug::PrintSeverity::PRINT_ERROR, "Unknown generator \'%s\'", texture.properties["Generator"].c_str());
         }
     } else {
         entity.assign_from_copy<MeshComponent>(
@@ -67,4 +69,10 @@ void loadComponents(entityx::Entity entity, GleedBaseObject & object)
 	if (object.properties.count("Gravity")) {
 		entity.assign<GravityComponent>();
 	}
+    if (object.colorProperties.count("Light")) {
+        entity.assign<LightComponent>(object.colorProperties["Light"]);
+    }
+    if (object.properties.count("Z")) {
+        entity.assign<ZComponent>(std::stof(object.properties["Z"]));
+    }
 }

@@ -4,6 +4,7 @@
 #include <rapidxml.hpp>
 #include <string>
 #include <map>
+#include "GleedColor.h"
 
 class GleedBaseObject
 {
@@ -13,5 +14,6 @@ public:
 	GleedPosition position;
 	std::string name;
 	std::map<std::string, std::string> properties;
+	std::map<std::string, GleedColor> colorProperties;
 };
 

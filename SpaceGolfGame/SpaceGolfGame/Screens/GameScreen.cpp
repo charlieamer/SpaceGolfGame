@@ -9,6 +9,7 @@
 #include "../Systems/ParticleUpdateSystem.h"
 #include "../Systems/CleanupSystem.h"
 #include "../Systems/FollowSystem.h"
+#include "../Systems/LightUpdateSystem.h"
 #include "../Entities/EntityGenerator.h"
 #include "../Rendering/MeshGenerators.h"
 #include "../Components/MeshTransformCacheComponent.h"
@@ -53,6 +54,7 @@ GameScreen::GameScreen(Application* app, rapidxml::xml_document<>& document) : B
     this->systems.add<ParticleUpdateSystem>();
     this->systems.add<CleanupSystem>();
     this->systems.add<FollowSystem>();
+    this->systems.add<LightUpdateSystem>();
     
 	this->systems.configure();
 

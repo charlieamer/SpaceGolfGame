@@ -9,7 +9,7 @@ MeshComponent generatePlanet(Aabb3f bounds, std::string texturePath, uint32_t ti
     
     generateTexturedRectangleVertices(tint, bounds, vertices, indices);
     
-	MeshComponent ret((RenderingBackendBase*)new TexturedRenderingBackend<bgfx::IndexBufferHandle, bgfx::VertexBufferHandle>(indices, vertices, texturePath, renderState, "vs_textured", "fs_planet"));
+	MeshComponent ret((RenderingBackendBase*)new TexturedRenderingBackend<bgfx::IndexBufferHandle, bgfx::VertexBufferHandle>(indices, vertices, texturePath, renderState, "vs_planet", "fs_planet"));
 	
 	return ret;
 }

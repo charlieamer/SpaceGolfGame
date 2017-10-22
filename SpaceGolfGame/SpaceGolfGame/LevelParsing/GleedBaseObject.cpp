@@ -8,8 +8,14 @@ GleedBaseObject::GleedBaseObject(rapidxml::xml_node<>& node) : position(node)
 	if (node.first_node("CustomProperties")) {
 		for (rapidxml::xml_node<>* it = node.first_node("CustomProperties")->first_node("Property"); it; it = it->next_sibling("Property")) {
 			std::string propertyName = XmlUtilities::value(*it->first_attribute("Name"));
-			std::string propertyValue = XmlUtilities::value(*it->first_node("string"));
-			properties[propertyName] = propertyValue;
+            if (it->first_node("string")) {
+                std::string propertyValue = XmlUtilities::value(*it->first_node("string"));
+                properties[propertyName] = propertyValue;
+            } else if (it->first_node("Color")) {
+                colorProperties[propertyName] = GleedColor(*it->first_node("Color"));
+            } else {
+                throw "Unknown property type";
+            }
 		}
 	}
 }

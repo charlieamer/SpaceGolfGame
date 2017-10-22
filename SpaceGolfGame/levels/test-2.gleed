@@ -17,7 +17,7 @@
     <NextItemNumber>39</NextItemNumber>
     <CameraPosition>
       <X>-316.667175</X>
-      <Y>-25.0000553</Y>
+      <Y>-16.6667061</Y>
     </CameraPosition>
     <Version>2.0.0.0</Version>
   </LevelProperties>
@@ -234,7 +234,7 @@
             <Id>1508601697</Id>
             <Visible>true</Visible>
             <Position>
-              <X>122.999573</X>
+              <X>127.999573</X>
               <Y>423.33313</Y>
             </Position>
             <CustomProperties />
@@ -266,7 +266,7 @@
             <Id>1508601915</Id>
             <Visible>true</Visible>
             <Position>
-              <X>-426.6671</X>
+              <X>-423.6671</X>
               <Y>127.333191</Y>
             </Position>
             <CustomProperties />
@@ -330,10 +330,23 @@
             <Id>1505743720</Id>
             <Visible>true</Visible>
             <Position>
-              <X>-1492.75</X>
-              <Y>-1133.49988</Y>
+              <X>-1322.75</X>
+              <Y>-1523.5</Y>
             </Position>
-            <CustomProperties />
+            <CustomProperties>
+              <Property Name="Light" Type="Color" Description="">
+                <Color xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                  <R>255</R>
+                  <G>255</G>
+                  <B>192</B>
+                  <A>255</A>
+                  <PackedValue>4290838527</PackedValue>
+                </Color>
+              </Property>
+              <Property Name="Z" Type="string" Description="">
+                <string>1</string>
+              </Property>
+            </CustomProperties>
             <Rotation>0</Rotation>
             <Scale>
               <X>1.32883775</X>
@@ -366,7 +379,7 @@
               <Y>133.000122</Y>
             </Position>
             <CustomProperties>
-              <Property Name="generator" Type="string" Description="">
+              <Property Name="Generator" Type="string" Description="">
                 <string>planet</string>
               </Property>
             </CustomProperties>
@@ -402,7 +415,7 @@
               <Y>-300.666748</Y>
             </Position>
             <CustomProperties>
-              <Property Name="generator" Type="string" Description="">
+              <Property Name="Generator" Type="string" Description="">
                 <string>planet</string>
               </Property>
             </CustomProperties>
@@ -438,7 +451,7 @@
               <Y>425.6665</Y>
             </Position>
             <CustomProperties>
-              <Property Name="generator" Type="string" Description="">
+              <Property Name="Generator" Type="string" Description="">
                 <string>planet</string>
               </Property>
             </CustomProperties>

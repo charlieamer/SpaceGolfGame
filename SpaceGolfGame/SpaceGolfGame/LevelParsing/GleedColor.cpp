@@ -9,7 +9,3 @@ GleedColor::GleedColor(rapidxml::xml_node<>& node)
 	b = XmlUtilities::parseInt(*node.first_node("B"));
 	a = XmlUtilities::parseInt(*node.first_node("A"));
 }
-
-GleedColor::~GleedColor()
-{
-}
