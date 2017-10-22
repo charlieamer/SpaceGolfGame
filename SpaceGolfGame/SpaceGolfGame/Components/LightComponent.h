@@ -6,8 +6,8 @@
 struct LightComponent {
     float colorR, colorG, colorB;
     LightComponent(GleedColor color) {
-        colorR = color.r;
-        colorG = color.g;
-        colorB = color.b;
+        colorR = color.r / 255.0f;
+        colorG = color.g / 255.0f;
+        colorB = color.b / 255.0f;
     }
 };

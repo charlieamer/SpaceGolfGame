@@ -60,10 +60,7 @@ void loadComponents(entityx::Entity entity, GleedBaseObject & object)
 		for (auto param : params) {
 			values.push_back(std::stof(param));
 		}
-		bool active = true;
-		if (object.properties["ParticleEmitterActive"] == "false") {
-			active = false;
-		}
+		bool active = object.booleanProperties["ParticleEmitterActive"];
 		entity.assign<ParticleEmitterComponent>(ParticleEmitterComponent{(int)values[0], values[1], values[2], (int)values[3], values[4], active});
 	}
 	if (object.properties.count("Gravity")) {

@@ -15,5 +15,6 @@ public:
 	std::string name;
 	std::map<std::string, std::string> properties;
 	std::map<std::string, GleedColor> colorProperties;
+    std::map<std::string, bool> booleanProperties;
 };
 

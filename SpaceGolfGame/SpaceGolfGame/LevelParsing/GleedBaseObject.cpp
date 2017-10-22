@@ -13,6 +13,8 @@ GleedBaseObject::GleedBaseObject(rapidxml::xml_node<>& node) : position(node)
                 properties[propertyName] = propertyValue;
             } else if (it->first_node("Color")) {
                 colorProperties[propertyName] = GleedColor(*it->first_node("Color"));
+            } else if (it->first_node("boolean")) {
+                booleanProperties[propertyName] = strcmp(it->first_node("boolean")->value(), "true") == 0;
             } else {
                 throw "Unknown property type";
             }

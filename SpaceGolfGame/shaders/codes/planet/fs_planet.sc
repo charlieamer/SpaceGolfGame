@@ -7,6 +7,7 @@ SAMPLER2D(s_texture0, 0);
 #define VISIBLE_RADIUS 0.48
 
 uniform vec4 vec4_light_pos;
+uniform vec4 vec4_light_color;
 
 float getHeight(vec2 coord, float radius) {
     return sqrt(radius * radius - coord.x * coord.x  - coord.y * coord.y);
@@ -29,8 +30,11 @@ void main()
         // vec3 diffuse = vec3(1, 1, 1);
         vec3 normal = getNormal(sphereXY, RADIUS);
         vec3 lightDirection = normalize(vec4_light_pos.xyz - vec3(v_position.xy, 0));
-        float diffuseTerm = clamp(dot(lightDirection, normal), 0.10, 1);
-        gl_FragColor = vec4(diffuseTerm * diffuse * rim, 1.0);
+        float fullDiffuseTerm = dot(lightDirection, normal);
+        float diffuseTerm = clamp(fullDiffuseTerm, 0.1, 1);
+        vec3 colorDiffuseTerm = diffuseTerm * vec4_light_color.xyz;
+        vec3 diffuseWithColorTerm = sqrt(diffuseTerm * colorDiffuseTerm);
+        gl_FragColor = vec4(diffuseWithColorTerm * diffuse * rim, 1.0);
         gl_FragColor.a = 1.0 - clamp((dist - VISIBLE_RADIUS) * (1.0 / (RADIUS - VISIBLE_RADIUS)), 0.0, 1.0);
     } else {
         // gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);

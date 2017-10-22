@@ -52,7 +52,7 @@ void ParticleUpdateSystem::update(entityx::EntityManager & entities, entityx::Ev
 		else {
 			auto backend = (SolidRenderingBackend<bgfx::IndexBufferHandle, bgfx::DynamicVertexBufferHandle>*)(entity.component<MeshComponent>().get()->getBackend());
             if (backend) {
-                float a = ((float)particle.remainingUpdates / (float)particle.maxUpdates) - 0.5f + Utilities::random(0.0f, 1.0f);
+                float a = ((float)particle.remainingUpdates / (float)particle.maxUpdates) - 0.8f + Utilities::random(0.0f, 0.8f);
                 backend->vertices[0].m_abgr = Utilities::abgr(1.0f, 1.0f, 1.0f, a);
                 backend->updateVertices();
             }
