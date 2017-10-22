@@ -7,6 +7,6 @@ class PlanetCacheBaseSystem
 {
 protected:
 	std::vector<entityx::Entity> planets;
-	void populatePlanets(entityx::EntityManager & entities, bool force = false);
+	bool populatePlanets(entityx::EntityManager & entities, bool force = false);
 };
 

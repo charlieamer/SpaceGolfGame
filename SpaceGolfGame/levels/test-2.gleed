@@ -80,7 +80,7 @@
                 <string>10</string>
               </Property>
               <Property Name="ParticleEmitter" Type="string" Description="">
-                <string>1 0.3 0.001 100 5</string>
+                <string>15 0.7 0.002 100 5</string>
               </Property>
               <Property Name="Gravity" Type="string" Description="">
                 <string />
@@ -385,8 +385,8 @@
             </CustomProperties>
             <Rotation>0</Rotation>
             <Scale>
-              <X>0.439036369</X>
-              <Y>0.439036369</Y>
+              <X>0.4530403</X>
+              <Y>0.4530403</Y>
             </Scale>
             <TintColor>
               <R>255</R>
@@ -457,8 +457,8 @@
             </CustomProperties>
             <Rotation>0</Rotation>
             <Scale>
-              <X>0.6419298</X>
-              <Y>0.6419298</Y>
+              <X>0.6436188</X>
+              <Y>0.6436188</Y>
             </Scale>
             <TintColor>
               <R>255</R>

@@ -22,6 +22,10 @@ namespace Utilities {
 	Vector2f randomVector(float from, float to);
 	uint32_t abgr(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
 	uint32_t abgr(float r, float g, float b, float a);
+    template<typename T>
+    T clamp(T number, T mmin, T mmax) {
+        return std::max(std::min(number, mmax), mmin);
+    }
 
 	template<typename T>
 	T cap(T value, T from, T to);

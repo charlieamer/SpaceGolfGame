@@ -20,7 +20,7 @@ void ParticleUpdateSystem::emitParticle(entityx::Entity & entity, entityx::Entit
 	particle.assign<MassComponent>(emitter.mass);
 	particle.assign<ParticleComponent>(Utilities::random(0, emitter.initialLife), emitter.initialLife);
 	particle.assign<VelocityComponent>(velocity);
-	particle.assign<GravityComponent>();
+	particle.assign<GravityComponent>(true);
 	particle.assign<MeshTransformCacheComponent>();
 	particle.assign<AABBCacheComponent>();
 	particle.assign_from_copy<MeshComponent>(generatePoint(Utilities::abgr(1.0f, 1.0f, 1.0f, 1.0f), BGFX_STATE_DEFAULT | BGFX_STATE_PT_POINTS | BGFX_STATE_BLEND_ALPHA));
@@ -52,7 +52,7 @@ void ParticleUpdateSystem::update(entityx::EntityManager & entities, entityx::Ev
 		else {
 			auto backend = (SolidRenderingBackend<bgfx::IndexBufferHandle, bgfx::DynamicVertexBufferHandle>*)(entity.component<MeshComponent>().get()->getBackend());
             if (backend) {
-                float a = (float)particle.remainingUpdates / (float)particle.maxUpdates + Utilities::random(-0.5f, 0.5f);
+                float a = ((float)particle.remainingUpdates / (float)particle.maxUpdates) - 0.5f + Utilities::random(0.0f, 1.0f);
                 backend->vertices[0].m_abgr = Utilities::abgr(1.0f, 1.0f, 1.0f, a);
                 backend->updateVertices();
             }

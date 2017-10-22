@@ -3,7 +3,7 @@
 #include "../Components/MassComponent.h"
 #include "../Components/PlanetComponent.h"
 
-void PlanetCacheBaseSystem::populatePlanets(entityx::EntityManager & entities, bool force)
+bool PlanetCacheBaseSystem::populatePlanets(entityx::EntityManager & entities, bool force)
 {
 	if (force) {
 		planets.clear();
@@ -12,5 +12,8 @@ void PlanetCacheBaseSystem::populatePlanets(entityx::EntityManager & entities, b
 		entities.each<PositionComponent, MassComponent, PlanetComponent>([this](entityx::Entity entity, PositionComponent&, MassComponent&, PlanetComponent&) {
 			this->planets.push_back(entity);
 		});
-	}
+        return true;
+	} else {
+        return false;
+    }
 }

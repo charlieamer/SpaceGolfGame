@@ -47,7 +47,7 @@ GameScreen::GameScreen(Application* app, rapidxml::xml_document<>& document) : B
 
 	this->systems.add<MeshRenderingSystem>();
 	this->systems.add<AABBCacheSystem>();
-	this->systems.add<GravitySystem>(gravity);
+	this->systems.add<GravitySystem>(gravity, extents);
 	this->systems.add<VelocitySystem>();
 	this->systems.add<BounceSystem>(extents);
 	this->systems.add<PlanetCollisionSystem>();

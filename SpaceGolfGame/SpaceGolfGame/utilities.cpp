@@ -105,10 +105,10 @@ namespace Utilities {
 	// Returns abgr value from float values (0.0 - 1.0)
 	uint32_t abgr(float r, float g, float b, float a)
 	{
-		return abgr((unsigned char)cap(r * 256.0f, 0.0f, 255.999f),
-			(unsigned char)cap(g * 256.0f, 0.0f, 255.999f),
-			(unsigned char)cap(b * 256.0f, 0.0f, 255.999f),
-			(unsigned char)cap(a * 256.0f, 0.0f, 255.999f));
+		return abgr((unsigned char)clamp(r * 256.0f, 0.0f, 255.999f),
+			(unsigned char)clamp(g * 256.0f, 0.0f, 255.999f),
+			(unsigned char)clamp(b * 256.0f, 0.0f, 255.999f),
+			(unsigned char)clamp(a * 256.0f, 0.0f, 255.999f));
 	}
 
 	const std::vector<std::string> explode(const std::string & s, const char & c)
@@ -136,19 +136,6 @@ namespace Utilities {
 		s1 = (-b + root) / a2;
 		s2 = (-b - root) / a2;
 	}
-
-	// Cap a number between from and to values
-	template <typename T>
-	T cap(T value, T from, T to) {
-		if (value > to) {
-			return to;
-		}
-		if (value < from) {
-			return from;
-		}
-		return value;
-	}
-	// template int cap<int>(int value, int from, int to);
 }
 
 std::string XmlUtilities::value(rapidxml::xml_node<>& node)

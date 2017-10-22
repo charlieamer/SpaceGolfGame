@@ -11,22 +11,33 @@
 #include "../utilities.h"
 using namespace Debug;
 
-GravitySystem::GravitySystem(float constant) : constant(constant)
+GravitySystem::GravitySystem(float constant, Aabb3f extents) : constant(constant), extents(extents)
 {
-}
-
-
-GravitySystem::~GravitySystem()
-{
+    topLeftExtent = Vector2f(extents.min.x, extents.min.y);
+    Vector3f extentsExtent = (extents.max - extents.min);
+    increment = Vector2f(extentsExtent.x, extentsExtent.y) / (float)FORCE_FIELD_RESOLUTION;
 }
 
 void GravitySystem::update(entityx::EntityManager & entities, entityx::EventManager & events, entityx::TimeDelta dt)
 {
-	this->populatePlanets(entities);
+	if (this->populatePlanets(entities)) {
+        for (int i=0; i<FORCE_FIELD_RESOLUTION; i++) {
+            for (int j=0; j<FORCE_FIELD_RESOLUTION; j++) {
+                Vector2f position = increment * Vector2f(i, j) + topLeftExtent;
+                forceField[i][j] = forceAtPosition(position) * this->constant;
+            }
+        }
+    }
 	entities.each<GravityComponent, VelocityComponent, PositionComponent, MassComponent>([this]
 			(entityx::Entity entity, GravityComponent &gravity, VelocityComponent &velocity, PositionComponent& position, MassComponent& m1) {
-		Vector2f force = GravitySystem::forceAtPosition(position.pos);
-		velocity.v += force * this->constant * m1.m;
+        Vector2f force;
+        if (gravity.fast) {
+            Vector2f forceFieldIndex = (position.pos - this->topLeftExtent) / this->increment;
+            force = forceField[Utilities::clamp((int)forceFieldIndex.x, 0, FORCE_FIELD_RESOLUTION - 1)][Utilities::clamp((int)forceFieldIndex.y, 0, FORCE_FIELD_RESOLUTION - 1)];
+        } else {
+            force = GravitySystem::forceAtPosition(position.pos) * this->constant;
+        }
+		velocity.v += force * m1.m;
 	});
 	entities.each<GravityComponent, VelocityComponent, MassComponent, MeshComponent, AimLineComponent>([this]
 			(entityx::Entity entity, GravityComponent &gravity, VelocityComponent &velocity, MassComponent &mass, MeshComponent &mesh, AimLineComponent &aimLine) {
