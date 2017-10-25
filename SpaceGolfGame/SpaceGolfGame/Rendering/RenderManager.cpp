@@ -19,8 +19,8 @@ void RenderManager::destroy()
 void RenderManager::destroyPrograms()
 {
     for (auto& program : programCache) {
+        p(PrintSeverity::PRINT_INFO, "Destroying program %s, %s (%d)", program.first.first.c_str(), program.first.second.c_str(), program.second.idx);
         bgfx::destroy(program.second);
-        p(PrintSeverity::PRINT_INFO, "Destroyed program %s, %s", program.first.first.c_str(), program.first.second.c_str());
     }
     programCache.clear();
 }
@@ -28,8 +28,8 @@ void RenderManager::destroyPrograms()
 void RenderManager::destroyTextures()
 {
     for (auto& texture : textureCache) {
+        p(PrintSeverity::PRINT_INFO, "Destroying texture %s (%d)", texture.first.c_str(), texture.second.idx);
         bgfx::destroy(texture.second);
-        p(PrintSeverity::PRINT_INFO, "Destroyed texture %s", texture.first.c_str());
     }
     textureCache.clear();
 }
@@ -37,8 +37,8 @@ void RenderManager::destroyTextures()
 void RenderManager::destroyUniforms()
 {
     for (auto& uniform : uniformCache) {
+        p(PrintSeverity::PRINT_INFO, "Destroying uniform %s (%d)", uniform.first.c_str(), uniform.second.idx);
         bgfx::destroy(uniform.second);
-        p(PrintSeverity::PRINT_INFO, "Destroyed uniform %s", uniform.first.c_str());
     }
     uniformCache.clear();
 }
@@ -48,7 +48,7 @@ bgfx::ProgramHandle RenderManager::getProgram(std::string vShader, std::string f
     auto pa = make_pair(vShader, fShader);
     if (programCache.count(pa) == 0) {
         programCache[pa] = loadProgram(vShader.c_str(), fShader.c_str());
-        p(PrintSeverity::PRINT_INFO, "Created program %s, %s", vShader.c_str(), fShader.c_str());
+        p(PrintSeverity::PRINT_INFO, "Created program %s, %s (%d)", vShader.c_str(), fShader.c_str(), programCache[pa].idx);
     }
     return programCache[pa];
 }
@@ -57,7 +57,7 @@ bgfx::TextureHandle RenderManager::getTexture(std::string path)
 {
     if (textureCache.count(path) == 0) {
         textureCache[path] = loadTexture(path.c_str());
-        p(PrintSeverity::PRINT_INFO, "Created texture %s", path.c_str());
+        p(PrintSeverity::PRINT_INFO, "Created texture %s (%d)", path.c_str(), textureCache[path].idx);
     }
     return textureCache[path];
 }
@@ -66,7 +66,7 @@ bgfx::UniformHandle RenderManager::getUniform(std::string name, bgfx::UniformTyp
 {
     if (uniformCache.count(name) == 0) {
         uniformCache[name] = bgfx::createUniform(name.c_str(), type);
-        p(PrintSeverity::PRINT_INFO, "Created uniform %s", name.c_str());
+        p(PrintSeverity::PRINT_INFO, "Created uniform %s (%d)", name.c_str(), textureCache[name].idx);
     }
     return uniformCache[name];
 }

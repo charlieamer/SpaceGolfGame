@@ -52,21 +52,14 @@ void Application::init(int32_t _argc, const char* const* _argv, uint32_t _width,
 
 	rapidxml::xml_document<> document;
 	std::string content = FileUtilities::readFile(_argv[1]);
-	char* xml = new char[content.length() + 2];
-	strcpy(xml, content.c_str());
+	char xml[100000];
+	strncpy(xml, content.c_str(), 99999);
 	document.parse<0>(xml);
 
 	this->currentScreen = new GameScreen(this, document);
-	delete[] xml;
 
 	ceguiRenderer = new GuiBgfxRenderer("vs_textured", "fs_textured");
 	CEGUI::System::create(*ceguiRenderer);
-
-	CEGUI::SchemeManager::getSingleton().createFromFile("TaharezLook.scheme");
-
-	CEGUI::Window *gJumpBtnWindow = CEGUI::WindowManager::getSingleton().loadLayoutFromFile("gui/test/test.layout");
-	CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(gJumpBtnWindow);
-//    CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setImage("TaharezLook/MouseArrow");
 
     didSetInitialResolution = false;
     entry::setWindowSize({0}, 1000, 1000);
@@ -76,9 +69,8 @@ ENTRY_IMPLEMENT_MAIN(Application, "Space golf game", "A golf in space");
 
 int Application::shutdown()
 {
-	// Shutdown bgfx.
+    delete this->currentScreen;
 	ceguiRenderer->destroy();
-
 	bgfx::shutdown();
 
 	return 0;

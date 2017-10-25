@@ -3,6 +3,7 @@
 #include <CEGUI/System.h>
 #include <CEGUI/GUIContext.h>
 #include "../Components/PositionComponent.h"
+#include "../Rendering/RenderManager.h"
 
 void BaseScreen::setGameState(BaseGameState * newGameState)
 {
@@ -29,6 +30,8 @@ BaseScreen::BaseScreen(Application * app) : app(app), gameState(NULL)
 BaseScreen::~BaseScreen()
 {
 	this->removeGameStateIfExists();
+    entities.reset();
+    RenderManager::get().destroy();
 }
 
 void BaseScreen::processMouse(const entry::MouseState & state)
