@@ -30,6 +30,7 @@ public:
 	virtual ~BaseScreen();
 
 	virtual void update(float timeDelta) = 0;
+    virtual void init() {}
 	void processMouse(const entry::MouseState &state);
 	void setGameState(BaseGameState* newGameState);
     Vector2f getCameraPosition();

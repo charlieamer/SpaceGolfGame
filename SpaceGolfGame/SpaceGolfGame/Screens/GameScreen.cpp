@@ -30,9 +30,15 @@
 
 #include <math.h>
 
-GameScreen::GameScreen(Application* app, rapidxml::xml_document<>& document) : BaseScreen(app)
-{
+GameScreen::GameScreen(Application* app, std::string levelPath) : BaseScreen(app), levelPath(levelPath) {}
 
+void GameScreen::init() {
+	rapidxml::xml_document<> document;
+	std::string content = FileUtilities::readFile(levelPath);
+	char xml[100000];
+	strncpy(xml, content.c_str(), 99999);
+	document.parse<0>(xml);
+    
 	GleedLevel level(*document.first_node("Level"));
 
 	GleedLayer& objectiveLayer = GleedUtilities::getObjectByName(level.layers, "Objectives");

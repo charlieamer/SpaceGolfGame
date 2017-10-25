@@ -161,6 +161,9 @@ int XmlUtilities::parseInt(rapidxml::xml_node<>& node)
 std::string FileUtilities::readFile(std::string path)
 {
 	std::ifstream t(path);
+    if (t.fail()) {
+        throw std::runtime_error("File not found");
+    }
 	return std::string((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
 }
 //

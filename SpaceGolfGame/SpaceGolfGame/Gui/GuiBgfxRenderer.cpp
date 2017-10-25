@@ -4,6 +4,19 @@
 
 #include <bgfx_utils.h>
 
+GuiBgfxRenderer::GuiBgfxRenderer(const char* vsFileLocation, const char* fsFileLocation)
+{
+	targets.push_back(new GuiBgfxRenderTarget(*this));
+
+	program = loadProgram(vsFileLocation, fsFileLocation);
+	textureUniform = bgfx::createUniform("s_texture0", bgfx::UniformType::Int1);
+	updateScreenSize(bgfx::getStats()->width, bgfx::getStats()->height);
+}
+
+void GuiBgfxRenderer::create(const char* vsFileLocation, const char* fsFileLocation) {
+    new GuiBgfxRenderer(vsFileLocation, fsFileLocation);
+}
+
 void GuiBgfxRenderer::destroy()
 {
     destroyAllGeometryBuffers();
@@ -11,6 +24,7 @@ void GuiBgfxRenderer::destroy()
     destroyAllTextureTargets();
 	bgfx::destroy(program);
 	bgfx::destroy(textureUniform);
+    delete this;
 }
 
 void GuiBgfxRenderer::updateScreenSize(int width, int height)
@@ -22,16 +36,6 @@ void GuiBgfxRenderer::updateScreenSize(int width, int height)
         getDefaultRenderTarget().fireEvent(RenderTarget::EventAreaChanged, args);
     }
 }
-
-GuiBgfxRenderer::GuiBgfxRenderer(const char* vsFileLocation, const char* fsFileLocation)
-{
-	targets.push_back(new GuiBgfxRenderTarget(*this));
-
-	program = loadProgram(vsFileLocation, fsFileLocation);
-	textureUniform = bgfx::createUniform("s_texture0", bgfx::UniformType::Int1);
-	updateScreenSize(bgfx::getStats()->width, bgfx::getStats()->height);
-}
-
 
 GuiBgfxRenderer::~GuiBgfxRenderer()
 {
@@ -189,4 +193,6 @@ uint8_t GuiBgfxRenderer::getCurrentPass()
 {
 	return currentPass;
 }
+
+template<> GuiBgfxRenderer* CEGUI::Singleton<GuiBgfxRenderer>::ms_Singleton = 0;
 

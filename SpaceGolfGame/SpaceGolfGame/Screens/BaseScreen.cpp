@@ -2,6 +2,7 @@
 #include "GameStates/BaseGameState.h"
 #include <CEGUI/System.h>
 #include <CEGUI/GUIContext.h>
+#include <CEGUI/WindowManager.h>
 #include "../Components/PositionComponent.h"
 #include "../Rendering/RenderManager.h"
 
@@ -32,17 +33,24 @@ BaseScreen::~BaseScreen()
 	this->removeGameStateIfExists();
     entities.reset();
     RenderManager::get().destroy();
+    if (CEGUI::System::getSingletonPtr()) {
+        CEGUI::WindowManager::getSingleton().destroyAllWindows();
+    }
 }
 
 void BaseScreen::processMouse(const entry::MouseState & state)
 {
 	if (state.m_buttons[1] && !oldState.m_buttons[1]) {
 		this->onLeftMouseButtonDown(state);
-        CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonDown(CEGUI::MouseButton::LeftButton);
+        if (CEGUI::System::getSingletonPtr()) {
+            CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonDown(CEGUI::MouseButton::LeftButton);            
+        }
 	}
 	if (!state.m_buttons[1] && oldState.m_buttons[1]) {
 		this->onLeftMouseButtonUp(state);
-        CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonUp(CEGUI::MouseButton::LeftButton);
+        if (CEGUI::System::getSingletonPtr()) {
+            CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonUp(CEGUI::MouseButton::LeftButton);
+        }
 	}
 
 	this->oldState = state;

@@ -66,7 +66,7 @@ bgfx::UniformHandle RenderManager::getUniform(std::string name, bgfx::UniformTyp
 {
     if (uniformCache.count(name) == 0) {
         uniformCache[name] = bgfx::createUniform(name.c_str(), type);
-        p(PrintSeverity::PRINT_INFO, "Created uniform %s (%d)", name.c_str(), textureCache[name].idx);
+        p(PrintSeverity::PRINT_INFO, "Created uniform %s (%d)", name.c_str(), uniformCache[name].idx);
     }
     return uniformCache[name];
 }

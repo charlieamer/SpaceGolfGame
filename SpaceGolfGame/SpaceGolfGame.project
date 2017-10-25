@@ -186,6 +186,8 @@
       <File Name="SpaceGolfGame/Screens/BaseScreen.h"/>
       <File Name="SpaceGolfGame/Screens/GameScreen.cpp"/>
       <File Name="SpaceGolfGame/Screens/GameScreen.h"/>
+      <File Name="SpaceGolfGame/Screens/LoadingScreen.h"/>
+      <File Name="SpaceGolfGame/Screens/LoadingScreen.cpp"/>
     </VirtualDirectory>
     <VirtualDirectory Name="3rdparty">
       <VirtualDirectory Name="RapidXML">

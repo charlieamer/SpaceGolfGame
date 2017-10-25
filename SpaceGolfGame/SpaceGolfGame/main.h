@@ -4,20 +4,21 @@
 #include <common.h>
 #include "Screens/BaseScreen.h"
 #include "termcolor.hpp"
-#include "Gui/GuiBgfxRenderer.h"
 #include <iostream>
 #include <bgfx/bgfx.h>
 
 class Application : public entry::AppI
 {
 	BaseScreen* currentScreen;
-	GuiBgfxRenderer* ceguiRenderer;
 
 	void init(int32_t _argc, const char* const* _argv, uint32_t _width, uint32_t _height);
 
 	virtual int shutdown();
 
 	bool update();
+    
+    // should screen be initialised next frame
+    bool shouldInitScreen;
 
 public:
 
@@ -35,4 +36,5 @@ public:
 		: entry::AppI(_name, _description)
 	{
 	}
+    void loadNewScreen(BaseScreen* newScreen);
 };

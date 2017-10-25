@@ -7,16 +7,18 @@
 class GameScreen :
 	public BaseScreen
 {
+    std::string levelPath;
 public:
-	GameScreen(Application* app, rapidxml::xml_document<>& document);
+	GameScreen(Application* app, std::string levelPath);
 	~GameScreen();
-
-	// Inherited via BaseScreen
-	virtual void update(float timeDelta) override;
 	
 	virtual void onLeftMouseButtonDown(const entry::MouseState & state) override;
 	virtual void onLeftMouseButtonUp(const entry::MouseState & state) override;
 	virtual void onMouseMove(Vector2f delta, Vector2f now) override;
+    
+	// Inherited via BaseScreen
+	virtual void update(float timeDelta) override;
+    virtual void init() override;
 
 	entityx::Entity ball;
 };

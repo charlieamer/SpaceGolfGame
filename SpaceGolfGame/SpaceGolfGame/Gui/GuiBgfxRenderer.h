@@ -10,7 +10,7 @@ using namespace std;
 #include "GuiBgfxTexture.h"
 class GuiBgfxRenderTarget;
 
-class GuiBgfxRenderer : public CEGUI::Renderer
+class GuiBgfxRenderer : public CEGUI::Renderer, public CEGUI::Singleton<GuiBgfxRenderer>
 {
 	CEGUI::Rectf screenArea;
 	CEGUI::Sizef screenSize;
@@ -21,11 +21,14 @@ class GuiBgfxRenderer : public CEGUI::Renderer
 
 	bgfx::ProgramHandle program;
 	bgfx::UniformHandle textureUniform;
+
+	GuiBgfxRenderer(const char* vsFileLocation, const char* fsFileLocation);
 public:
+
+    static void create(const char* vsFileLocation, const char* fsFileLocation);
+
 	void destroy();
 	void updateScreenSize(int width, int height);
-
-	GuiBgfxRenderer(const char* shaderLocation, const char* fsFileLocation);
 	~GuiBgfxRenderer();
 
 	// Inherited via Renderer
