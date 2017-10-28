@@ -1,0 +1,5 @@
+<Imageset autoScaled="false" imagefile="levelselect.png" name="levelselect" nativeHorzRes="628" nativeVertRes="452" version="2">
+    <Image height="450" name="Level-Background" width="480" xPos="1" yPos="1" />
+    <Image height="138" name="Level-Star-No" width="144" xPos="483" yPos="1" />
+    <Image height="138" name="Level-Star" width="144" xPos="483" yPos="141" />
+</Imageset>

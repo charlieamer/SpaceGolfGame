@@ -1,0 +1,110 @@
+<?xml version="1.0" ?>
+
+<Falagard version="7">
+
+    <WidgetLook name="Spacegolf/LevelStar">
+        <Property name="Size" value="{{0.3, 0}, {0.3, 0}}" />
+        <Property name="AspectMode" value="Shrink" />
+        <Property name="ClippedByParent" value="false" />
+
+        <ImagerySection name="normal">
+            <ImageryComponent>
+                <Image name="levelselect/Level-Star"/>
+                <VertFormat type="Stretched" />
+                <HorzFormat type="Stretched" />
+            </ImageryComponent>
+        </ImagerySection>
+        <ImagerySection name="disabled">
+            <ImageryComponent>
+                <Image name="levelselect/Level-Star-No"/>
+                <VertFormat type="Stretched" />
+                <HorzFormat type="Stretched" />
+            </ImageryComponent>
+        </ImagerySection>
+        <StateImagery name="Enabled">
+            <Layer>
+                <Section section="normal"/>
+            </Layer>
+        </StateImagery>
+        <StateImagery name="Disabled">
+            <Layer>
+                <Section section="disabled"/>
+            </Layer>
+        </StateImagery>
+    </WidgetLook>
+
+    <WidgetLook name="Spacegolf/LevelSelectBackground">
+        <Property name="Size" value="{{0.25, 0}, {0.25, 0}}" />
+        <Property name="AspectMode" value="Shrink" />
+        <PropertyDefinition redrawOnWrite="true" initialValue="ffcca839" type="Colour" name="NormalTextColour"/>
+
+        <ImagerySection name="normal">
+            <ImageryComponent>
+                <Image name="levelselect/Level-Background"/>
+                <VertFormat type="Stretched" />
+                <HorzFormat type="Stretched" />
+            </ImageryComponent>
+        </ImagerySection>
+        <ImagerySection name="text">
+            <TextComponent>
+                <VertFormat type="CentreAligned" />
+                <HorzFormat type="CentreAligned" />
+                <ColourProperty name="NormalTextColour"/>
+            </TextComponent>
+        </ImagerySection>
+        <StateImagery name="Enabled">
+            <Layer>
+                <Section section="normal"/>
+                <Section section="text"/>
+            </Layer>
+        </StateImagery>
+        <StateImagery name="Disabled">
+            <Layer>
+                <Section section="normal"/>
+                <Section section="text"/>
+            </Layer>
+        </StateImagery>
+    </WidgetLook>
+
+    <WidgetLook name="Spacegolf/Label">
+        <PropertyDefinition redrawOnWrite="true" initialValue="FFCCCCCC" type="Colour" name="NormalTextColour"/>
+        <PropertyDefinition redrawOnWrite="true" initialValue="FF444444" type="Colour" name="DisabledTextColour"/>
+        <PropertyDefinition redrawOnWrite="true" initialValue="CentreAligned" type="VerticalTextFormatting" name="VertFormatting"/>
+        <PropertyDefinition redrawOnWrite="true" initialValue="CentreAligned" type="HorizontalTextFormatting" name="HorzFormatting"/>
+        <ImagerySection name="Label">
+            <TextComponent>
+                <Area>
+                    <Dim type="LeftEdge">
+                        <AbsoluteDim value="0"/>
+                    </Dim>
+                    <Dim type="TopEdge">
+                        <AbsoluteDim value="0"/>
+                    </Dim>
+                    <Dim type="Width">
+                        <UnifiedDim scale="1" type="Width"/>
+                    </Dim>
+                    <Dim type="Height">
+                        <UnifiedDim scale="1" type="Height"/>
+                    </Dim>
+                </Area>
+                <VertFormatProperty name="VertFormatting"/>
+                <HorzFormatProperty name="HorzFormatting"/>
+            </TextComponent>
+        </ImagerySection>
+        <StateImagery name="Enabled">
+            <Layer>
+                <Section section="Label">
+                    <ColourProperty name="NormalTextColour"/>
+                </Section>
+            </Layer>
+        </StateImagery>
+        <StateImagery name="Disabled">
+            <Layer>
+                <Section section="Label">
+                    <ColourProperty name="DisabledTextColour"/>
+                </Section>
+            </Layer>
+        </StateImagery>
+    </WidgetLook>
+
+</Falagard>

@@ -10,6 +10,7 @@
 class Application : public entry::AppI
 {
 	BaseScreen* currentScreen;
+    BaseScreen* nextScreen;
 
 	void init(int32_t _argc, const char* const* _argv, uint32_t _width, uint32_t _height);
 

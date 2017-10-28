@@ -55,6 +55,8 @@ void Application::init(int32_t _argc, const char* const* _argv, uint32_t _width,
 		, 0
 	);
 	this->currentScreen = NULL;
+    this->nextScreen = NULL;
+    shouldInitScreen = false;
     loadNewScreen(new LoadingScreen(this));
 
     didSetInitialResolution = false;
@@ -100,33 +102,37 @@ bool Application::update() {
     //		auto stats = bgfx::getStats();
             // bgfx::dbgTextPrintf(0, 0, 0xf, "FPS: %.0f", m_fps);
             // bgfx::dbgTextPrintf(0, 1, 0xf, "GPU: %.2fms", (float)(stats->gpuTimeEnd - stats->gpuTimeBegin) / 10000000.0f);
-
-            float ratio = (float)m_width / (float)m_height;
-            float width = std::max(ratio, 1.0f);
-            float height = std::max(1.0f/ratio, 1.0f);
-            float ortho[16];
-            bx::mtxOrtho(ortho, width, -width, height, -height, 0, 100, 0, false);
-            this->screenExtents.min = Vector3f(-width, -height, 0);
-            this->screenExtents.max = Vector3f(width, height, 0);
             
-            cameraPos = this->currentScreen->getCameraPosition();
-            
-            float at[3] = { cameraPos.x, cameraPos.y, 0.0f };
-            float eye[3] = { cameraPos.x, cameraPos.y, 1.0f };
-            float up[3] = { 0.0f, 1.0f, 0.0f };
-            float transform[16];
-            bx::mtxLookAt(transform, eye, at, up);
-            bgfx::setViewTransform(0, transform, ortho);
+            if (currentScreen) {
 
-            this->currentScreen->processMouse(m_mouseState);
-            this->currentScreen->update(0.1);
-            if (CEGUI::System::getSingletonPtr()) {
-                if (m_width != old_width || m_height != old_height) {
-                    CEGUI::System::getSingleton().notifyDisplaySizeChanged(CEGUI::Sizef(m_width, m_height));
+                float ratio = (float)m_width / (float)m_height;
+                float width = std::max(ratio, 1.0f);
+                float height = std::max(1.0f/ratio, 1.0f);
+                float ortho[16];
+                bx::mtxOrtho(ortho, width, -width, height, -height, 0, 100, 0, false);
+                this->screenExtents.min = Vector3f(-width, -height, 0);
+                this->screenExtents.max = Vector3f(width, height, 0);
+                
+                cameraPos = this->currentScreen->getCameraPosition();
+                
+                float at[3] = { cameraPos.x, cameraPos.y, 0.0f };
+                float eye[3] = { cameraPos.x, cameraPos.y, 1.0f };
+                float up[3] = { 0.0f, 1.0f, 0.0f };
+                float transform[16];
+                bx::mtxLookAt(transform, eye, at, up);
+                bgfx::setViewTransform(0, transform, ortho);
+
+                this->currentScreen->processMouse(m_mouseState);
+                this->currentScreen->update(0.1);
+                if (CEGUI::System::getSingletonPtr()) {
+                    if (m_width != old_width || m_height != old_height) {
+                        CEGUI::System::getSingleton().notifyDisplaySizeChanged(CEGUI::Sizef(m_width, m_height));
+                    }
+                    CEGUI::System::getSingleton().injectTimePulse(0.1);
+                    CEGUI::System::getSingleton().getDefaultGUIContext().injectTimePulse(0.1);
+                    CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setPosition(CEGUI::Vector2f(m_mouseState.m_mx, m_mouseState.m_my));
+                    CEGUI::System::getSingleton().renderAllGUIContexts();
                 }
-                CEGUI::System::getSingleton().injectTimePulse(0.1);
-                CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setPosition(CEGUI::Vector2f(m_mouseState.m_mx, m_mouseState.m_my));
-                CEGUI::System::getSingleton().renderAllGUIContexts();
             }
 
             bgfx::frame();
@@ -135,6 +141,15 @@ bool Application::update() {
             auto diff = end - start;
             auto ns = std::chrono::nanoseconds(diff).count();
             m_fps = 1000000000.0f / (float)ns;
+            
+            if (nextScreen) {
+                if (currentScreen) {
+                    delete currentScreen;
+                }
+                currentScreen = nextScreen;
+                nextScreen = NULL;
+                shouldInitScreen = true;
+            }
 
             return true;
         }
@@ -148,9 +163,5 @@ bool Application::update() {
 
 void Application::loadNewScreen(BaseScreen* newScreen)
 {
-    if (currentScreen) {
-        delete currentScreen;
-    }
-    currentScreen = newScreen;
-    shouldInitScreen = true;
+    nextScreen = newScreen;
 }

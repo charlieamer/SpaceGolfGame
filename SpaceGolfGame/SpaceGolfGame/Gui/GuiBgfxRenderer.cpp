@@ -34,6 +34,7 @@ void GuiBgfxRenderer::updateScreenSize(int width, int height)
     if (CEGUI::System::getSingletonPtr()) {
         CEGUI::RenderTargetEventArgs args(&getDefaultRenderTarget());
         getDefaultRenderTarget().fireEvent(RenderTarget::EventAreaChanged, args);
+        
     }
 }
 

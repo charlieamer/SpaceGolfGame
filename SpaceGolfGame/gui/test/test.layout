@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <GUILayout version="4" >
-    <Window type="HorizontalLayoutContainer" name="HorizontalLayoutContainer" >
+    <Window type="DefaultWindow" name="DefaultWindow" >
         <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
-        <Window type="TaharezLook/Button" name="Button" >
-            <Property name="Area" value="{{0,0},{0,0},{0,96},{0,32}}" />
-            <Property name="Text" value="Quit" />
-            <Property name="VerticalAlignment" value="Bottom" />
-        </Window>
-        <Window type="TaharezLook/Label" name="Label" >
-            <Property name="Area" value="{{0,0},{0,0},{0,128},{0,32}}" />
-            <Property name="Text" value="Hello world" />
-            <Property name="MaxSize" value="{{1,0},{1,0}}" />
-            <Property name="HorizontalAlignment" value="Right" />
+        <Property name="MaxSize" value="{{1,0},{1,0}}" />
+        <Window type="GridLayoutContainer" name="GridLayoutContainer" >
+            <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
+            <Property name="GridSize" value="w:2 h:1" />
+            <Window type="TaharezLook/Button" name="Button" >
+                <Property name="Area" value="{{0,0},{0,0},{0.5,0},{0,32}}" />
+            </Window>
+            <Window type="TaharezLook/Button" name="Button2" >
+                <Property name="Area" value="{{0,0},{0,0},{0.5,0},{0,32}}" />
+            </Window>
         </Window>
     </Window>
 </GUILayout>

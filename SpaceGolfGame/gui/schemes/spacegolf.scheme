@@ -1,0 +1,14 @@
+<GUIScheme version="5" name="Spacegolf">
+	<LookNFeel filename="spacegolf.looknfeel" />
+	<WindowRendererSet filename="CEGUICoreWindowRendererSet" />
+	<Imageset filename="levelselect.imageset" />
+	<Font filename="starjedi.font" />
+	<Font filename="starjedismall.font" />
+	<Font filename="redseven.font" />
+	<Font filename="redsevensmall.font" />
+	
+	<FalagardMapping windowType="Spacegolf/LevelStar" targetType="DefaultWindow" renderer="Core/Default" lookNFeel="Spacegolf/LevelStar" />
+	<FalagardMapping windowType="Spacegolf/LevelSelectBackground" targetType="DefaultWindow" renderer="Core/Default" lookNFeel="Spacegolf/LevelSelectBackground" />
+	<FalagardMapping windowType="Spacegolf/Label" targetType="DefaultWindow" renderer="Core/Default" lookNFeel="Spacegolf/Label" />
+    
+</GUIScheme>

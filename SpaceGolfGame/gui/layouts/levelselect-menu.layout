@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout version="4" >
+    <Window type="DefaultWindow" name="DefaultWindow" >
+        <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
+        <Property name="MaxSize" value="{{1,0},{1,0}}" />
+        <Window type="GridLayoutContainer" name="LevelsContainer" >
+            <Property name="Area" value="{{0,0},{0,108},{1,-20},{1,108}}" />
+            <Property name="GridSize" value="w:3 h:10" />
+            <Property name="HorizontalAlignment" value="Centre" />
+            <AutoWindow namePath="__auto_dummy_0" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_1" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_2" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_3" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_4" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_5" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_6" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_7" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_8" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_9" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_10" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_11" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_12" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_13" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_14" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_15" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_16" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_17" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_18" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_19" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_20" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_21" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_22" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_23" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_24" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_25" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_26" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_27" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_28" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+            <AutoWindow namePath="__auto_dummy_29" >
+                <Property name="Visible" value="false" />
+            </AutoWindow>
+        </Window>
+        <Window type="Spacegolf/Label" name="Label" >
+            <Property name="Area" value="{{0,0},{0,13},{1,0},{0,66}}" />
+            <Property name="Font" value="StarJedi" />
+            <Property name="Text" value="Select level" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+        </Window>
+    </Window>
+</GUILayout>

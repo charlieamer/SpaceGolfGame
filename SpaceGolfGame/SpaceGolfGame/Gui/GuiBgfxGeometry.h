@@ -23,7 +23,7 @@ struct GuiBgfxVertex {
 
 	float x, y, z;
 	float u, v;
-	unsigned char a, b, g, r;
+	unsigned char a, g, b, r;
 };
 
 struct Batch {

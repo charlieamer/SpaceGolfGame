@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout version="4" >
+    <Window type="Spacegolf/LevelSelectBackground" name="LevelSelectBackground" >
+        <Property name="Area" value="{{0,1},{0,1},{0.25,1},{0.25,1}}" />
+        <Property name="MaxSize" value="{{1,0},{1,0}}" />
+        <Window type="Spacegolf/LevelStar" name="LevelStar1" >
+            <Property name="Area" value="{{0.07,0},{-0.02,0},{0.37,0},{0.28,0}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+        </Window>
+        <Window type="Spacegolf/LevelStar" name="LevelStar2" >
+            <Property name="Area" value="{{0.46,0},{-0.15,0},{0.76,0},{0.15,0}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+        </Window>
+        <Window type="Spacegolf/LevelStar" name="LevelStar3" >
+            <Property name="Area" value="{{0.76,0},{0.08,0},{1.06,0},{0.38,0}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+        </Window>
+    </Window>
+</GUILayout>

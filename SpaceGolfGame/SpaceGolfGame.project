@@ -188,6 +188,8 @@
       <File Name="SpaceGolfGame/Screens/GameScreen.h"/>
       <File Name="SpaceGolfGame/Screens/LoadingScreen.h"/>
       <File Name="SpaceGolfGame/Screens/LoadingScreen.cpp"/>
+      <File Name="SpaceGolfGame/Screens/LevelSelectScreen.h"/>
+      <File Name="SpaceGolfGame/Screens/LevelSelectScreen.cpp"/>
     </VirtualDirectory>
     <VirtualDirectory Name="3rdparty">
       <VirtualDirectory Name="RapidXML">
@@ -300,6 +302,12 @@
       <File Name="SpaceGolfGame/Systems/LightUpdateSystem.h"/>
       <File Name="SpaceGolfGame/Systems/LightUpdateSystem.cpp"/>
     </VirtualDirectory>
+    <File Name="SpaceGolfGame/guiLoaders.h"/>
+    <File Name="SpaceGolfGame/guiLoaders.cpp"/>
+    <File Name="SpaceGolfGame/GameCompletition.h"/>
+    <File Name="SpaceGolfGame/GameCompletition.cpp"/>
+    <File Name="SpaceGolfGame/GameLevel.h"/>
+    <File Name="SpaceGolfGame/GameLevel.cpp"/>
   </VirtualDirectory>
   <VirtualDirectory Name="bgfx">
     <File Name="../../bgfx/src/amalgamated.cpp"/>

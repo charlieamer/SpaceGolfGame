@@ -1,6 +1,8 @@
 #include "GuiBgfxTexture.h"
 #include <bgfx/bgfx.h>
 #include <bgfx_utils.h>
+#include <entry/entry.h>
+#include <bimg/decode.h>
 
 using namespace CEGUI;
 
@@ -37,12 +39,26 @@ const Vector2f & GuiBgfxTexture::getTexelScaling() const
 
 void GuiBgfxTexture::loadFromFile(const String & filename, const String & resourceGroup)
 {
-	bgfx::TextureInfo info;
-	handle = loadTexture(filename.c_str(), 0, 0, &info);
-	setSize(Sizef(info.width, info.height));
+    RawDataContainer fileContainer;
+    CEGUI::System::getSingleton().getResourceProvider()->loadRawDataContainer(filename, fileContainer, resourceGroup);
+    void* dataPtr = fileContainer.getDataPtr();
+    int size = fileContainer.getSize();
+    
+    bimg::ImageContainer *imageContainer = bimg::imageParse(entry::getAllocator(), dataPtr, size);
+    handle = bgfx::createTexture2D(
+        imageContainer->m_width,
+        imageContainer->m_height,
+        imageContainer->m_numMips > 1,
+        imageContainer->m_numLayers,
+        bgfx::TextureFormat::Enum(imageContainer->m_format),
+        BGFX_TEXTURE_NONE,
+        bgfx::makeRef(imageContainer->m_data, imageContainer->m_size));
+    bgfx::setName(handle, filename.c_str());
+	setSize(Sizef(imageContainer->m_width, imageContainer->m_height));
     char tmp[100];
-    sprintf(tmp, "[BgfxRenderer::GuiBgfxTexture::loadFromFile] Loading texture from file: %s %dx%d", filename.c_str(), info.width, info.height);
+    sprintf(tmp, "[BgfxRenderer::GuiBgfxTexture::loadFromFile] Loading texture from file (Resource group %s): %s %dx%d", resourceGroup.c_str(), filename.c_str(), imageContainer->m_width, imageContainer->m_height);
     CEGUI::Logger::getSingleton().logEvent(tmp);
+    CEGUI::System::getSingleton().getResourceProvider()->unloadRawDataContainer(fileContainer);
 }
 
 void GuiBgfxTexture::loadFromMemory(const void * buffer, const Sizef & buffer_size, PixelFormat pixel_format)
