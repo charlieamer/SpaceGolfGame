@@ -1,23 +1,29 @@
 #include "GleedBaseObject.h"
 #include "../utilities.h"
 
+#include <iostream>
 
-GleedBaseObject::GleedBaseObject(rapidxml::xml_node<>& node) : position(node)
+GleedBaseObject::GleedBaseObject(const tinyxml2::XMLNode* node) : position(node)
 {
-	name = XmlUtilities::value(*node.first_node("Name"));
-	if (node.first_node("CustomProperties")) {
-		for (rapidxml::xml_node<>* it = node.first_node("CustomProperties")->first_node("Property"); it; it = it->next_sibling("Property")) {
-			std::string propertyName = XmlUtilities::value(*it->first_attribute("Name"));
-            if (it->first_node("string")) {
-                std::string propertyValue = XmlUtilities::value(*it->first_node("string"));
+	name = XmlUtilities::value(node->FirstChildElement("Name"));
+    std::cout << "Parsing " << name << std::endl;
+	if (node->FirstChildElement("CustomProperties")) {
+        std::cout << "Has custom properties" << std::endl;
+		for (const tinyxml2::XMLElement* it = node->FirstChildElement("CustomProperties")->FirstChildElement("Property"); it; it = it->NextSiblingElement("Property")) {
+			std::string propertyName = XmlUtilities::value(it->FindAttribute("Name"));
+            std::cout << "Got " << propertyName << ":";
+            if (it->FirstChildElement("string")) {
+                std::string propertyValue = XmlUtilities::value(it->FirstChildElement("string"));
+                std::cout << propertyValue;
                 properties[propertyName] = propertyValue;
-            } else if (it->first_node("Color")) {
-                colorProperties[propertyName] = GleedColor(*it->first_node("Color"));
-            } else if (it->first_node("boolean")) {
-                booleanProperties[propertyName] = strcmp(it->first_node("boolean")->value(), "true") == 0;
+            } else if (it->FirstChildElement("Color")) {
+                colorProperties[propertyName] = GleedColor(it->FirstChildElement("Color"));
+            } else if (it->FirstChildElement("boolean")) {
+                booleanProperties[propertyName] = strcmp(it->FirstChildElement("boolean")->ToElement()->GetText(), "true") == 0;
             } else {
                 throw "Unknown property type";
             }
+            std::cout << "\n";
 		}
 	}
 }

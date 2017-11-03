@@ -1,11 +1,11 @@
 #pragma once
 
-#include <rapidxml.hpp>
+#include <tinyxml2.h>
 
 class GleedColor
 {
 public:
-	GleedColor(rapidxml::xml_node<>& node);
+	GleedColor(const tinyxml2::XMLNode* node);
     GleedColor(){}
 	unsigned char r, g, b, a;
 };

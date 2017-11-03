@@ -1,9 +1,9 @@
 #include "GleedCircle.h"
 #include "../utilities.h"
 
-GleedCircle::GleedCircle(rapidxml::xml_node<>& node) : GleedBaseObject(node), color(*node.first_node("FillColor"))
+GleedCircle::GleedCircle(const tinyxml2::XMLNode* node) : GleedBaseObject(node), color(node->FirstChildElement("FillColor"))
 {
-	radius = XmlUtilities::parseFloat(*node.first_node("Radius"));
+	radius = XmlUtilities::parseFloat(node->FirstChildElement("Radius"));
 }
 
 GleedCircle::~GleedCircle()

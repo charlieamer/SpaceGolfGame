@@ -7,7 +7,7 @@
 class GleedLayer : public GleedBaseObject
 {
 public:
-	GleedLayer(rapidxml::xml_node<> &node);
+	GleedLayer(const tinyxml2::XMLNode* node);
 	~GleedLayer();
 	std::vector<std::shared_ptr<GleedBaseObject>> objects;
 };

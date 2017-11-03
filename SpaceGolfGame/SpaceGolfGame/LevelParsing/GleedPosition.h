@@ -1,11 +1,11 @@
 #pragma once
 
-#include <rapidxml.hpp>
+#include <tinyxml2.h>
 
 class GleedPosition
 {
 public:
-	GleedPosition(rapidxml::xml_node<> &node);
+	GleedPosition(const tinyxml2::XMLNode* node);
 	~GleedPosition();
 	float x, y;
 };

@@ -29,17 +29,15 @@
 #include "../utilities.h"
 
 #include <math.h>
+#include <tinyxml2.h>
 
 GameScreen::GameScreen(Application* app, std::string levelPath) : BaseScreen(app), levelPath(levelPath) {}
 
 void GameScreen::init() {
-	rapidxml::xml_document<> document;
-	std::string content = FileUtilities::readFile(levelPath);
-	char xml[100000];
-	strncpy(xml, content.c_str(), 99999);
-	document.parse<0>(xml);
+    tinyxml2::XMLDocument document;
+	document.LoadFile(levelPath.c_str());
     
-	GleedLevel level(*document.first_node("Level"));
+	GleedLevel level(document.FirstChildElement("Level"));
 
 	GleedLayer& objectiveLayer = GleedUtilities::getObjectByName(level.layers, "Objectives");
 	GleedLayer& planetsLayer = GleedUtilities::getObjectByName(level.layers, "Planets");

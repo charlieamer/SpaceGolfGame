@@ -5,7 +5,7 @@ class GleedCircle :
 	public GleedBaseObject
 {
 public:
-	GleedCircle(rapidxml::xml_node<>& node);
+	GleedCircle(const tinyxml2::XMLNode* node);
 	~GleedCircle();
 	float radius;
 	GleedColor color;

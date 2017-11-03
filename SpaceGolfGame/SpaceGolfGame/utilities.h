@@ -2,7 +2,7 @@
 #include <entityx/Entity.h>
 #include <vmath.h>
 #include <math.h>
-#include <rapidxml.hpp>
+#include <tinyxml2.h>
 #include <string>
 #include <memory>
 #include <vector>
@@ -48,10 +48,10 @@ namespace FileUtilities {
 }
 
 namespace XmlUtilities {
-	std::string value(rapidxml::xml_node<>& node);
-	std::string value(rapidxml::xml_attribute<>& node);
-	float parseFloat(rapidxml::xml_node<>& node);
-	int parseInt(rapidxml::xml_node<>& node);
+	std::string value(const tinyxml2::XMLElement* node);
+	std::string value(const tinyxml2::XMLAttribute* attribute);
+	float parseFloat(const tinyxml2::XMLElement* node);
+	int parseInt(const tinyxml2::XMLElement* node);
 }
 
 namespace GleedUtilities {

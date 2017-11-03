@@ -6,7 +6,7 @@ class GleedRectangle :
 	public GleedBaseObject
 {
 public:
-	GleedRectangle(rapidxml::xml_node<>& node);
+	GleedRectangle(const tinyxml2::XMLNode* node);
 	~GleedRectangle();
 	float width, height;
 	GleedColor color;

@@ -88,6 +88,15 @@
               <Property Name="Mesh" Type="string" Description="">
                 <string>10</string>
               </Property>
+              <Property Name="Light" Type="Color" Description="">
+                <Color xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                  <R>255</R>
+                  <G>192</G>
+                  <B>128</B>
+                  <A>255</A>
+                  <PackedValue>4286628095</PackedValue>
+                </Color>
+              </Property>
             </CustomProperties>
             <Radius>20</Radius>
             <FillColor>

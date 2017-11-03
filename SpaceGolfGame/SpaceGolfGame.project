@@ -202,6 +202,10 @@
         <File Name="SpaceGolfGame/3rdparty/Vmath/vmath.cpp"/>
         <File Name="SpaceGolfGame/3rdparty/Vmath/vmath.h"/>
       </VirtualDirectory>
+      <VirtualDirectory Name="tinyxml2">
+        <File Name="SpaceGolfGame/3rdparty/tinyxml2/tinyxml2.cpp"/>
+        <File Name="SpaceGolfGame/3rdparty/tinyxml2/tinyxml2.h"/>
+      </VirtualDirectory>
     </VirtualDirectory>
     <File Name="SpaceGolfGame/main.cpp"/>
     <File Name="SpaceGolfGame/main.h"/>
@@ -353,6 +357,8 @@
         <IncludePath Value="C:\Users\ACER\Documents\GitHub\SpaceGolfGame\SpaceGolfGame\SpaceGolfGame\3rdparty\Vmath"/>
         <IncludePath Value="C:\Users\ACER\Documents\GitHub\SpaceGolfGame\SpaceGolfGame\SpaceGolfGame\3rdparty\RapidXML"/>
         <IncludePath Value="C:\Users\ACER\Documents\GitHub\SpaceGolfGame\SpaceGolfGame\SpaceGolfGame\3rdparty\termcolor"/>
+        <IncludePath Value="C:\Users\ACER\Documents\GitHub\SpaceGolfGame\SpaceGolfGame\SpaceGolfGame\3rdparty\tinyxml2"/>
+        <IncludePath Value="C:\Users\ACER\Documents\GitHub\SpaceGolfGame\SpaceGolfGame\SpaceGolfGame\3rdparty\xmls"/>
         <IncludePath Value="C:\Users\ACER\Documents\GitHub\cegui-0.8.7\cegui\include"/>
         <IncludePath Value="C:\Users\ACER\Documents\GitHub\bgfx\examples\common"/>
         <IncludePath Value="C:\Users\ACER\Documents\GitHub\bx\include\compat\mingw"/>

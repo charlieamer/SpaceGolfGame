@@ -1,9 +1,9 @@
 #include "GleedLevel.h"
 
-GleedLevel::GleedLevel(rapidxml::xml_node<>& node) : GleedBaseObject(*node.first_node("LevelProperties"))
+GleedLevel::GleedLevel(const tinyxml2::XMLNode *node) : GleedBaseObject(node->FirstChildElement("LevelProperties"))
 {
-	for (auto it = node.first_node("Layers")->first_node("Layer"); it; it = it->next_sibling("Layer")) {
-		layers.emplace_back(new GleedLayer(*it));
+	for (auto it = node->FirstChildElement("Layers")->FirstChildElement("Layer"); it; it = it->NextSiblingElement("Layer")) {
+		layers.emplace_back(new GleedLayer(it));
 	}
 }
 

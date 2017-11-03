@@ -2,10 +2,10 @@
 
 #include "../utilities.h"
 
-GleedRectangle::GleedRectangle(rapidxml::xml_node<>& node) : GleedBaseObject(node), color(*node.first_node("FillColor"))
+GleedRectangle::GleedRectangle(const tinyxml2::XMLNode* node) : GleedBaseObject(node), color(node->FirstChildElement("FillColor"))
 {
-	width = XmlUtilities::parseFloat(*node.first_node("Width"));
-	height = XmlUtilities::parseFloat(*node.first_node("Height"));
+	width = XmlUtilities::parseFloat(node->FirstChildElement("Width"));
+	height = XmlUtilities::parseFloat(node->FirstChildElement("Height"));
 }
 
 

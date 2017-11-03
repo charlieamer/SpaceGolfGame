@@ -1,7 +1,7 @@
 #pragma once
 
 #include "GleedPosition.h"
-#include <rapidxml.hpp>
+#include <tinyxml2.h>
 #include <string>
 #include <map>
 #include "GleedColor.h"
@@ -9,7 +9,7 @@
 class GleedBaseObject
 {
 public:
-	GleedBaseObject(rapidxml::xml_node<>& node);
+	GleedBaseObject(const tinyxml2::XMLNode *node);
 	~GleedBaseObject();
 	GleedPosition position;
 	std::string name;

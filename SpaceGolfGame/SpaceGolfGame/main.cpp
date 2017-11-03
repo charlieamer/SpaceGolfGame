@@ -155,8 +155,8 @@ bool Application::update() {
         }
 
         return false;
-    } catch (std::exception ex) {
-        Debug::p(Debug::PrintSeverity::PRINT_ERROR, "Exception caught: %s", ex.what());
+    } catch (std::exception *ex) {
+        Debug::p(Debug::PrintSeverity::PRINT_ERROR, "Exception caught: %s", ex->what());
         exit(1);
     }
 }

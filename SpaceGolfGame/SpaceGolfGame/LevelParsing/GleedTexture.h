@@ -6,7 +6,7 @@ class GleedTexture :
 	public GleedBaseObject
 {
 public:
-	GleedTexture(rapidxml::xml_node<> &node);
+	GleedTexture(const tinyxml2::XMLNode* node);
 	~GleedTexture();
 
 	GleedColor tint;

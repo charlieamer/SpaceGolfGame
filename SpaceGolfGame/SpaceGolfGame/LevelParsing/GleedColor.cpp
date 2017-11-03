@@ -2,10 +2,10 @@
 #include "../utilities.h"
 #include <string>
 
-GleedColor::GleedColor(rapidxml::xml_node<>& node)
+GleedColor::GleedColor(const tinyxml2::XMLNode* node)
 {
-	r = XmlUtilities::parseInt(*node.first_node("R"));
-	g = XmlUtilities::parseInt(*node.first_node("G"));
-	b = XmlUtilities::parseInt(*node.first_node("B"));
-	a = XmlUtilities::parseInt(*node.first_node("A"));
+	r = XmlUtilities::parseInt(node->FirstChildElement("R"));
+	g = XmlUtilities::parseInt(node->FirstChildElement("G"));
+	b = XmlUtilities::parseInt(node->FirstChildElement("B"));
+	a = XmlUtilities::parseInt(node->FirstChildElement("A"));
 }

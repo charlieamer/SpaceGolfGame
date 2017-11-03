@@ -138,24 +138,26 @@ namespace Utilities {
 	}
 }
 
-std::string XmlUtilities::value(rapidxml::xml_node<>& node)
+#define safe_xml_get(value, alternative) std::string((value) ? value : alternative)
+
+std::string XmlUtilities::value(const tinyxml2::XMLElement* node)
 {
-	return std::string(node.value(), node.value_size());
+	return safe_xml_get(node->GetText(), "");
 }
 
-std::string XmlUtilities::value(rapidxml::xml_attribute<>& node)
+std::string XmlUtilities::value(const tinyxml2::XMLAttribute* attribute)
 {
-	return std::string(node.value(), node.value_size());
+	return safe_xml_get(attribute->Value(), "");
 }
 
-float XmlUtilities::parseFloat(rapidxml::xml_node<>& node)
+float XmlUtilities::parseFloat(const tinyxml2::XMLElement* node)
 {
-	return std::stof(value(node));
+    return std::stof(safe_xml_get(node->GetText(), "0.0"));
 }
 
-int XmlUtilities::parseInt(rapidxml::xml_node<>& node)
+int XmlUtilities::parseInt(const tinyxml2::XMLElement* node)
 {
-	return std::stoi(value(node));
+    return std::stoi(safe_xml_get(node->GetText(), "0"));
 }
 
 std::string FileUtilities::readFile(std::string path)

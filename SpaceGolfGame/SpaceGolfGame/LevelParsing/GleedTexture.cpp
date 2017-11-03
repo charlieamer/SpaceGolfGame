@@ -2,17 +2,17 @@
 
 #include "../utilities.h"
 
-GleedTexture::GleedTexture(rapidxml::xml_node<> &node) : GleedBaseObject(node), tint(*node.first_node("TintColor"))
+GleedTexture::GleedTexture(const tinyxml2::XMLNode* node) : GleedBaseObject(node), tint(node->FirstChildElement("TintColor"))
 {
-	auto scale = node.first_node("Scale");
-	scaleX = XmlUtilities::parseFloat(*scale->first_node("X"));
-	scaleY = XmlUtilities::parseFloat(*scale->first_node("Y"));
+	auto scale = node->FirstChildElement("Scale");
+	scaleX = XmlUtilities::parseFloat(scale->FirstChildElement("X"));
+	scaleY = XmlUtilities::parseFloat(scale->FirstChildElement("Y"));
 
-	auto origin = node.first_node("Origin");
-	originX = XmlUtilities::parseFloat(*origin->first_node("X"));
-	originY = XmlUtilities::parseFloat(*origin->first_node("Y"));
+	auto origin = node->FirstChildElement("Origin");
+	originX = XmlUtilities::parseFloat(origin->FirstChildElement("X"));
+	originY = XmlUtilities::parseFloat(origin->FirstChildElement("Y"));
 
-	path = XmlUtilities::value(*node.first_node("TexturePathRelativeToContentRoot"));
+	path = XmlUtilities::value(node->FirstChildElement("TexturePathRelativeToContentRoot"));
 }
 
 
