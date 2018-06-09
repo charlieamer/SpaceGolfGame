@@ -63,6 +63,7 @@ Game is made in C++, not unity, or some other popular game engine.
     - When ball hits planet it will slow down a bit
 - 3 different stars (they have to be big like sun)
 - Ball
+- Trajectory guidence (where ball will go after player releases finger)
 - Level bounds (suggestion: asteroid field)
     - When ball hits level bounds it will simply bounce off without slowing down
 - Victory animation (suggestion: fade out to another screen)
