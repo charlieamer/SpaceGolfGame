@@ -4,9 +4,9 @@ This game is supposed to be a mobile game, although for testing purposes it can 
 This game should run in portrait mode.
 If you believe some of the stuff could be done better, feel free to correct it, with my approval.
 Game is made in C++, not unity, or some other popular game engine.
-    - Graphics library: bgfx
-    - UI library: CEGUI (has editor called CEED)
-    - Level editor: GLEED2D
+- Graphics library: bgfx
+- UI library: CEGUI (has editor called CEED)
+- Level editor: GLEED2D
 
 # General info
 
